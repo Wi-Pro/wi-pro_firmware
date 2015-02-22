@@ -89,6 +89,10 @@ unsigned char SPI_Read(unsigned int addr);
 int Server_Connect(); 
 void W5100_Init(void);
 void Ethernet_Init();
+void Memory_Init(); 
+int SendData(uint8_t sock,const uint8_t *buffer,uint16_t bufferLength); 
+uint16_t ReceiveData(uint8_t sock,uint8_t *buf,uint16_t buflen)
+void socketCommand(uint8_t command); 
 void enableEthernetInterrupt();
 
 

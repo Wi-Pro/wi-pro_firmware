@@ -195,7 +195,11 @@ void W5100_Init(void)
 	//SPI_Write(S0_CR, 0x01);
 	//SPI_Write(S0_CR, 0x02); 
 	printf("Done Wiznet W5100 Initialized!\n");
-	Server_Connect(); 
+	Server_Connect();
+	char message[] = ""; 
+	char* messagePointer = message; 
+	strcat(messagePointer, "Hello World");
+	SendData(0, messagePointer, strlen((char *)messagePointer)); 
 }
 
 int Server_Connect()
@@ -265,9 +269,9 @@ int Server_Connect()
 void Memory_Init()
 {
 	//assign 8kb rx memory to socket 0 
-	RMSR = 0x03; 
+	SPI_Write(RMSR, 0x03);
 	//assign 8kb tx memory to socket 0 
-	TMSR = 0x03; 
+	SPI_Write(TMSR, 0x03);	
 	
 	S0_TX_MASK = 0x1FFF; 
 	S0_TX_BASE = 0x4000; 
@@ -275,15 +279,133 @@ void Memory_Init()
 	S0_RX_BASE = 0x6000; 
 }
 
-void SendData()
+//void SendData(uint8_t sock,const uint8_t *buf,uint16_t buflen)
+//{
+	//printf("Initializing Memory...\n");
+	//Memory_Init(); 
+	//printf("Sending Data...\n");
+	//unsigned int freeSize = 0; 
+	//printf("FreeSize: %d\n", freeSize);
+	//freeSize = SPI_Read(S0_TX_FSR);
+	//printf("FreeSize: %d\n", freeSize);
+	//freeSize <<= 8; 
+	//printf("FreeSize: %d\n", freeSize);
+	//freeSize |= SPI_Read(S0_TX_FSR + 1);
+	//printf("FreeSize: %d\n", freeSize);
+	//printf("Free Size to Transmit: %d\n", freeSize);
+	////Calculate the offset address
+	//unsigned int offset = SPI_Read(S0_TX_WR); 
+	//offset <<= 8; 
+	//offset |= SPI_Read(S0_TX_WR + 1); 
+	//offset &= S0_TX_MASK; 
+	//printf("Address Offset: %d\n", offset);
+	//
+	////Calculate start physical address 
+	//unsigned int startAddress = S0_TX_BASE + offset; 
+	//printf("Starting Physical Address: %d", startAddress);
+//}
+
+int SendData(uint8_t sock,const uint8_t *buffer,uint16_t bufferLength)
 {
-	unsigned int freeSize = S0_TX_FSR; 
-	unsigned int offset
+	uint16_t ptr,offaddr,realaddr,txsize,timeout;
+
+	if (bufferLength <= 0 || sock != 0) return 0;
+	//#if _DEBUG_MODE
+	printf("Send Size: %d\n",bufferLength);
+	//#endif
+	// Make sure the TX Free Size Register is available
+	txsize = SPI_Read(S0_TX_FSR);
+	txsize = (((txsize & 0x00FF) << 8 ) + SPI_Read(S0_TX_FSR + 1));
+	//#if _DEBUG_MODE
+	printf("TX Free Size: %d\n",txsize);
+	//#endif
+	timeout = 0;
+	//Writing our buffer to the transmit buffer
+	while (txsize < bufferLength) {
+		_delay_ms(1);
+		txsize = SPI_Read(S0_TX_FSR);
+		txsize = (((txsize & 0x00FF) << 8 ) + SPI_Read(S0_TX_FSR + 1));
+		// Timeout for approx 1000 ms
+		if (timeout++ > 1000) {
+			//#if _DEBUG_MODE
+			printf("TX Free Size Error!\n");
+			//#endif
+			// Disconnect the connection
+			socketCommand(DISCON);
+			return 0;
+		}
+	}
+
+	// Read the Tx Write Pointer
+	ptr = SPI_Read(S0_TX_WR);
+	offaddr = (((ptr & 0x00FF) << 8 ) + SPI_Read(S0_TX_WR + 1));
+	//#if _DEBUG_MODE
+	printf("TX Buffer: %x\n",offaddr);
+	//#endif
+
+	while(bufferLength) {
+		bufferLength--;
+		// Calculate the real W5100 physical Tx Buffer Address
+		realaddr = S0_TX_BASE + (offaddr & S0_TX_MASK);
+		// Copy the application data to the W5100 Tx Buffer
+		SPI_Write(realaddr,*buffer);
+		offaddr++;
+		buffer++;
+	}
+
+	// Increase the S0_TX_WR value, so it point to the next transmit
+	SPI_Write(S0_TX_WR,(offaddr & 0xFF00) >> 8 );
+	SPI_Write(S0_TX_WR + 1,(offaddr & 0x00FF));
+
+	// Now Send the SEND command
+	socketCommand(SEND);
+
+	// Wait for Sending Process
+	while(SPI_Read(S0_CR));
+
+	return 1;
 }
 
-void ReceiveData() 
+uint16_t ReceiveData(uint8_t sock,uint8_t *buffer,uint16_t bufferLength)
 {
-	
+	uint16_t ptr,offaddr,realaddr;
+
+	if (bufferLength <= 0 || sock != 0) return 1;
+
+	// If the request size > MAX_BUF,just truncate it
+	if (bufferLength > MAX_BUF)
+	bufferLength = MAX_BUF - 2;
+	// Read the Rx Read Pointer
+	ptr = SPI_Read(S0_RX_RD);
+	offaddr = (((ptr & 0x00FF) << 8 ) + SPI_Read(S0_RX_RD + 1));
+	//#if _DEBUG_MODE
+	printf("RX Buffer: %x\n",offaddr);
+	//#endif
+
+	while(bufferLength) {
+		bufferLength--;
+		realaddr = S0_RX_BASE + (offaddr & S0_RX_MASK);
+		*buffer = SPI_Read(realaddr);
+		offaddr++;
+		buffer++;
+	}
+	*buffer='\0';        // String terminated character
+
+	// Increase the S0_RX_RD value, so it point to the next receive
+	SPI_Write(S0_RX_RD,(offaddr & 0xFF00) >> 8 );
+	SPI_Write(S0_RX_RD + 1,(offaddr & 0x00FF));
+
+	// Now Send the RECV command
+	SPI_Write(S0_CR,CR_RECV);
+	_delay_us(5);    // Wait for Receive Process
+
+	return 1;
+}
+
+
+void socketCommand(uint8_t command) 
+{
+	SPI_Write(S0_CR, command);
 }
 
 void enableEthernetInterrupt()
