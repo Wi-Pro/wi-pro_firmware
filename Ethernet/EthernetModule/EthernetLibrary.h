@@ -32,9 +32,6 @@
 #define S0_MR 0x0400 //Socket 0 Mode Register 
 #define S0_CR 0x0401 //Socket 0 Command Register 
 #define S0_IR 0x0402 //Socket 0 Interrupt Register
-#define S1_IR 0x0502 //Socket 1 Interrupt Register
-#define S2_IR 0x0602 //Socket 2 Interrupt Register
-#define S3_IR 0x0702 //Socket 3 Interrupt Register 
 #define S0_SR 0x0403 //Socket 0 Status Register 
 #define S0_SPORT 0x0404 //Socket 0 Source Port Register 
 #define S0_DIPR 0x040C //Socket 0 Destination IP Address Register 
@@ -43,8 +40,6 @@
 #define S0_TX_FSR 0x0420 //Socket 0 TX Free Size Register 
 #define S0_TX_RR 0x0422 //Socket 0 TX Read Pointer Register 
 #define S0_TX_WR 0x0424 //Socket 0 TX Writer Pointer Register 
-#define S0_RX_RSR 0x426 //Socket 0 RX Receive Size Register
-#define S0_RX_RD 0x428 //Socket 0 RX Read Pointer Register
 //Socket Mode Values 
 #define TCP_MODE 0x01
 //Socket Command Register Values 
@@ -82,8 +77,6 @@
 #define S1_INT 1 
 #define S0_INT 0 
 
-#define MAX_BUFF 512
-
 
 void uart_init(void);
 void uart_flush(void);
@@ -98,8 +91,7 @@ void W5100_Init(void);
 void Ethernet_Init();
 void Memory_Init(); 
 int SendData(uint8_t sock,const uint8_t *buffer,uint16_t bufferLength); 
-int ReceiveData(uint8_t sock,uint8_t *buf,uint16_t buflen);
-uint16_t ReceiveSize(void);
+uint16_t ReceiveData(uint8_t sock,uint8_t *buf,uint16_t buflen)
 void socketCommand(uint8_t command); 
 void enableEthernetInterrupt();
 

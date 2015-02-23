@@ -138,6 +138,7 @@ void W5100_Init(void)
 {
 	// Ethernet Setup
 	printf("Enterting Ethernet Setup\n");
+	enableEthernetInterrupt(); 
 	// Setting the Wiznet W5100 Mode Register: 0x0000
 	SPI_Write(MR,0x80);            // MR = 0b10000000;
 	_delay_ms(1);
@@ -186,23 +187,19 @@ void W5100_Init(void)
 	SPI_Read(SIPR + 2),SPI_Read(SIPR + 3));
 
 	// Setting the Wiznet W5100 RX and TX Memory Size, we use 2KB for Rx/Tx 4 channels
-	//printf("Setting Wiznet RMSR and TMSR\n\n");
-	//SPI_Write(RMSR,0x55);
-	//SPI_Write(TMSR,0x55);
-
+	printf("Setting Wiznet RMSR and TMSR\n\n");
+	SPI_Write(RMSR,0x55);
+	SPI_Write(TMSR,0x55);
+	
+	//Open Socket 0; 
+	//SPI_Write(S0_CR, 0x01);
+	//SPI_Write(S0_CR, 0x02); 
 	printf("Done Wiznet W5100 Initialized!\n");
-	//enableEthernetInterrupt(); 
-	Memory_Init(); 
 	Server_Connect();
 	char message[] = ""; 
-	char receiveMessage[100];
 	char* messagePointer = message; 
-	char* recMessagePointer = receiveMessage;
-	messagePointer = "GET /index.html HTTP/1.1";
+	strcat(messagePointer, "Hello World");
 	SendData(0, messagePointer, strlen((char *)messagePointer)); 
-	ReceiveData(0, recMessagePointer, 100);
-	printf("Receive Size: %d\n", ReceiveSize());
-	printf("Message: %s", receiveMessage);
 }
 
 int Server_Connect()
@@ -245,18 +242,11 @@ int Server_Connect()
 	SPI_Write(S0_CR, CONNECT);
 	while((SPI_Read(S0_IR) & 0x1F) != 0); 
 	//Check to see if connection has been established 
-	unsigned int delayCount = 0; 
+
 	while(SPI_Read(S0_SR) == 0x15)
 	{
-		//printf("SPI SR Status: %d\n", SPI_Read(S0_SR));
+		printf("SPI SR Status: %d\n", SPI_Read(S0_SR));
 		_delay_ms(3);
-		delayCount += 1; 
-		//Every 3 seconds
-		if(delayCount == 1000)
-		{
-			printf("Trying to Establish Connection...\n");
-			delayCount = 0; 
-		}
 	}
 	
 	printf("SPI SR Status: %d\n", SPI_Read(S0_SR));
@@ -279,20 +269,14 @@ int Server_Connect()
 void Memory_Init()
 {
 	//assign 8kb rx memory to socket 0 
-	SPI_Write(RMSR, 0x55);
+	SPI_Write(RMSR, 0x03);
 	//assign 8kb tx memory to socket 0 
-	SPI_Write(TMSR, 0x55);	
+	SPI_Write(TMSR, 0x03);	
 	
-	S0_TX_MASK = 0x7FF;
-	S0_TX_BASE = 0x4000;
-	S0_RX_MASK = 0x07FF;
-	S0_RX_BASE = 0x6000;
-	
-	//8k RX and TX Socket 0 
-	//S0_TX_MASK = 0x1FFF; 
-	//S0_TX_BASE = 0x4000; 
-	//S0_RX_MASK = 0x1FFF; 
-	//S0_RX_BASE = 0x6000; 
+	S0_TX_MASK = 0x1FFF; 
+	S0_TX_BASE = 0x4000; 
+	S0_RX_MASK = 0x1FFF; 
+	S0_RX_BASE = 0x6000; 
 }
 
 //void SendData(uint8_t sock,const uint8_t *buf,uint16_t buflen)
@@ -341,7 +325,6 @@ int SendData(uint8_t sock,const uint8_t *buffer,uint16_t bufferLength)
 		_delay_ms(1);
 		txsize = SPI_Read(S0_TX_FSR);
 		txsize = (((txsize & 0x00FF) << 8 ) + SPI_Read(S0_TX_FSR + 1));
-		printf("TX Size: %d", txsize);
 		// Timeout for approx 1000 ms
 		if (timeout++ > 1000) {
 			//#if _DEBUG_MODE
@@ -349,7 +332,6 @@ int SendData(uint8_t sock,const uint8_t *buffer,uint16_t bufferLength)
 			//#endif
 			// Disconnect the connection
 			socketCommand(DISCON);
-			while(SPI_Read(S0_CR));
 			return 0;
 		}
 	}
@@ -365,7 +347,6 @@ int SendData(uint8_t sock,const uint8_t *buffer,uint16_t bufferLength)
 		bufferLength--;
 		// Calculate the real W5100 physical Tx Buffer Address
 		realaddr = S0_TX_BASE + (offaddr & S0_TX_MASK);
-		//printf("TX Real Address: %d\n", realaddr);
 		// Copy the application data to the W5100 Tx Buffer
 		SPI_Write(realaddr,*buffer);
 		offaddr++;
@@ -385,18 +366,17 @@ int SendData(uint8_t sock,const uint8_t *buffer,uint16_t bufferLength)
 	return 1;
 }
 
-int ReceiveData(uint8_t sock,uint8_t *buffer,uint16_t bufferLength)
+uint16_t ReceiveData(uint8_t sock,uint8_t *buffer,uint16_t bufferLength)
 {
 	uint16_t ptr,offaddr,realaddr;
 
 	if (bufferLength <= 0 || sock != 0) return 1;
 
 	// If the request size > MAX_BUF,just truncate it
-	if (bufferLength > MAX_BUFF)
-	bufferLength = MAX_BUFF - 2;
+	if (bufferLength > MAX_BUF)
+	bufferLength = MAX_BUF - 2;
 	// Read the Rx Read Pointer
 	ptr = SPI_Read(S0_RX_RD);
-	printf("RX Read Pointer: %d\n", ptr);
 	offaddr = (((ptr & 0x00FF) << 8 ) + SPI_Read(S0_RX_RD + 1));
 	//#if _DEBUG_MODE
 	printf("RX Buffer: %x\n",offaddr);
@@ -405,7 +385,6 @@ int ReceiveData(uint8_t sock,uint8_t *buffer,uint16_t bufferLength)
 	while(bufferLength) {
 		bufferLength--;
 		realaddr = S0_RX_BASE + (offaddr & S0_RX_MASK);
-		//printf("Real Address: %d\n", realaddr);
 		*buffer = SPI_Read(realaddr);
 		offaddr++;
 		buffer++;
@@ -417,17 +396,12 @@ int ReceiveData(uint8_t sock,uint8_t *buffer,uint16_t bufferLength)
 	SPI_Write(S0_RX_RD + 1,(offaddr & 0x00FF));
 
 	// Now Send the RECV command
-	//SPI_Write(S0_CR,CR_RECV);
-	socketCommand(RECV);
+	SPI_Write(S0_CR,CR_RECV);
 	_delay_us(5);    // Wait for Receive Process
 
 	return 1;
 }
 
-uint16_t ReceiveSize(void)
-{
-	return ((SPI_Read(S0_RX_RSR) & 0x00FF) << 8 ) + SPI_Read(S0_RX_RSR + 1);
-}
 
 void socketCommand(uint8_t command) 
 {
@@ -437,11 +411,9 @@ void socketCommand(uint8_t command)
 void enableEthernetInterrupt()
 {
 	//Enable IP Conflict, Destination Unreachable, and PPPoE Interrupts 
-	SPI_Write(IMR, 0xE1);
-	EIMSK |= 1<<INT0; 
-	//Enable interrupt on falling edge
-	EICRA = 1<<ISC01; 
-	sei(); 
+	SPI_Write(IMR, 0xEF);
+	//EIMSK = 1<<INT2; 
+	//sei(); 
 }
 
 void resolveIP()
@@ -490,57 +462,25 @@ void Ethernet_Init()
 		//return 0;
 }
 
-ISR(INT0_vect)
+ISR(INT2_vect)
 {
 	//check the status of the interrupt register 
-	printf("Mask Register Value: %d\n", SPI_Read(IMR));
 	unsigned char error = SPI_Read(INTR);
-	printf("Interrupt Register Value: %d\n", error);
-	SPI_Write(S0_IR, 0x00);
-	SPI_Write(S1_IR, 0x00);
-	SPI_Write(S2_IR, 0x00);
-	SPI_Write(S3_IR, 0x00);
-	SPI_Write(INTR, SPI_Read(INTR) | 0xE0);
-	//Socket 0 Interrupt 
-	if((error & (1<<S0_INT)) == 1)
+	switch(error)
 	{
-		unsigned char socketInt = SPI_Read(S0_IR);
-		
-		if((socketInt & (1<<SIR_SEND_OK))){
-			printf("Send Operation Complete.\n");
-		}
-		else if((socketInt & (1<<SIR_TIMEOUT))){
-			printf("Timeout Occurred on Socket 0!\n");
-		}
-		else if((socketInt & (1<<SIR_RECV))){
-			printf("Receiving Data...\n");
-		}
-		else if((socketInt & (1<<SIR_DISCON))){
-			printf("Socket Disconnected.\n");
-		}
-		else if((socketInt & (1<<SIR_CON))){
-			printf("Socket 0 Connected.\n");
-		}
-		else{
-			printf("Undefined Interrupt Occurred. Int Value: %d", socketInt);
-		}
+		case 0x80:
+			printf("IP Conflict! Resolving...\n\n");
+			resolveIP(); 
+		break;
+		case 0x40: 
+			printf("Destination Unreachable! Check Connections.\n\n");
+		break;
+		case 0x20: 
+			printf("PPPoE Connection Closed.\n\n");
+		break; 
+		default: 
+			printf("Unspecified Interrupt Occurred.\n\n");
+		break;  
 	}
-	
-	//switch(error)
-	//{
-		//case 0x80:
-			//printf("IP Conflict! Resolving...\n\n");
-			//resolveIP(); 
-		//break;
-		//case 0x40: 
-			//printf("Destination Unreachable! Check Connections.\n\n");
-		//break;
-		//case 0x20: 
-			//printf("PPPoE Connection Closed.\n\n");
-		//break; 
-		//default: 
-			//printf("Unspecified Interrupt Occurred.\n\n");
-		//break;  
-	//}
 }
 
