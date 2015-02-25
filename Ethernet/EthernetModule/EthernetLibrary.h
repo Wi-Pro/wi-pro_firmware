@@ -101,6 +101,7 @@ int SendData(uint8_t sock,const uint8_t *buffer,uint16_t bufferLength);
 int ReceiveData(uint8_t sock,uint8_t *buf,uint16_t buflen);
 uint16_t ReceiveSize(void);
 void socketCommand(uint8_t command); 
+void socketDisconnect();
 void enableEthernetInterrupt();
 
 

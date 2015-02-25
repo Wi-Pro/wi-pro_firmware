@@ -194,15 +194,18 @@ void W5100_Init(void)
 	//enableEthernetInterrupt(); 
 	Memory_Init(); 
 	Server_Connect();
-	char message[] = ""; 
-	char receiveMessage[100];
-	char* messagePointer = message; 
-	char* recMessagePointer = receiveMessage;
-	messagePointer = "GET /index.html HTTP/1.1";
+	unsigned char message[] = ""; 
+	unsigned char receiveMessage[100] = "GET /uploads/hex/2222222222/Toggle.hex HTTP/1.1";
+	unsigned char* messagePointer = message; 
+	unsigned char* recMessagePointer = receiveMessage;
+	//http://104.131.36.80/uploads/hex/2222222222/Toggle.hex
+	//messagePointer = "GET /uploads/hex/2222222222/Toggle.hex";
 	SendData(0, messagePointer, strlen((char *)messagePointer)); 
 	ReceiveData(0, recMessagePointer, 100);
 	printf("Receive Size: %d\n", ReceiveSize());
-	printf("Message: %s", receiveMessage);
+	printf("Message: %s", recMessagePointer);
+	socketDisconnect();
+	
 }
 
 int Server_Connect()
@@ -295,32 +298,6 @@ void Memory_Init()
 	//S0_RX_BASE = 0x6000; 
 }
 
-//void SendData(uint8_t sock,const uint8_t *buf,uint16_t buflen)
-//{
-	//printf("Initializing Memory...\n");
-	//Memory_Init(); 
-	//printf("Sending Data...\n");
-	//unsigned int freeSize = 0; 
-	//printf("FreeSize: %d\n", freeSize);
-	//freeSize = SPI_Read(S0_TX_FSR);
-	//printf("FreeSize: %d\n", freeSize);
-	//freeSize <<= 8; 
-	//printf("FreeSize: %d\n", freeSize);
-	//freeSize |= SPI_Read(S0_TX_FSR + 1);
-	//printf("FreeSize: %d\n", freeSize);
-	//printf("Free Size to Transmit: %d\n", freeSize);
-	////Calculate the offset address
-	//unsigned int offset = SPI_Read(S0_TX_WR); 
-	//offset <<= 8; 
-	//offset |= SPI_Read(S0_TX_WR + 1); 
-	//offset &= S0_TX_MASK; 
-	//printf("Address Offset: %d\n", offset);
-	//
-	////Calculate start physical address 
-	//unsigned int startAddress = S0_TX_BASE + offset; 
-	//printf("Starting Physical Address: %d", startAddress);
-//}
-
 int SendData(uint8_t sock,const uint8_t *buffer,uint16_t bufferLength)
 {
 	uint16_t ptr,offaddr,realaddr,txsize,timeout;
@@ -357,28 +334,61 @@ int SendData(uint8_t sock,const uint8_t *buffer,uint16_t bufferLength)
 	// Read the Tx Write Pointer
 	ptr = SPI_Read(S0_TX_WR);
 	offaddr = (((ptr & 0x00FF) << 8 ) + SPI_Read(S0_TX_WR + 1));
+	unsigned int startaddr = (((SPI_Read(S0_TX_RR) << 8) + SPI_Read(S0_TX_RR + 1)));
 	//#if _DEBUG_MODE
 	printf("TX Buffer: %x\n",offaddr);
+	unsigned int realWR = S0_TX_BASE + (offaddr & S0_TX_MASK);
+	unsigned int realRR = S0_TX_BASE + (startaddr & S0_TX_MASK);
+	printf("Real WR: %d\n", realWR);
+	printf("Real RR: %d\n", realRR); 
 	//#endif
-
+	unsigned int bufferLTemp = bufferLength;
+	unsigned int bufferTemp = buffer; 
+	unsigned int offaddrTemp = offaddr;  
+	
 	while(bufferLength) {
 		bufferLength--;
 		// Calculate the real W5100 physical Tx Buffer Address
 		realaddr = S0_TX_BASE + (offaddr & S0_TX_MASK);
-		//printf("TX Real Address: %d\n", realaddr);
+		printf("TX Real Address: %d\n", realaddr);
 		// Copy the application data to the W5100 Tx Buffer
 		SPI_Write(realaddr,*buffer);
 		offaddr++;
 		buffer++;
 	}
+		SPI_Write(realaddr + 1, 0x00);
 
 	// Increase the S0_TX_WR value, so it point to the next transmit
-	SPI_Write(S0_TX_WR,(offaddr & 0xFF00) >> 8 );
+	printf("Offset After: %d\n", offaddr);
+	ptr = SPI_Read(S0_TX_WR);
+	printf("WR Low: %d\n", SPI_Read(S0_TX_WR)); 
+	printf("WR High: %d\n", SPI_Read(S0_TX_WR + 1)); 
+	//offaddr = (((ptr & 0x00FF) << 8 ) + SPI_Read(S0_TX_WR + 1));
+	//realWR = S0_TX_BASE + (offaddr & S0_TX_MASK);
+	//printf("Real WR: %d\n", realWR);
+	printf("%d\n", (offaddr & 0xFF00) >> 8);
+	printf("%d\n", (offaddr & 0x00FF));
+	//SPI_Write(S0_TX_WR,(offaddr & 0xFF00) >> 8 );
+	SPI_Write(S0_TX_WR, 0xFF);
 	SPI_Write(S0_TX_WR + 1,(offaddr & 0x00FF));
-
+	printf("%d\n", (offaddr & 0xFF00) >> 8);
+	printf("%d\n", (offaddr & 0x00FF));
+	//ptr = SPI_Read(S0_TX_WR);
+	
+	//Debug 
+	printf("WR Low: %d\n", SPI_Read(S0_TX_WR));
+	printf("WR High: %d\n", SPI_Read(S0_TX_WR + 1));
+	//offaddr = (((ptr & 0x00FF) << 8 ) + SPI_Read(S0_TX_WR + 1));
+	//startaddr = (((SPI_Read(S0_TX_RR) << 8) + SPI_Read(S0_TX_RR + 1)));
+	//realWR = S0_TX_BASE + (offaddr & S0_TX_MASK);
+	//realRR = S0_TX_BASE + (startaddr & S0_TX_MASK);
+	//printf("Real WR: %d\n", realWR);
+	//printf("Real RR: %d\n", realRR);
+	
 	// Now Send the SEND command
 	socketCommand(SEND);
-
+	//printf("WR Low: %d\n", SPI_Read(S0_TX_WR));
+	//printf("WR High: %d\n", SPI_Read(S0_TX_WR + 1));
 	// Wait for Sending Process
 	while(SPI_Read(S0_CR));
 
@@ -432,6 +442,12 @@ uint16_t ReceiveSize(void)
 void socketCommand(uint8_t command) 
 {
 	SPI_Write(S0_CR, command);
+}
+
+void socketDisconnect()
+{
+	socketCommand(DISCON);
+	while(SPI_Read(S0_CR));
 }
 
 void enableEthernetInterrupt()
