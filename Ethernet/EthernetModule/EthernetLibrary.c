@@ -18,7 +18,8 @@ unsigned char sub_mask[] = {255,255,255,0};
 unsigned char gtw_addr[] = {192,168,1,1};
 	
 unsigned char server_ip_addr[] = {104,131,36,80};
-//unsigned char server_ip_addr[] = {104,104,36,81};
+//google
+//unsigned char server_ip_addr[] = {198,41,208,138};
 unsigned char server_port[] = {00,80}; 
 unsigned char source_port[] = {00,80};
 	
@@ -194,8 +195,9 @@ void W5100_Init(void)
 	//enableEthernetInterrupt(); 
 	Memory_Init(); 
 	Server_Connect();
-	unsigned char message[] = ""; 
-	unsigned char receiveMessage[100] = "GET /uploads/hex/2222222222/Toggle.hex HTTP/1.1";
+	//unsigned char message[100] = "GET /uploads/hex/2222222222/Toggle.hex HTTP/1.1"; 
+	unsigned char message[] = "GET /index.html HTTP/1.1 \nHost: 104.131.36.80\n"; 
+	unsigned char receiveMessage[100] = "";
 	unsigned char* messagePointer = message; 
 	unsigned char* recMessagePointer = receiveMessage;
 	//http://104.131.36.80/uploads/hex/2222222222/Toggle.hex
