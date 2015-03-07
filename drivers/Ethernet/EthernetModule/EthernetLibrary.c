@@ -12,19 +12,6 @@
 #include <util/delay.h>
 #include <avr/interrupt.h>
 #include "EthernetLibrary.h"
-
-unsigned char receiveMessage[500]; 
-
-unsigned char mac_addr[] = {0x50,0xE5,0x49,0xBF,0x91,0x40};
-unsigned char ip_addr[] = {192,168,1,5};
-unsigned char sub_mask[] = {255,255,255,0};
-unsigned char gtw_addr[] = {192,168,1,1};
-	
-unsigned char server_ip_addr[] = {104,131,36,80};
-//google
-//unsigned char server_ip_addr[] = {198,41,208,138};
-unsigned char server_port[] = {00,80}; 
-unsigned char source_port[] = {00,80};
 	
 unsigned int S0_RX_BASE;
 unsigned int S0_RX_MASK;
@@ -89,7 +76,7 @@ void ansi_me(void)
 void SPI_Write(unsigned int addr,unsigned char data)
 {
 	// Activate the CS pin
-	CS_PORT &= ~(1<<SPI_CS);
+	CS_PORT &= ~(1<<ETH_CS);
 	// Start Wiznet W5100 Write OpCode transmission
 	SPDR0 = WIZNET_WRITE_OPCODE;
 	// Wait for transmission complete
@@ -108,13 +95,13 @@ void SPI_Write(unsigned int addr,unsigned char data)
 	// Wait for transmission complete
 	while(!(SPSR0 & (1<<SPIF0)));
 	// CS pin is not active
-	CS_PORT |= (1<<SPI_CS);
+	CS_PORT |= (1<<ETH_CS);
 }
 
 unsigned char SPI_Read(unsigned int addr)
 {
 	// Activate the CS pin
-	CS_PORT &= ~(1<<SPI_CS);
+	CS_PORT &= ~(1<<ETH_CS);
 	// Start Wiznet W5100 Read OpCode transmission
 	SPDR0 = WIZNET_READ_OPCODE;
 	// Wait for transmission complete
@@ -134,16 +121,18 @@ unsigned char SPI_Read(unsigned int addr)
 	while(!(SPSR0 & (1<<SPIF0)));
 
 	// CS pin is not active
-	CS_PORT |= (1<<SPI_CS);
+	CS_PORT |= (1<<ETH_CS);
 	return(SPDR0);
 }
 
-void W5100_Init(void)
+void Ethernet_Init(uint8_t *mac_addr, uint8_t *local_ip_addr, uint8_t *sub_mask, uint8_t *gtw_addr)
 {
+	
+	CS_DDR |= (1<<ETH_CS);
 	// Set MOSI, SCK and SS as output, others as input
 	SPI_DDR = (1<<MOSI)|(1<<SCK)|(1<<SS);
 	// CS pin is not active
-	CS_PORT |= (1<<SPI_CS);
+	CS_PORT |= (1<<ETH_CS);
 	// Enable SPI, Master Mode 0, set the clock rate fck/2
 	SPCR0 = (1<<SPE0)|(1<<MSTR0);
 	// Initial the Wiznet W5100
@@ -157,7 +146,6 @@ void W5100_Init(void)
 	// Setting the Wiznet W5100 Gateway Address
 	printf("Setting Gateway Address %d.%d.%d.%d\n",gtw_addr[0],gtw_addr[1],\
 	gtw_addr[2],gtw_addr[3]);
-	
 	SPI_Write(GAR + 0,gtw_addr[0]);
 	SPI_Write(GAR + 1,gtw_addr[1]);
 	SPI_Write(GAR + 2,gtw_addr[2]);
@@ -169,7 +157,6 @@ void W5100_Init(void)
 	// Setting the Wiznet W5100 Source Address Register
 	printf("Setting Source Address %.2x:%.2x:%.2x:%.2x:%.2x:%.2x\n",mac_addr[0],mac_addr[1],\
 	mac_addr[2],mac_addr[3],mac_addr[4],mac_addr[5]);
-
 	SPI_Write(SAR + 0,mac_addr[0]);
 	SPI_Write(SAR + 1,mac_addr[1]);
 	SPI_Write(SAR + 2,mac_addr[2]);
@@ -190,40 +177,23 @@ void W5100_Init(void)
 	_delay_ms(1);
 	printf("Reading SUBR: %d.%d.%d.%d\n\n",SPI_Read(SUBR + 0),SPI_Read(SUBR + 1),\
 	SPI_Read(SUBR + 2),SPI_Read(SUBR + 3));
+	
 	// Setting the Wiznet W5100 IP Address (SIPR): 0x000F to 0x0012
-	printf("Setting IP Address %d.%d.%d.%d\n",ip_addr[0],ip_addr[1],\
-	ip_addr[2],ip_addr[3]);
-	SPI_Write(SIPR + 0,ip_addr[0]);
-	SPI_Write(SIPR + 1,ip_addr[1]);
-	SPI_Write(SIPR + 2,ip_addr[2]);
-	SPI_Write(SIPR + 3,ip_addr[3]);
+	printf("Setting IP Address %d.%d.%d.%d\n",local_ip_addr[0],local_ip_addr[1],\
+	local_ip_addr[2],local_ip_addr[3]);
+	SPI_Write(SIPR + 0,local_ip_addr[0]);
+	SPI_Write(SIPR + 1,local_ip_addr[1]);
+	SPI_Write(SIPR + 2,local_ip_addr[2]);
+	SPI_Write(SIPR + 3,local_ip_addr[3]);
 	_delay_ms(1);
+	
 	printf("Reading SIPR: %d.%d.%d.%d\n\n",SPI_Read(SIPR + 0),SPI_Read(SIPR + 1),\
 	SPI_Read(SIPR + 2),SPI_Read(SIPR + 3));
-
 	printf("Done Wiznet W5100 Initialized!\n");
-	//enableEthernetInterrupt(); 
 	Memory_Init(); 
-	Server_Connect(TCP_MODE);
-	//unsigned char message[100] = "GET /uploads/hex/2222222222/Toggle.hex HTTP/1.1"; 
-	//unsigned char message[] = "GET http://www.wi-pro.us/uploads/hex/11111111111/default.hex HTTP/1.1 \nHost: www.wi-pro.us \n\n";
-	unsigned char message[] = "POST /data?t=Hello%20World HTTP/1.1\nhost: www.wi-pro.us\n\n";
-	unsigned char* messagePointer = message; 
-
-	//unsigned char receiveMessage[] = "";
-
-	unsigned char* recMessagePointer = receiveMessage;
-	//http://104.131.36.80/uploads/hex/2222222222/Toggle.hex
-	//messagePointer = "GET /uploads/hex/2222222222/Toggle.hex";
-	printf("Sent Message: %s\n", message);
-	SendData(messagePointer, strlen((char *)messagePointer)); 
-	ReceiveData(recMessagePointer, 100);
-	printf("Receive Size: %d\n", ReceiveSize());
-	printf("Message: %s", recMessagePointer);
-	SocketDisconnect();
 }
 
-int Server_Connect(uint8_t socketMode)
+int Server_Connect(uint8_t socketMode, uint8_t *server_ip_addr, uint8_t *server_port, uint8_t *source_port)
 {
 	do 
 	{
@@ -470,25 +440,26 @@ void EnableEthernetInterrupt()
 	sei(); 
 }
 
-void ResolveIP()
+void ResolveIP(uint8_t local_ip_addr[4])
 {
-	if(ip_addr[3] < 255)
+	if(local_ip_addr[3] < 255)
 	{
 		//increment IP Address until a free address is found 
-		ip_addr[3] += 1; 
+		local_ip_addr[3] += 1; 
 	}
-	W5100_Init(); 
+	//Ethernet_Init(mac_addr, local_ip_addr, sub_mask, gtw_addr); 
 }
 
 // Assign I/O stream to UART
 FILE uart_str = FDEV_SETUP_STREAM(uart_putch, uart_getch, _FDEV_SETUP_RW);
 
-void Ethernet_Init()
+void UARTStream_Init()
 {
+		//DDRA = 0xFF; 
 		// Set the PORTD as Output:
 		DDRD=0xFF;
 		PORTD=0x00;
-		DDRA = 0xFF; 
+
 		// Define Output/Input Stream
 		stdout = stdin = &uart_str;
 		// Initial UART Peripheral
@@ -499,8 +470,7 @@ void Ethernet_Init()
 		ansi_me();
 		ansi_cl();
 		uart_flush();
-		// Initial the AVR ATMega168/328 SPI Peripheral
-		W5100_Init();
+		//Ethernet_Init();
 }
 
 ISR(INT0_vect)

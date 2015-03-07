@@ -13,8 +13,9 @@
 
 #define SPI_PORT PORTB
 #define SPI_DDR  DDRB
+#define CS_DDR DDRA 
 #define CS_PORT PORTA 
-#define SPI_CS   PORTA0  
+#define ETH_CS   PORTA0  
 #define MOSI PORTB5 
 #define SCK PORTB7 
 #define SS PORTB4 
@@ -98,9 +99,9 @@ void ansi_cl(void);
 void ansi_me(void);
 void SPI_Write(unsigned int addr,unsigned char data);
 unsigned char SPI_Read(unsigned int addr);
-int Server_Connect(uint8_t socketMode); 
-void W5100_Init(void);
-void Ethernet_Init();
+int Server_Connect(uint8_t socketMode, uint8_t *server_ip_addr, uint8_t *server_port, uint8_t *source_port);
+void Ethernet_Init(uint8_t *mac_addr, uint8_t *local_ip_addr, uint8_t *sub_mask, uint8_t *gtw_addr);
+void UARTStream_Init();
 void Memory_Init(); 
 int SendData(const uint8_t *buffer,uint16_t bufferLength); 
 int ReceiveData(uint8_t *buf,uint16_t buflen);
