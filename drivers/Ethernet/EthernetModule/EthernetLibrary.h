@@ -15,6 +15,9 @@
 #define SPI_DDR  DDRB
 #define CS_PORT PORTA 
 #define SPI_CS   PORTA0  
+#define MOSI PORTB5 
+#define SCK PORTB7 
+#define SS PORTB4 
 
 #define WIZNET_WRITE_OPCODE 0xF0
 #define WIZNET_READ_OPCODE 0x0F
@@ -47,6 +50,7 @@
 #define S0_RX_RD 0x428 //Socket 0 RX Read Pointer Register
 //Socket Mode Values 
 #define TCP_MODE 0x01
+#define IPRAW_MODE 0x03
 //Socket Command Register Values 
 #define OPEN 0x01 
 #define LISTEN 0x02 
@@ -67,6 +71,7 @@
 #define SOCK_CLOSED 0x00 
 #define SOCK_INIT 0x13
 #define SOCK_LISTEN 0x14
+#define SOCK_SYNSENT 0x15
 #define SOCK_ESTABLISHED 0x17 
 #define SOCK_CLOSE_WAIT 0x1C 
 #define SOCK_UDP 0x22 
@@ -93,16 +98,16 @@ void ansi_cl(void);
 void ansi_me(void);
 void SPI_Write(unsigned int addr,unsigned char data);
 unsigned char SPI_Read(unsigned int addr);
-int Server_Connect(); 
+int Server_Connect(uint8_t socketMode); 
 void W5100_Init(void);
 void Ethernet_Init();
 void Memory_Init(); 
-int SendData(uint8_t sock,const uint8_t *buffer,uint16_t bufferLength); 
-int ReceiveData(uint8_t sock,uint8_t *buf,uint16_t buflen);
+int SendData(const uint8_t *buffer,uint16_t bufferLength); 
+int ReceiveData(uint8_t *buf,uint16_t buflen);
 uint16_t ReceiveSize(void);
-void socketCommand(uint8_t command); 
-void socketDisconnect();
-void enableEthernetInterrupt();
+void SocketCommand(uint8_t command); 
+void SocketDisconnect();
+void EnableEthernetInterrupt();
 
 
 #endif /* ETHERNETMODULE_H_ */

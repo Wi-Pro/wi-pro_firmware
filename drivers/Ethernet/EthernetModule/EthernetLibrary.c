@@ -2,7 +2,8 @@
  * EthernetModule.c
  *
  * Created: 2/7/2015 6:11:09 PM
- *  Author: Brandon
+ * Author: Brandon
+ * Note: This driver is based off of code published online by the Author 'rwb' on his blog, located at http://www.ermicro.com/blog/?p=1773
  */ 
 
 #include <avr/io.h>
@@ -11,6 +12,8 @@
 #include <util/delay.h>
 #include <avr/interrupt.h>
 #include "EthernetLibrary.h"
+
+unsigned char receiveMessage[500]; 
 
 unsigned char mac_addr[] = {0x50,0xE5,0x49,0xBF,0x91,0x40};
 unsigned char ip_addr[] = {192,168,1,5};
@@ -137,15 +140,24 @@ unsigned char SPI_Read(unsigned int addr)
 
 void W5100_Init(void)
 {
+	// Set MOSI, SCK and SS as output, others as input
+	SPI_DDR = (1<<MOSI)|(1<<SCK)|(1<<SS);
+	// CS pin is not active
+	CS_PORT |= (1<<SPI_CS);
+	// Enable SPI, Master Mode 0, set the clock rate fck/2
+	SPCR0 = (1<<SPE0)|(1<<MSTR0);
+	// Initial the Wiznet W5100
+	printf("Wiznet W5100 Init\n");
 	// Ethernet Setup
 	printf("Enterting Ethernet Setup\n");
 	// Setting the Wiznet W5100 Mode Register: 0x0000
-	SPI_Write(MR,0x80);            // MR = 0b10000000;
+	SPI_Write(MR,0x80); 
 	_delay_ms(1);
 	printf("Reading MR: %d\n\n",SPI_Read(MR));
-	// Setting the Wiznet W5100 Gateway Address (GAR): 0x0001 to 0x0004
+	// Setting the Wiznet W5100 Gateway Address
 	printf("Setting Gateway Address %d.%d.%d.%d\n",gtw_addr[0],gtw_addr[1],\
 	gtw_addr[2],gtw_addr[3]);
+	
 	SPI_Write(GAR + 0,gtw_addr[0]);
 	SPI_Write(GAR + 1,gtw_addr[1]);
 	SPI_Write(GAR + 2,gtw_addr[2]);
@@ -153,9 +165,11 @@ void W5100_Init(void)
 	_delay_ms(1);
 	printf("Reading GAR: %d.%d.%d.%d\n\n",SPI_Read(GAR + 0),SPI_Read(GAR + 1),\
 	SPI_Read(GAR + 2),SPI_Read(GAR + 3));
-	// Setting the Wiznet W5100 Source Address Register (SAR): 0x0009 to 0x000E
+	
+	// Setting the Wiznet W5100 Source Address Register
 	printf("Setting Source Address %.2x:%.2x:%.2x:%.2x:%.2x:%.2x\n",mac_addr[0],mac_addr[1],\
 	mac_addr[2],mac_addr[3],mac_addr[4],mac_addr[5]);
+
 	SPI_Write(SAR + 0,mac_addr[0]);
 	SPI_Write(SAR + 1,mac_addr[1]);
 	SPI_Write(SAR + 2,mac_addr[2]);
@@ -165,7 +179,8 @@ void W5100_Init(void)
 	_delay_ms(1);
 	printf("Reading SAR: %.2x:%.2x:%.2x:%.2x:%.2x:%.2x\n\n",SPI_Read(SAR + 0),SPI_Read(SAR + 1),\
 	SPI_Read(SAR + 2),SPI_Read(SAR + 3),SPI_Read(SAR + 4),SPI_Read(SAR + 5));
-	// Setting the Wiznet W5100 Sub Mask Address (SUBR): 0x0005 to 0x0008
+	
+	// Setting the Wiznet W5100 Sub Mask Address
 	printf("Setting Sub Mask Address %d.%d.%d.%d\n",sub_mask[0],sub_mask[1],\
 	sub_mask[2],sub_mask[3]);
 	SPI_Write(SUBR + 0,sub_mask[0]);
@@ -186,37 +201,36 @@ void W5100_Init(void)
 	printf("Reading SIPR: %d.%d.%d.%d\n\n",SPI_Read(SIPR + 0),SPI_Read(SIPR + 1),\
 	SPI_Read(SIPR + 2),SPI_Read(SIPR + 3));
 
-	// Setting the Wiznet W5100 RX and TX Memory Size, we use 2KB for Rx/Tx 4 channels
-	//printf("Setting Wiznet RMSR and TMSR\n\n");
-	//SPI_Write(RMSR,0x55);
-	//SPI_Write(TMSR,0x55);
-
 	printf("Done Wiznet W5100 Initialized!\n");
 	//enableEthernetInterrupt(); 
 	Memory_Init(); 
-	Server_Connect();
+	Server_Connect(TCP_MODE);
 	//unsigned char message[100] = "GET /uploads/hex/2222222222/Toggle.hex HTTP/1.1"; 
-	unsigned char message[] = "GET /index.html HTTP/1.1 \nHost: 104.131.36.80\n"; 
-	unsigned char receiveMessage[100] = "";
+	//unsigned char message[] = "GET http://www.wi-pro.us/uploads/hex/11111111111/default.hex HTTP/1.1 \nHost: www.wi-pro.us \n\n";
+	unsigned char message[] = "POST /data?t=Hello%20World HTTP/1.1\nhost: www.wi-pro.us\n\n";
 	unsigned char* messagePointer = message; 
+
+	//unsigned char receiveMessage[] = "";
+
 	unsigned char* recMessagePointer = receiveMessage;
 	//http://104.131.36.80/uploads/hex/2222222222/Toggle.hex
 	//messagePointer = "GET /uploads/hex/2222222222/Toggle.hex";
-	SendData(0, messagePointer, strlen((char *)messagePointer)); 
-	ReceiveData(0, recMessagePointer, 100);
+	printf("Sent Message: %s\n", message);
+	SendData(messagePointer, strlen((char *)messagePointer)); 
+	ReceiveData(recMessagePointer, 100);
 	printf("Receive Size: %d\n", ReceiveSize());
 	printf("Message: %s", recMessagePointer);
-	socketDisconnect();
-	
+	SocketDisconnect();
 }
 
-int Server_Connect()
+int Server_Connect(uint8_t socketMode)
 {
 	do 
 	{
-		printf("SPI SR Status: %d\n", SPI_Read(S0_SR));
+		//printf("SPI SR Status: %d\n", SPI_Read(S0_SR));
 		SPI_Write(S0_CR, CLOSE);
-		SPI_Write(S0_MR, TCP_MODE);
+		//SPI_Write(S0_MR, TCP_MODE);
+		SPI_Write(S0_MR, socketMode);
 		printf("Setting Source Port on Socket 0 %d%d\n",source_port[0],source_port[1]);
 		SPI_Write(S0_SPORT + 0, source_port[0]);
 		SPI_Write(S0_SPORT + 1, source_port[1]);
@@ -226,7 +240,7 @@ int Server_Connect()
 		SPI_Write(S0_CR, OPEN);
 		printf("SPI SR Status: %d\n", SPI_Read(S0_SR));
 		
-	} while (SPI_Read(S0_SR) != SOCK_INIT);
+	} while (SPI_Read(S0_SR) != SOCK_INIT && SPI_Read(S0_SR) != SOCK_IPRAW);
 	
 	//Write Server IP to Socket 0 IP Register
 	printf("Setting Server IP Address %d.%d.%d.%d\n",server_ip_addr[0],server_ip_addr[1],\
@@ -251,9 +265,8 @@ int Server_Connect()
 	while((SPI_Read(S0_IR) & 0x1F) != 0); 
 	//Check to see if connection has been established 
 	unsigned int delayCount = 0; 
-	while(SPI_Read(S0_SR) == 0x15)
+	while(SPI_Read(S0_SR) == SOCK_SYNSENT)
 	{
-		//printf("SPI SR Status: %d\n", SPI_Read(S0_SR));
 		_delay_ms(3);
 		delayCount += 1; 
 		//Every 3 seconds
@@ -278,7 +291,6 @@ int Server_Connect()
 		printf("Could not connect. Exiting...\n\n");
 		return 0; 
 	}
-	
 }
 
 void Memory_Init()
@@ -287,24 +299,23 @@ void Memory_Init()
 	SPI_Write(RMSR, 0x55);
 	//assign 8kb tx memory to socket 0 
 	SPI_Write(TMSR, 0x55);	
-	
+	//Equal 2K buffers 
 	S0_TX_MASK = 0x7FF;
 	S0_TX_BASE = 0x4000;
 	S0_RX_MASK = 0x07FF;
 	S0_RX_BASE = 0x6000;
-	
+	//
 	//8k RX and TX Socket 0 
-	//S0_TX_MASK = 0x1FFF; 
-	//S0_TX_BASE = 0x4000; 
-	//S0_RX_MASK = 0x1FFF; 
-	//S0_RX_BASE = 0x6000; 
+	//S0_TX_MASK = 0x1FFF;
+	//S0_TX_BASE = 0x4000;
+	//S0_RX_MASK = 0x1FFF;
+	//S0_RX_BASE = 0x6000;
 }
 
-int SendData(uint8_t sock,const uint8_t *buffer,uint16_t bufferLength)
+int SendData(const uint8_t *buffer,uint16_t bufferLength)
 {
 	uint16_t ptr,offaddr,realaddr,txsize,timeout;
-
-	if (bufferLength <= 0 || sock != 0) return 0;
+	
 	//#if _DEBUG_MODE
 	printf("Send Size: %d\n",bufferLength);
 	//#endif
@@ -327,7 +338,7 @@ int SendData(uint8_t sock,const uint8_t *buffer,uint16_t bufferLength)
 			printf("TX Free Size Error!\n");
 			//#endif
 			// Disconnect the connection
-			socketCommand(DISCON);
+			SocketCommand(DISCON);
 			while(SPI_Read(S0_CR));
 			return 0;
 		}
@@ -352,7 +363,7 @@ int SendData(uint8_t sock,const uint8_t *buffer,uint16_t bufferLength)
 		bufferLength--;
 		// Calculate the real W5100 physical Tx Buffer Address
 		realaddr = S0_TX_BASE + (offaddr & S0_TX_MASK);
-		printf("TX Real Address: %d\n", realaddr);
+		//printf("TX Real Address: %d\n", realaddr);
 		// Copy the application data to the W5100 Tx Buffer
 		SPI_Write(realaddr,*buffer);
 		offaddr++;
@@ -388,7 +399,7 @@ int SendData(uint8_t sock,const uint8_t *buffer,uint16_t bufferLength)
 	//printf("Real RR: %d\n", realRR);
 	
 	// Now Send the SEND command
-	socketCommand(SEND);
+	SocketCommand(SEND);
 	//printf("WR Low: %d\n", SPI_Read(S0_TX_WR));
 	//printf("WR High: %d\n", SPI_Read(S0_TX_WR + 1));
 	// Wait for Sending Process
@@ -397,18 +408,16 @@ int SendData(uint8_t sock,const uint8_t *buffer,uint16_t bufferLength)
 	return 1;
 }
 
-int ReceiveData(uint8_t sock,uint8_t *buffer,uint16_t bufferLength)
+int ReceiveData(uint8_t *buffer,uint16_t bufferLength)
 {
 	uint16_t ptr,offaddr,realaddr;
-
-	if (bufferLength <= 0 || sock != 0) return 1;
 
 	// If the request size > MAX_BUF,just truncate it
 	if (bufferLength > MAX_BUFF)
 	bufferLength = MAX_BUFF - 2;
 	// Read the Rx Read Pointer
 	ptr = SPI_Read(S0_RX_RD);
-	printf("RX Read Pointer: %d\n", ptr);
+	//printf("RX Read Pointer: %d\n", ptr);
 	offaddr = (((ptr & 0x00FF) << 8 ) + SPI_Read(S0_RX_RD + 1));
 	//#if _DEBUG_MODE
 	printf("RX Buffer: %x\n",offaddr);
@@ -429,8 +438,7 @@ int ReceiveData(uint8_t sock,uint8_t *buffer,uint16_t bufferLength)
 	SPI_Write(S0_RX_RD + 1,(offaddr & 0x00FF));
 
 	// Now Send the RECV command
-	//SPI_Write(S0_CR,CR_RECV);
-	socketCommand(RECV);
+	SocketCommand(RECV);
 	_delay_us(5);    // Wait for Receive Process
 
 	return 1;
@@ -441,18 +449,18 @@ uint16_t ReceiveSize(void)
 	return ((SPI_Read(S0_RX_RSR) & 0x00FF) << 8 ) + SPI_Read(S0_RX_RSR + 1);
 }
 
-void socketCommand(uint8_t command) 
+void SocketCommand(uint8_t command) 
 {
 	SPI_Write(S0_CR, command);
 }
 
-void socketDisconnect()
+void SocketDisconnect()
 {
-	socketCommand(DISCON);
+	SocketCommand(DISCON);
 	while(SPI_Read(S0_CR));
 }
 
-void enableEthernetInterrupt()
+void EnableEthernetInterrupt()
 {
 	//Enable IP Conflict, Destination Unreachable, and PPPoE Interrupts 
 	SPI_Write(IMR, 0xE1);
@@ -462,7 +470,7 @@ void enableEthernetInterrupt()
 	sei(); 
 }
 
-void resolveIP()
+void ResolveIP()
 {
 	if(ip_addr[3] < 255)
 	{
@@ -492,20 +500,7 @@ void Ethernet_Init()
 		ansi_cl();
 		uart_flush();
 		// Initial the AVR ATMega168/328 SPI Peripheral
-		// Set MOSI (PORTB5),SCK (PORTB7) and PORTB4 (SS) as output, others as input
-		SPI_DDR = (1<<PORTB5)|(1<<PORTB7)|(1<<PORTB4);
-		// CS pin is not active
-		CS_PORT |= (1<<SPI_CS);
-		// Enable SPI, Master Mode 0, set the clock rate fck/2
-		SPCR0 = (1<<SPE0)|(1<<MSTR0);
-		//SPSR0 |= (1<<SPI2X0);
-		// Initial the Wiznet W5100
-		printf("Wiznet W5100 Init\n");
 		W5100_Init();
-		// Loop forever
-		for(;;){
-		}
-		//return 0;
 }
 
 ISR(INT0_vect)
