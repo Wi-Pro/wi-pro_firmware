@@ -3,17 +3,21 @@ Archive member included because of file (symbol)
 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_exit.o)
                               c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5/crtm324pa.o (exit)
 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_copy_data.o)
-                              EthernetLibrary.o (__do_copy_data)
+                              Ethernet.o (__do_copy_data)
 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_clear_bss.o)
-                              EthernetLibrary.o (__do_clear_bss)
+                              Ethernet.o (__do_clear_bss)
+c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(strcat.o)
+                              Ethernet.o (strcat)
 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(fputc.o)
-                              EthernetLibrary.o (fputc)
+                              EthernetDriver.o (fputc)
 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(iob.o)
-                              EthernetLibrary.o (__iob)
+                              EthernetDriver.o (__iob)
 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(printf.o)
-                              EthernetLibrary.o (printf)
+                              Ethernet.o (printf)
+c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(putchar.o)
+                              RAMDriver.o (putchar)
 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(puts.o)
-                              EthernetLibrary.o (puts)
+                              EthernetDriver.o (puts)
 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(vfprintf_std.o)
                               c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(printf.o) (vfprintf)
 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(strnlen_P.o)
@@ -30,23 +34,39 @@ c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-t
 Allocating common symbols
 Common symbol       size              file
 
-S0_TX_MASK          0x2               EthernetLibrary.o
-S0_TX_BASE          0x2               EthernetLibrary.o
-S0_RX_BASE          0x2               EthernetLibrary.o
-S0_RX_MASK          0x2               EthernetLibrary.o
+S0_TX_MASK          0x2               EthernetDriver.o
+S0_TX_BASE          0x2               EthernetDriver.o
+currentNetwork      0x19              Ethernet.o
+S0_RX_BASE          0x2               EthernetDriver.o
+S0_RX_MASK          0x2               EthernetDriver.o
 __iob               0x6               c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(iob.o)
 
 Discarded input sections
 
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5/crtm324pa.o
- .text          0x00000000        0x0 EthernetLibrary.o
- .bss           0x00000000        0x0 EthernetLibrary.o
- .text.EnableEthernetInterrupt
-                0x00000000       0x16 EthernetLibrary.o
+ .text          0x00000000        0x0 Ethernet.o
+ .bss           0x00000000        0x0 Ethernet.o
+ .text.postRequestEthernet
+                0x00000000        0x2 Ethernet.o
+ .text.getHexFile
+                0x00000000       0x5e Ethernet.o
+ .data.serialNumber
+                0x00000000        0x2 Ethernet.o
+ COMMON         0x00000000       0x19 Ethernet.o
+ .text          0x00000000        0x0 EthernetDriver.o
+ .bss           0x00000000        0x0 EthernetDriver.o
+ .text.ReceiveSize
+                0x00000000       0x28 EthernetDriver.o
  .text.ResolveIP
-                0x00000000        0xe EthernetLibrary.o
+                0x00000000        0xe EthernetDriver.o
  .text          0x00000000        0x0 EthernetModule.o
  .bss           0x00000000        0x0 EthernetModule.o
+ .text          0x00000000        0x0 RAMDriver.o
+ .bss           0x00000000        0x0 RAMDriver.o
+ .text.getRAMStatus
+                0x00000000       0x1c RAMDriver.o
+ .text.RAMWrite
+                0x00000000       0x62 RAMDriver.o
  .text          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_exit.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_exit.o)
  .text.libgcc.mul
@@ -92,12 +112,18 @@ Discarded input sections
                 0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_clear_bss.o)
  .text.libgcc.fixed
                 0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_clear_bss.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(strcat.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(strcat.o)
+ .text.avr-libc
+                0x00000000       0x16 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(strcat.o)
  .text          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(fputc.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(fputc.o)
  .text          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(iob.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(iob.o)
  .text          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(printf.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(printf.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(putchar.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(putchar.o)
  .text          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(puts.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(puts.o)
  .text          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(vfprintf_std.o)
@@ -151,8 +177,10 @@ Linker script and memory map
 
 Address of section .data set to 0x800100
 LOAD c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5/crtm324pa.o
-LOAD EthernetLibrary.o
+LOAD Ethernet.o
+LOAD EthernetDriver.o
 LOAD EthernetModule.o
+LOAD RAMDriver.o
 START GROUP
 LOAD c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a
 END GROUP
@@ -252,7 +280,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x1590
+.text           0x00000000     0x12ea
  *(.vectors)
  .vectors       0x00000000       0x7c c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5/crtm324pa.o
                 0x00000000                __vector_default
@@ -341,93 +369,128 @@ END GROUP
                 0x000000b6                __vector_20
                 0x000000ba                . = ALIGN (0x2)
  *(.text.*)
+ .text.ethernetInit
+                0x000000ba       0x2a Ethernet.o
+                0x000000ba                ethernetInit
+ .text.getRequestEthernet
+                0x000000e4       0x46 Ethernet.o
+                0x000000e4                getRequestEthernet
  .text.uart_putch
-                0x000000ba       0x22 EthernetLibrary.o
-                0x000000ba                uart_putch
+                0x0000012a       0x22 EthernetDriver.o
+                0x0000012a                uart_putch
  .text.uart_getch
-                0x000000dc       0x1e EthernetLibrary.o
-                0x000000dc                uart_getch
+                0x0000014c       0x1e EthernetDriver.o
+                0x0000014c                uart_getch
  .text.uart_init
-                0x000000fa       0x18 EthernetLibrary.o
-                0x000000fa                uart_init
+                0x0000016a       0x18 EthernetDriver.o
+                0x0000016a                uart_init
  .text.uart_flush
-                0x00000112       0x10 EthernetLibrary.o
-                0x00000112                uart_flush
- .text.ansi_cl  0x00000122       0x54 EthernetLibrary.o
-                0x00000122                ansi_cl
- .text.ansi_me  0x00000176       0x3c EthernetLibrary.o
-                0x00000176                ansi_me
- .text.SPI_Write
-                0x000001b2       0x28 EthernetLibrary.o
-                0x000001b2                SPI_Write
- .text.SPI_Read
-                0x000001da       0x2a EthernetLibrary.o
-                0x000001da                SPI_Read
+                0x00000182       0x10 EthernetDriver.o
+                0x00000182                uart_flush
+ .text.ansi_cl  0x00000192       0x54 EthernetDriver.o
+                0x00000192                ansi_cl
+ .text.ansi_me  0x000001e6       0x3c EthernetDriver.o
+                0x000001e6                ansi_me
+ .text.SPI_EthernetWrite
+                0x00000222       0x28 EthernetDriver.o
+                0x00000222                SPI_EthernetWrite
+ .text.SPI_EthernetRead
+                0x0000024a       0x2a EthernetDriver.o
+                0x0000024a                SPI_EthernetRead
+ .text.NetworkSetup
+                0x00000274      0x148 EthernetDriver.o
+                0x00000274                NetworkSetup
  .text.Server_Connect
-                0x00000204      0x2e6 EthernetLibrary.o
-                0x00000204                Server_Connect
- .text.Memory_Init
-                0x000004ea       0x42 EthernetLibrary.o
-                0x000004ea                Memory_Init
- .text.Ethernet_Init
-                0x0000052c      0x374 EthernetLibrary.o
-                0x0000052c                Ethernet_Init
- .text.ReceiveSize
-                0x000008a0       0x28 EthernetLibrary.o
-                0x000008a0                ReceiveSize
+                0x000003bc      0x2e6 EthernetDriver.o
+                0x000003bc                Server_Connect
+ .text.MemoryInit
+                0x000006a2       0x42 EthernetDriver.o
+                0x000006a2                MemoryInit
  .text.SocketCommand
-                0x000008c8        0xa EthernetLibrary.o
-                0x000008c8                SocketCommand
+                0x000006e4        0xa EthernetDriver.o
+                0x000006e4                SocketCommand
  .text.SendData
-                0x000008d2      0x2e4 EthernetLibrary.o
-                0x000008d2                SendData
+                0x000006ee      0x2e4 EthernetDriver.o
+                0x000006ee                SendData
  .text.ReceiveData
-                0x00000bb6       0xd4 EthernetLibrary.o
-                0x00000bb6                ReceiveData
+                0x000009d2       0x9a EthernetDriver.o
+                0x000009d2                ReceiveData
  .text.SocketDisconnect
-                0x00000c8a       0x14 EthernetLibrary.o
-                0x00000c8a                SocketDisconnect
+                0x00000a6c       0x14 EthernetDriver.o
+                0x00000a6c                SocketDisconnect
+ .text.EnableEthernetInterrupt
+                0x00000a80       0x16 EthernetDriver.o
+                0x00000a80                EnableEthernetInterrupt
  .text.UARTStream_Init
-                0x00000c9e       0x32 EthernetLibrary.o
-                0x00000c9e                UARTStream_Init
+                0x00000a96       0x32 EthernetDriver.o
+                0x00000a96                UARTStream_Init
+ .text.getReceiveFlag
+                0x00000ac8        0xa EthernetDriver.o
+                0x00000ac8                getReceiveFlag
  .text.__vector_1
-                0x00000cd0      0x120 EthernetLibrary.o
-                0x00000cd0                __vector_1
+                0x00000ad2      0x10a EthernetDriver.o
+                0x00000ad2                __vector_1
  .text.startup.main
-                0x00000df0      0x1bc EthernetModule.o
-                0x00000df0                main
+                0x00000bdc       0x38 EthernetModule.o
+                0x00000bdc                main
+ .text.SPI_Init
+                0x00000c14        0xc RAMDriver.o
+                0x00000c14                SPI_Init
+ .text.setRAMStatus
+                0x00000c20       0x18 RAMDriver.o
+                0x00000c20                setRAMStatus
+ .text.SPI_WriteAddress
+                0x00000c38       0x1c RAMDriver.o
+                0x00000c38                SPI_WriteAddress
+ .text.SPI_WriteData
+                0x00000c54        0xa RAMDriver.o
+                0x00000c54                SPI_WriteData
+ .text.SPI_ReadAddress
+                0x00000c5e       0x1c RAMDriver.o
+                0x00000c5e                SPI_ReadAddress
+ .text.SPI_ReadData
+                0x00000c7a        0xc RAMDriver.o
+                0x00000c7a                SPI_ReadData
+ .text.RAMRead  0x00000c86       0x5a RAMDriver.o
+                0x00000c86                RAMRead
+ .text.RAMWriteByte
+                0x00000ce0       0x18 RAMDriver.o
+                0x00000ce0                RAMWriteByte
  .text.avr-libc
-                0x00000fac       0x64 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(fputc.o)
-                0x00000fac                fputc
+                0x00000cf8       0x64 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(fputc.o)
+                0x00000cf8                fputc
  .text.avr-libc
-                0x00001010       0x28 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(printf.o)
-                0x00001010                printf
+                0x00000d5c       0x28 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(printf.o)
+                0x00000d5c                printf
  .text.avr-libc
-                0x00001038       0x5a c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(puts.o)
-                0x00001038                puts
+                0x00000d84        0xe c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(putchar.o)
+                0x00000d84                putchar
  .text.avr-libc
-                0x00001092      0x3a4 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(vfprintf_std.o)
-                0x00001092                vfprintf
+                0x00000d92       0x5a c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(puts.o)
+                0x00000d92                puts
  .text.avr-libc
-                0x00001436       0x16 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(strnlen_P.o)
-                0x00001436                strnlen_P
+                0x00000dec      0x3a4 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(vfprintf_std.o)
+                0x00000dec                vfprintf
  .text.avr-libc
-                0x0000144c       0x16 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(strnlen.o)
-                0x0000144c                strnlen
+                0x00001190       0x16 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(strnlen_P.o)
+                0x00001190                strnlen_P
  .text.avr-libc
-                0x00001462       0xbc c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(ultoa_invert.o)
-                0x00001462                __ultoa_invert
+                0x000011a6       0x16 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(strnlen.o)
+                0x000011a6                strnlen
+ .text.avr-libc
+                0x000011bc       0xbc c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(ultoa_invert.o)
+                0x000011bc                __ultoa_invert
  .text.libgcc.prologue
-                0x0000151e       0x38 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_prologue.o)
-                0x0000151e                __prologue_saves__
+                0x00001278       0x38 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_prologue.o)
+                0x00001278                __prologue_saves__
  .text.libgcc.prologue
-                0x00001556       0x36 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_epilogue.o)
-                0x00001556                __epilogue_restores__
-                0x0000158c                . = ALIGN (0x2)
+                0x000012b0       0x36 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_epilogue.o)
+                0x000012b0                __epilogue_restores__
+                0x000012e6                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x0000158c        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_exit.o)
-                0x0000158c                _exit
-                0x0000158c                exit
+ .fini9         0x000012e6        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_exit.o)
+                0x000012e6                _exit
+                0x000012e6                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -446,22 +509,26 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x0000158c        0x4 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_exit.o)
+ .fini0         0x000012e6        0x4 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00001590                _etext = .
+                0x000012ea                _etext = .
 
-.data           0x00800100      0x4b8 load address 0x00001590
+.data           0x00800100      0x394 load address 0x000012ea
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800100        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5/crtm324pa.o
- .data          0x00800100        0x0 EthernetLibrary.o
+ .data          0x00800100        0x0 Ethernet.o
+ .data          0x00800100        0x0 EthernetDriver.o
  .data          0x00800100        0x0 EthernetModule.o
+ .data          0x00800100        0x0 RAMDriver.o
  .data          0x00800100        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_exit.o)
  .data          0x00800100        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_copy_data.o)
  .data          0x00800100        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_clear_bss.o)
+ .data          0x00800100        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(strcat.o)
  .data          0x00800100        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(fputc.o)
  .data          0x00800100        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(iob.o)
  .data          0x00800100        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(printf.o)
+ .data          0x00800100        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(putchar.o)
  .data          0x00800100        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(puts.o)
  .data          0x00800100        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(vfprintf_std.o)
  .data          0x00800100        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(strnlen_P.o)
@@ -470,44 +537,73 @@ END GROUP
  .data          0x00800100        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_prologue.o)
  .data          0x00800100        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_epilogue.o)
  *(.data*)
+ .data.source_port
+                0x00800100        0x2 Ethernet.o
+                0x00800100                source_port
+ .data.server_port
+                0x00800102        0x2 Ethernet.o
+                0x00800102                server_port
+ .data.server_ip_addr
+                0x00800104        0x4 Ethernet.o
+                0x00800104                server_ip_addr
+ .data.gtw_addr
+                0x00800108        0x4 Ethernet.o
+                0x00800108                gtw_addr
+ .data.sub_mask
+                0x0080010c        0x4 Ethernet.o
+                0x0080010c                sub_mask
+ .data.local_ip_addr
+                0x00800110        0x4 Ethernet.o
+                0x00800110                local_ip_addr
+ .data.mac_addr
+                0x00800114        0x6 Ethernet.o
+                0x00800114                mac_addr
  .data.uart_str
-                0x00800100        0xe EthernetLibrary.o
-                0x00800100                uart_str
+                0x0080011a        0xe EthernetDriver.o
+                0x0080011a                uart_str
  *(.rodata)
- .rodata        0x0080010e        0x6 EthernetModule.o
  *(.rodata*)
  .rodata.str1.1
-                0x00800114      0x43a EthernetLibrary.o
-                                0x43e (size before relaxing)
+                0x00800128       0x41 Ethernet.o
  .rodata.str1.1
-                0x0080054e       0x6a EthernetModule.o
+                0x00800169      0x2af EthernetDriver.o
+                                0x2b3 (size before relaxing)
+ .rodata.str1.1
+                0x00800418       0x6c EthernetModule.o
+ .rodata.str1.1
+                0x00800484        0xf RAMDriver.o
+                                 0x10 (size before relaxing)
  *(.gnu.linkonce.d*)
-                0x008005b8                . = ALIGN (0x2)
-                0x008005b8                _edata = .
-                0x008005b8                PROVIDE (__data_end, .)
+                0x00800494                . = ALIGN (0x2)
+ *fill*         0x00800493        0x1 
+                0x00800494                _edata = .
+                0x00800494                PROVIDE (__data_end, .)
 
-.bss            0x008005b8        0xe
-                0x008005b8                PROVIDE (__bss_start, .)
+.bss            0x00800494       0x10
+                0x00800494                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
+ .bss.receiveFlag
+                0x00800494        0x2 EthernetDriver.o
+                0x00800494                receiveFlag
  *(COMMON)
- COMMON         0x008005b8        0x8 EthernetLibrary.o
-                0x008005b8                S0_TX_MASK
-                0x008005ba                S0_TX_BASE
-                0x008005bc                S0_RX_BASE
-                0x008005be                S0_RX_MASK
- COMMON         0x008005c0        0x6 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(iob.o)
-                0x008005c0                __iob
-                0x008005c6                PROVIDE (__bss_end, .)
-                0x00001590                __data_load_start = LOADADDR (.data)
-                0x00001a48                __data_load_end = (__data_load_start + SIZEOF (.data))
+ COMMON         0x00800496        0x8 EthernetDriver.o
+                0x00800496                S0_TX_MASK
+                0x00800498                S0_TX_BASE
+                0x0080049a                S0_RX_BASE
+                0x0080049c                S0_RX_MASK
+ COMMON         0x0080049e        0x6 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(iob.o)
+                0x0080049e                __iob
+                0x008004a4                PROVIDE (__bss_end, .)
+                0x000012ea                __data_load_start = LOADADDR (.data)
+                0x0000167e                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x008005c6        0x0
-                0x008005c6                PROVIDE (__noinit_start, .)
+.noinit         0x008004a4        0x0
+                0x008004a4                PROVIDE (__noinit_start, .)
  *(.noinit*)
-                0x008005c6                PROVIDE (__noinit_end, .)
-                0x008005c6                _end = .
-                0x008005c6                PROVIDE (__heap_start, .)
+                0x008004a4                PROVIDE (__noinit_end, .)
+                0x008004a4                _end = .
+                0x008004a4                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
  *(.eeprom*)
@@ -548,12 +644,15 @@ END GROUP
 
 .comment        0x00000000       0x5c
  *(.comment)
- .comment       0x00000000       0x30 EthernetLibrary.o
+ .comment       0x00000000       0x30 Ethernet.o
                                  0x31 (size before relaxing)
+ .comment       0x00000000       0x31 EthernetDriver.o
  .comment       0x00000000       0x31 EthernetModule.o
+ .comment       0x00000000       0x31 RAMDriver.o
  .comment       0x00000000       0x31 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(fputc.o)
  .comment       0x00000000       0x31 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(iob.o)
  .comment       0x00000000       0x31 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(printf.o)
+ .comment       0x00000000       0x31 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(putchar.o)
  .comment       0x00000000       0x31 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(puts.o)
  .comment       0x00000030       0x2c c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(vfprintf_std.o)
                                  0x2d (size before relaxing)

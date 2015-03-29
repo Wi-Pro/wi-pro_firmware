@@ -1,13 +1,13 @@
 /*
- * EthernetModule.h
+ * EthernetDriver.h
  *
  * Created: 2/7/2015 6:11:40 PM
  *  Author: Brandon
  */ 
 
 
-#ifndef ETHERNETMODULE_H_
-#define ETHERNETMODULE_H_
+#ifndef ETHERNETDRIVER_H_
+#define ETHERNETDRIVER_H_
 
 #define BAUD_RATE 2400
 
@@ -62,7 +62,7 @@
 #define SEND_MAC 0x21 
 #define SEND_KEEP 0x22
 #define RECV 0x40 
-//Socket Interrupt Register Values 
+//Socket Interrupt Register Positions 
 #define SIR_SEND_OK 4 
 #define SIR_TIMEOUT 3 
 #define SIR_RECV 2 
@@ -88,7 +88,7 @@
 #define S1_INT 1 
 #define S0_INT 0 
 
-#define MAX_BUFF 512
+#define MAX_BUFF 65536
 
 
 void uart_init(void);
@@ -97,18 +97,19 @@ int uart_putch(char ch,FILE *stream);
 int uart_getch(FILE *stream);
 void ansi_cl(void);
 void ansi_me(void);
-void SPI_Write(unsigned int addr,unsigned char data);
-unsigned char SPI_Read(unsigned int addr);
+void SPI_EthernetWrite(unsigned int addr,unsigned char data);
+unsigned char SPI_EthernetRead(unsigned int addr);
 int Server_Connect(uint8_t socketMode, uint8_t *server_ip_addr, uint8_t *server_port, uint8_t *source_port);
-void Ethernet_Init(uint8_t *mac_addr, uint8_t *local_ip_addr, uint8_t *sub_mask, uint8_t *gtw_addr);
+void NetworkSetup(uint8_t *mac_addr, uint8_t *local_ip_addr, uint8_t *sub_mask, uint8_t *gtw_addr);
 void UARTStream_Init();
 void Memory_Init(); 
 int SendData(const uint8_t *buffer,uint16_t bufferLength); 
 int ReceiveData(uint8_t *buf,uint16_t buflen);
 uint16_t ReceiveSize(void);
+int getReceiveFlag();
 void SocketCommand(uint8_t command); 
 void SocketDisconnect();
 void EnableEthernetInterrupt();
 
 
-#endif /* ETHERNETMODULE_H_ */
+#endif /* ETHERNETDRIVER_H_ */

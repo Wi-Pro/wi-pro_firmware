@@ -36,8 +36,10 @@ SUBDIRS :=
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
-../EthernetLibrary.c \
-../EthernetModule.c
+../Ethernet.c \
+../EthernetDriver.c \
+../EthernetModule.c \
+../RAMDriver.c
 
 
 PREPROCESSING_SRCS += 
@@ -47,20 +49,28 @@ ASM_SRCS +=
 
 
 OBJS +=  \
-EthernetLibrary.o \
-EthernetModule.o
+Ethernet.o \
+EthernetDriver.o \
+EthernetModule.o \
+RAMDriver.o
 
 OBJS_AS_ARGS +=  \
-EthernetLibrary.o \
-EthernetModule.o
+Ethernet.o \
+EthernetDriver.o \
+EthernetModule.o \
+RAMDriver.o
 
 C_DEPS +=  \
-EthernetLibrary.d \
-EthernetModule.d
+Ethernet.d \
+EthernetDriver.d \
+EthernetModule.d \
+RAMDriver.d
 
 C_DEPS_AS_ARGS +=  \
-EthernetLibrary.d \
-EthernetModule.d
+Ethernet.d \
+EthernetDriver.d \
+EthernetModule.d \
+RAMDriver.d
 
 OUTPUT_FILE_PATH +=EthernetModule.elf
 
@@ -73,6 +83,10 @@ OUTPUT_FILE_DEP:= ./makedep.mk
 LIB_DEP+= 
 
 # AVR32/GNU C Compiler
+
+
+
+
 
 
 
@@ -110,7 +124,7 @@ all: $(OUTPUT_FILE_PATH) $(ADDITIONAL_DEPENDENCIES)
 $(OUTPUT_FILE_PATH): $(OBJS) $(USER_OBJS) $(OUTPUT_FILE_DEP) $(LIB_DEP)
 	@echo Building target: $@
 	@echo Invoking: AVR/GNU Linker : 4.8.1
-	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.1056\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE) -o$(OUTPUT_FILE_PATH_AS_ARGS) $(OBJS_AS_ARGS) $(USER_OBJS) $(LIBS) -Wl,-Map="EthernetModule.map" -Wl,--start-group -Wl,-lm  -Wl,--end-group -Wl,--gc-sections -mmcu=atmega324pa  
+	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.1056\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE) -o$(OUTPUT_FILE_PATH_AS_ARGS) $(OBJS_AS_ARGS) $(USER_OBJS) $(LIBS) -Wl,-Map="EthernetModule.map" -Wl,--start-group -Wl,-lm  -Wl,--end-group -Wl,-L"C:\Users\Brandon\OneDrive\github\Wi-Pro_Testing\RAMModule\RAMModule"  -Wl,--gc-sections -mmcu=atmega324pa  
 	@echo Finished building target: $@
 	"C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.1056\avr8-gnu-toolchain\bin\avr-objcopy.exe" -O ihex -R .eeprom -R .fuse -R .lock -R .signature -R .user_signatures  "EthernetModule.elf" "EthernetModule.hex"
 	"C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.1056\avr8-gnu-toolchain\bin\avr-objcopy.exe" -j .eeprom  --set-section-flags=.eeprom=alloc,load --change-section-lma .eeprom=0  --no-change-warnings -O ihex "EthernetModule.elf" "EthernetModule.eep" || exit 0
