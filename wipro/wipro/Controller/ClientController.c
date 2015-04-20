@@ -13,16 +13,22 @@
 #include <util/delay.h>
 #include <stdio.h>
 #include <string.h>
-#include "ClientController.h"
-#include "Ethernet/Ethernet.h"
-#include "Ethernet/EthernetDriver.h"
-#include "Print/PrintDriver.h"
-#include "RAM/RAMDriver.h"
-#include "Wifi/Wifi.h"
-#include "RAM/MemoryMap.h"
+#include "../Controller/ClientController.h"
+#include "../Drivers/Ethernet/Ethernet.h"
+#include "../Drivers/Ethernet/EthernetDriver.h"
+#include "../Drivers/Print/PrintDriver.h"
+#include "../Drivers/RAM/RAMDriver.h"
+#include "../Drivers/Wifi/Wifi.h"
+#include "../Drivers/RAM/MemoryMap.h"
 
 uint8_t Flags[FLAG_ARRAY_LENGTH]; 
 char filepath[100]; 
+
+void connectionInit()
+{
+	uart2_init();
+	SPI_Init();
+}
 
 void flagInit()
 {
@@ -162,7 +168,8 @@ int getFlagStatus()
 		//wifiDriverInit(); 
 		//PORTD |= (1<<CTS); 
 		//_delay_ms(2000); 
-		getHexFile(); 
+		getHexFile();
+		Program();
 		//printf("Done Downloading!\n");
 	}
 	else if(Flags[NETWORK_SCAN] == 0x01)
@@ -180,8 +187,6 @@ int getFlagStatus()
 	clearFlags(); 
 	TIMSK1 |= (1 << TOIE1);
 }
-
-
 
 //Timer overflow vector for polling 
 ISR(TIMER1_OVF_vect)

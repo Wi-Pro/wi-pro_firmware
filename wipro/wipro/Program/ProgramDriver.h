@@ -77,6 +77,8 @@
 #define LED_Yellow 1
 #define LED_Red 2
 
+
+
 void USB_UART2_Initialization();
 void USB_UART2_Out(unsigned char TransmissionValue);
 unsigned char USB_UART2_In();

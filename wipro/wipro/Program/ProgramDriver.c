@@ -9,11 +9,12 @@
 #include <avr/io.h>
 #include <util/delay.h>
 #include "ProgramDriver.h"
-#include "IntelHex.h"
-#include "SwitchingCircuitry.h"
-#include "VoltageControlDriver.h"
-#include "FPGA.h"
-#include "Print/PrintDriver.h"
+#include "../Hex/IntelHex.h"
+#include "../Drivers/Voltage_Switching/SwitchingCircuitry.h"
+#include "../Drivers/Voltage_Switching/VoltageControlDriver.h"
+#include "../Drivers/FPGA/FPGA.h"
+#include "../Drivers/Print/PrintDriver.h"
+#include "AVR.h"
 
 
 void ProgInit(void)
@@ -139,7 +140,7 @@ void EnableProgMode(unsigned char TargetMicrocontroller)
 	
 	switch (TargetMicrocontroller)
 	{
-		case 1 :
+		case ATtiny2313 :
 			setAtTiny2313();
 			break;
 		case 2 :

@@ -10,9 +10,9 @@
 #include <avr/io.h>
 #include <stdlib.h>
 #include <string.h>
-#include "RAM/RAMDriver.h"
-#include "RAM/MemoryMap.h"
-#include "IntelHex.h"
+#include "../Drivers/RAM/RAMDriver.h"
+#include "../Drivers/RAM/MemoryMap.h"
+#include "../Hex/IntelHex.h"
 
 
 char hexRow[50];

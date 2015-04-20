@@ -30,6 +30,7 @@
 #define FLAG_ARRAY_LENGTH 5 
 
 
+void connectionInit();
 void sendAvailableNetworks();
 int getFlagStatus();
 void pollingInit();
