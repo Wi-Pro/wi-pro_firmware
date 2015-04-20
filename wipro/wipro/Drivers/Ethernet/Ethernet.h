@@ -19,7 +19,7 @@
 	//unsigned char source_port[2]; 
 //};
 
-
+#define URL "http://www.wi-pro.us"
 
 void ethernetInit();
 char* getFileEthernet(char* filepath, int externRAM, uint32_t RAMAddress, uint16_t receiveLength);

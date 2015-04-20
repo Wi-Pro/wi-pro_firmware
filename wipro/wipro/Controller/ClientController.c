@@ -20,6 +20,7 @@
 #include "../Drivers/RAM/RAMDriver.h"
 #include "../Drivers/Wifi/Wifi.h"
 #include "../Drivers/RAM/MemoryMap.h"
+#include "../Program/Program.h"
 
 uint8_t Flags[FLAG_ARRAY_LENGTH]; 
 char filepath[100]; 
@@ -116,6 +117,7 @@ int getHexFile()
 		printf("Compress Flag Set!");
 		setCompressFlag(1);
 		getFileWifi(filepath, 1, HEX_FILE_ADDRESS, 1);
+		compressFile(getTransmissionLength()); 
 		//setCompressFlag(0); 
 		RAMPrint(HEX_FILE_ADDRESS, 1045);
 		//printf("Hex File Downloaded!\n");

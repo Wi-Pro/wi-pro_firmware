@@ -10,9 +10,9 @@
 #include <string.h>
 #include <util/delay.h>
 #include <avr/interrupt.h>
-#include "Ethernet.h"
-#include "EthernetDriver.h"
-#include "../ClientController.h"
+#include "../Ethernet/Ethernet.h"
+#include "../Ethernet/EthernetDriver.h"
+//#include "../Controller/ClientController.h"
 
 
 unsigned char mac_addr[] = {0x50,0xE5,0x49,0xBF,0x91,0x40};

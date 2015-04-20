@@ -11,17 +11,17 @@
 #include <util/delay.h>
 #include <avr/interrupt.h>
 #include <string.h>
-#include "PrintDriver.h"
+#include "../Print/PrintDriver.h"
 #include "WifiDriver.h"
 #include "Wifi.h"
-#include "RAMDriver.h"
+#include "../RAM/RAMDriver.h"
 
 
 int main(void)
 {
 	//cli(); 
 	uart_init();
-	uart0_init(); 
+	//uart0_init(); 
 	//printf("%s\n", string);
 	sei(); 
 	SPI_Init(); 

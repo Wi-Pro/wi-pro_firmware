@@ -42,22 +42,22 @@ void SPI_EthernetWrite(unsigned int addr,unsigned char data)
 	// Activate the CS pin
 	CS_PORT &= ~(1<<ETH_CS);
 	// Start Wiznet W5100 Write OpCode transmission
-	SPDR0 = WIZNET_WRITE_OPCODE;
+	SPDR = WIZNET_WRITE_OPCODE;
 	// Wait for transmission complete
-	while(!(SPSR0 & (1<<SPIF0)));
+	while(!(SPSR & (1<<SPIF)));
 	// Start Wiznet W5100 Address High Bytes transmission
-	SPDR0 = (addr & 0xFF00) >> 8;
+	SPDR = (addr & 0xFF00) >> 8;
 	// Wait for transmission complete
-	while(!(SPSR0 & (1<<SPIF0)));
+	while(!(SPSR & (1<<SPIF)));
 	// Start Wiznet W5100 Address Low Bytes transmission
-	SPDR0 = addr & 0x00FF;
+	SPDR = addr & 0x00FF;
 	// Wait for transmission complete
-	while(!(SPSR0 & (1<<SPIF0)));
+	while(!(SPSR & (1<<SPIF)));
 
 	// Start Data transmission
-	SPDR0 = data;
+	SPDR = data;
 	// Wait for transmission complete
-	while(!(SPSR0 & (1<<SPIF0)));
+	while(!(SPSR & (1<<SPIF)));
 	// CS pin is not active
 	CS_PORT |= (1<<ETH_CS);
 }
@@ -67,26 +67,26 @@ unsigned char SPI_EthernetRead(unsigned int addr)
 	// Activate the CS pin
 	CS_PORT &= ~(1<<ETH_CS);
 	// Start Wiznet W5100 Read OpCode transmission
-	SPDR0 = WIZNET_READ_OPCODE;
+	SPDR = WIZNET_READ_OPCODE;
 	// Wait for transmission complete
-	while(!(SPSR0 & (1<<SPIF0)));
+	while(!(SPSR & (1<<SPIF)));
 	// Start Wiznet W5100 Address High Bytes transmission
-	SPDR0 = (addr & 0xFF00) >> 8;
+	SPDR = (addr & 0xFF00) >> 8;
 	// Wait for transmission complete
-	while(!(SPSR0 & (1<<SPIF0)));
+	while(!(SPSR & (1<<SPIF)));
 	// Start Wiznet W5100 Address Low Bytes transmission
-	SPDR0 = addr & 0x00FF;
+	SPDR = addr & 0x00FF;
 	// Wait for transmission complete
-	while(!(SPSR0 & (1<<SPIF0)));
+	while(!(SPSR & (1<<SPIF)));
 
 	// Send Dummy transmission for reading the data
-	SPDR0 = 0x00;
+	SPDR = 0x00;
 	// Wait for transmission complete
-	while(!(SPSR0 & (1<<SPIF0)));
+	while(!(SPSR & (1<<SPIF)));
 
 	// CS pin is not active
 	CS_PORT |= (1<<ETH_CS);
-	return(SPDR0);
+	return(SPDR);
 }
 
 void NetworkSetup(uint8_t *mac_addr, uint8_t *local_ip_addr, uint8_t *sub_mask, uint8_t *gtw_addr)
@@ -98,7 +98,7 @@ void NetworkSetup(uint8_t *mac_addr, uint8_t *local_ip_addr, uint8_t *sub_mask, 
 	// CS pin is not active
 	CS_PORT |= (1<<ETH_CS);
 	// Enable SPI, Master Mode 0, set the clock rate fck/2
-	SPCR0 = (1<<SPE0)|(1<<MSTR0);
+	SPCR = (1<<SPE)|(1<<MSTR);
 	// Initial the Wiznet W5100
 	//printf("Wiznet W5100 Init\n");
 	// Ethernet Setup

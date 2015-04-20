@@ -1,30 +1,35 @@
 /*
- * wipro.c
+ * ParallelProgram.c
  *
- * Created: 4/17/2015 12:55:14 AM
+ * Created: 4/13/2015 8:41:16 PM
  *  Author: Brandon
  */ 
 
-
+#define F_CPU 8000000UL
 #include <avr/io.h>
-#include "Program/ProgramDriver.h"
-#include "Drivers/RAM/MemoryMap.h"
-#include "Program/AVR.h"
+#include <util/delay.h>
+#include "ProgramDriver.h"
+#include "../Hex/IntelHex.h"
+#include "../Print/PrintDriver.h"
+#include "../RAM/RAMDriver.h"
+#include "../RAM/MemoryMap.h"
 
-int main(void)
-{
-	char* SignatureBytes;
-	connectionInit(); 
-	hexInit();
-	pollingInit(); 
+//int main(void)
+//{
+	//char* SignatureBytes;
+	//uart2_init();
+	//hexInit();
+	//
+	//SPI_Init();
 	//printf("\n\n");
 	//writeHexFileTest();
 	//RAMPrint(HEX_FILE_ADDRESS, 50);
-	//Write test file to external RAM
-	//Test switching circuitry code
-	
+	////Write test file to external RAM 
+	////Test switching circuitry code
+	//ProgInit();
+	//EnableProgMode(ATtiny2313);
 	//SignatureBytes = ReadSignatureBytes();
-	
+	//
 	//printf("\nSignature Bytes: %02X %02X %02X\n", *SignatureBytes, *(SignatureBytes + 1), *(SignatureBytes + 2));
 	//if ( (*SignatureBytes == 0x1E) && (*(SignatureBytes + 1) == 0x91) && (*(SignatureBytes + 2) == 0x0A) )
 	//{
@@ -39,10 +44,11 @@ int main(void)
 		//printf("\nDone!\n\n");
 	//}
 	//ExitParallelProgrammingMode();
-	
-	
-    while(1)
-    {
-        //TODO:: Please write your application code 
-    }
-}
+	 //
+	////Then test parallel programming code here 
+	//
+    //while(1)
+    //{
+        ////TODO:: Please write your application code 
+    //}
+//}
