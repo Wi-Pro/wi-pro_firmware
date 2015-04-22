@@ -7,6 +7,7 @@
 
 
 #include <avr/io.h>
+#include <util/delay.h>
 #include "Program/ProgramDriver.h"
 #include "Drivers/RAM/MemoryMap.h"
 #include "Program/AVR.h"
@@ -16,7 +17,17 @@ int main(void)
 	char* SignatureBytes;
 	connectionInit(); 
 	hexInit();
-	pollingInit(); 
+	//setMachineMode();
+	_delay_ms(1000);
+	if(serverConnect("www.wi-pro.us", "80"))
+	{
+		printf("Connected!!\n");
+	}  
+	else
+	{
+		printf("Connection Failed\n"); 
+	}
+	//pollingInit(); 
 	//printf("\n\n");
 	//writeHexFileTest();
 	//RAMPrint(HEX_FILE_ADDRESS, 50);
@@ -40,7 +51,7 @@ int main(void)
 	//}
 	//ExitParallelProgrammingMode();
 	
-	
+	printf("Done!\n"); 
     while(1)
     {
         //TODO:: Please write your application code 

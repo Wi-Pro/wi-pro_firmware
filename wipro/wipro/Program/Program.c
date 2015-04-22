@@ -5,8 +5,12 @@
  *  Author: Brandon
  */ 
 
+#include <avr/io.h>
+#include <string.h>
 #include "ProgramDriver.h"
 #include "AVR.h"
+#include "../Drivers/RAM/RAMDriver.h"
+#include "../Drivers/RAM/MemoryMap.h"
 
 
 int Program(uint32_t sigBytes)
@@ -88,4 +92,6 @@ int compressFile(uint16_t length)
 		//hence why the for loop does not have i+=2 
 		i++;  
 	}
+	
+	return 1; 
 }

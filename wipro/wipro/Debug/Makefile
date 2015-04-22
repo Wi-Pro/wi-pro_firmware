@@ -49,7 +49,6 @@ C_SRCS +=  \
 ../Controller/ClientController.c \
 ../Drivers/Ethernet/Ethernet.c \
 ../Drivers/Ethernet/EthernetDriver.c \
-../Drivers/FPGA/EthernetModule.c \
 ../Drivers/FPGA/FPGA.c \
 ../Drivers/Print/PrintDriver.c \
 ../Drivers/RAM/RAMDriver.c \
@@ -73,7 +72,6 @@ OBJS +=  \
 Controller/ClientController.o \
 Drivers/Ethernet/Ethernet.o \
 Drivers/Ethernet/EthernetDriver.o \
-Drivers/FPGA/EthernetModule.o \
 Drivers/FPGA/FPGA.o \
 Drivers/Print/PrintDriver.o \
 Drivers/RAM/RAMDriver.o \
@@ -90,7 +88,6 @@ OBJS_AS_ARGS +=  \
 Controller/ClientController.o \
 Drivers/Ethernet/Ethernet.o \
 Drivers/Ethernet/EthernetDriver.o \
-Drivers/FPGA/EthernetModule.o \
 Drivers/FPGA/FPGA.o \
 Drivers/Print/PrintDriver.o \
 Drivers/RAM/RAMDriver.o \
@@ -107,7 +104,6 @@ C_DEPS +=  \
 Controller/ClientController.d \
 Drivers/Ethernet/Ethernet.d \
 Drivers/Ethernet/EthernetDriver.d \
-Drivers/FPGA/EthernetModule.d \
 Drivers/FPGA/FPGA.d \
 Drivers/Print/PrintDriver.d \
 Drivers/RAM/RAMDriver.d \
@@ -124,7 +120,6 @@ C_DEPS_AS_ARGS +=  \
 Controller/ClientController.d \
 Drivers/Ethernet/Ethernet.d \
 Drivers/Ethernet/EthernetDriver.d \
-Drivers/FPGA/EthernetModule.d \
 Drivers/FPGA/FPGA.d \
 Drivers/Print/PrintDriver.d \
 Drivers/RAM/RAMDriver.d \
@@ -148,8 +143,6 @@ OUTPUT_FILE_DEP:= ./makedep.mk
 LIB_DEP+= 
 
 # AVR32/GNU C Compiler
-
-
 
 
 

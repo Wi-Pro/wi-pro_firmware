@@ -8,8 +8,6 @@ Drivers\Ethernet\Ethernet.c
 
 Drivers\Ethernet\EthernetDriver.c
 
-Drivers\FPGA\EthernetModule.c
-
 Drivers\FPGA\FPGA.c
 
 Drivers\Print\PrintDriver.c

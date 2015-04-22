@@ -150,7 +150,7 @@ char SPI_ReadData()
 	return(SPDR);
 }
 
-uint16_t RAMWrite(char* data, uint16_t startAddress, uint16_t length)
+uint16_t RAMWrite(char* data, uint32_t startAddress, uint16_t length)
 {
 	// Activate the CS pin
 	RAM_PORT &= ~(1<<RAM_CS);

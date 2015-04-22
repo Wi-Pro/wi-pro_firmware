@@ -24,15 +24,16 @@
 
 void wifiInit()
 {
-	DDRD |= (1<<RTS) | (1<<CTS);
+	//DDRD |= (1<<RTS) | (1<<CTS);
 	//DDRD &= ~(1<<CTS);
 	//Requesting not to send data
-	PORTD |= (1<<RTS);
-	PORTD |= (1<<CTS);
+	//PORTD |= (1<<RTS);
+	//PORTD |= (1<<CTS);
 	//PUll the CTS line up 
 	//PORTD |= (1<<CTS);
 	//setTestPrint(0);
 	wifiDriverInit();
+	setMachineMode(); 
 } 
 
 void setMachineMode()
@@ -86,6 +87,7 @@ int networkConnect(char* SSID, char* password)
 
 int serverConnect(char* serverDNS, unsigned char* port)
 {
+	enableReceiveINT(); 
 	strcat(serverDNS, " ");
 	strcat(serverDNS, port); 
 	sendCommand(NOPREFIX, TCP_CLIENT, serverDNS);
@@ -194,6 +196,7 @@ char* getFileWifi(char* filepath, int externRAM, uint32_t RAMAddress, int multiR
 	//_delay_ms(3000);  
 	sendCommand(NOPREFIX, STREAM_CLOSE, NOVAL);
 	//receiveStatus(); 
+	return 1; 
 }
 
 void updateFileWifi(char* filepath)

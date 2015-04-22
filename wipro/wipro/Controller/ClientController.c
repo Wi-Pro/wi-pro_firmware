@@ -19,6 +19,7 @@
 #include "../Drivers/Print/PrintDriver.h"
 #include "../Drivers/RAM/RAMDriver.h"
 #include "../Drivers/Wifi/Wifi.h"
+#include "../Drivers/Wifi/WifiDriver.h"
 #include "../Drivers/RAM/MemoryMap.h"
 #include "../Program/Program.h"
 
@@ -28,6 +29,7 @@ char filepath[100];
 void connectionInit()
 {
 	uart2_init();
+	uart_init(); 
 	SPI_Init();
 }
 
@@ -55,7 +57,7 @@ void pollingInit()
 //Checks to see if Ethernet or Wi-Fi is available 
 int checkNetworkStatus()
 {
-	
+	return 1; 
 }
 
 int clearFlags()
@@ -171,7 +173,7 @@ int getFlagStatus()
 		//PORTD |= (1<<CTS); 
 		//_delay_ms(2000); 
 		getHexFile();
-		Program();
+		//Program();
 		//printf("Done Downloading!\n");
 	}
 	else if(Flags[NETWORK_SCAN] == 0x01)
@@ -188,6 +190,7 @@ int getFlagStatus()
 	//_delay_ms(500);
 	clearFlags(); 
 	TIMSK1 |= (1 << TOIE1);
+	return 1; 
 }
 
 //Timer overflow vector for polling 

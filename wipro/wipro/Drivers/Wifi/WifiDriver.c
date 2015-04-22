@@ -55,9 +55,9 @@ void setTestPrint(int print)
 
 void setCompressFlag(uint8_t compress)
 {
-	PORTD &= ~(1<<CTS); 
+	//PORTD &= ~(1<<CTS); 
 	compressFlag = compress;
-	PORTD |= (1<<CTS); 
+	//PORTD |= (1<<CTS); 
 }
 
 void setReceiveCounter(int val)
@@ -72,12 +72,12 @@ void setMultiReceiveFlag(uint8_t receiveFlag)
 
 void uart_init()
 {
-	UBRR1H = (((F_CPU/BAUD_RATE)/16)-1)>>8;	// set baud rate
-	UBRR1L = (((F_CPU/BAUD_RATE)/16)-1);
-	UCSR1B = (1<<RXEN1)|(1<<TXEN1); // enable Rx & Tx
-	UCSR1C =  (1<<UCSZ11)|(1<<UCSZ10); // config USART; 8N1
-	UCSR1B |= (1<<RXCIE1);	//Enable Receive Interrupt 
-	DDRA |= (1<<PORTA1);
+	UBRR0H = (((F_CPU/BAUD_RATE)/16)-1)>>8;	// set baud rate
+	UBRR0L = (((F_CPU/BAUD_RATE)/16)-1);
+	UCSR0B = (1<<RXEN0)|(1<<TXEN0); // enable Rx & Tx
+	UCSR0C =  (1<<UCSZ01)|(1<<UCSZ00); // config USART; 8N1
+	UCSR0B |= (1<<RXCIE0);	//Enable Receive Interrupt 
+	//DDRA |= (1<<PORTA1);
 }
 
 uint16_t getStringLen(unsigned char* p)
@@ -98,14 +98,14 @@ int uart_send(char* data, unsigned int length)
 	//UCSR1B |= (1<<RXCIE1);
 	receiveWifiFlag = 0;
 	memset(headerBuffer, 0x00, endHeader);
-	PORTD |= (1<<RTS);
+	//PORTD |= (1<<RTS);
 	//while(!(PIND & (1<<CTS))){
 		//_delay_us(100);
 		//printf("Waiting..\n");
 	//} 
 	while(i < length){
-		while(!(UCSR1A & (1<<UDRE1)));
-		UDR1 = data[i];
+		while(!(UCSR0A & (1<<UDRE0)));
+		UDR0 = data[i];
 		i++;
 	}
 	//while(!(PIND & (1<<CTS))){_delay_us(100);}
@@ -119,8 +119,8 @@ unsigned char uart_receive(unsigned char* data, unsigned char size)
  
 	while(1 < size - 1) {
 		unsigned char c;
-		while (!(UCSR1A & (1<<RXC1)));
-		c = UDR1;
+		while (!(UCSR0A & (1<<RXC0)));
+		c = UDR0;
 		//printf("Moving Received Byte %d: %c\n", i, c);
 		//_delay_ms(500);
 		printf("%c",c);
@@ -137,20 +137,20 @@ unsigned char uart_receive(unsigned char* data, unsigned char size)
 unsigned char uart_receiveChar()
 {
 	//printf("Receiving...\n");
-	while (!(UCSR1A & (1<<RXC1)));
-	return UDR1; 
+	while (!(UCSR0A & (1<<RXC0)));
+	return UDR0; 
 }
 
 int enableReceiveINT()
 {
-	UCSR1B |= (1<<RXCIE1);
+	UCSR0B |= (1<<RXCIE0);
 	sei(); 
 	return 1; 
 }
 
 int disableReceiveINT()
 {
-	UCSR1B &= ~(1<<RXCIE1);
+	UCSR0B &= ~(1<<RXCIE0);
 	return 1; 
 }
 
@@ -346,7 +346,7 @@ unsigned int sendCommand(int8_t prefix, char* command, char* value)
 	//sei();
 //}
 
-ISR(USART1_RX_vect)
+ISR(USART0_RX_vect)
 {
 	cli();
 	//if(testPrint)
@@ -357,7 +357,7 @@ ISR(USART1_RX_vect)
 		//Header always begins with letter 'R'
 		if(buff == headerStartVal)
 		{
-			PORTD &= ~(1<<RTS);
+			//PORTD &= ~(1<<RTS);
 			//if(testPrint)
 				//printf("Beginning Found @ %d\n", i); 
 				
@@ -368,7 +368,7 @@ ISR(USART1_RX_vect)
 					//printf("Header: %c @ address %p", headerBuffer[i], headerBuffer); 
 					
 			bufferStart = 1;
-			PORTD |= (1<<RTS); 
+			//PORTD |= (1<<RTS); 
 		}
 	}
 	
@@ -378,19 +378,19 @@ ISR(USART1_RX_vect)
 		//Grab Receive Header
 		if(i < endHeader)
 		{
-			PORTD &= ~(1<<RTS);
+			//PORTD &= ~(1<<RTS);
 			headerBuffer[i] = uart_receiveChar();
 			//if(testPrint)
 				//printf("Header: %c @ address %p\n", headerBuffer[i], headerBuffer + i);
 			//i++; 
 			//RAMWriteByte(uart_receiveChar(), i);
-			PORTD |= (1<<RTS); 
+			//PORTD |= (1<<RTS); 
 		}
 		else if(i == endHeader)
 		{
 			transLength = buildTransmissionLength();
 			//i++; 
-			if(testPrint)
+			//if(testPrint)
 				printf("Transmission Length: %d\n", transLength);
 		}
 		else
@@ -402,10 +402,10 @@ ISR(USART1_RX_vect)
 				if(compressFlag == 1)
 				{
 					//printf("Compressing!\n");
-					PORTD &= ~(1<<CTS);
+					//PORTD &= ~(1<<CTS);
 					if(buff == ':')
 					{
-						PORTD &= ~(1<<RTS);
+						//PORTD &= ~(1<<RTS);
 						RAMWriteByte(buff, RAMAddress + i - endHeader -1);
 					}
 					else if(!secondNibble)
@@ -454,6 +454,6 @@ ISR(USART1_RX_vect)
 	//if(bufferStart && !receiveWifiFlag)
 	i++; 
 		
-	PORTD |= (1<<CTS); 
+	//PORTD |= (1<<CTS); 
 	sei(); 
 }
