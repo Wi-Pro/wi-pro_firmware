@@ -78,11 +78,39 @@ int networkConnect(char* SSID, char* password)
 	sendCommand(SET, WLAN_SSID, SSID);
 	//printf("Set Password\n");
 	sendCommand(SET, WLAN_PWD, password);
-	sendCommand(NOPREFIX, HTTP_GET, "www.wi-pro.us"); 
-	if(errorCheck())
-		return 0; 
-	else
-		return 1; 
+	//enableReceiveINT(); 
+	//sendCommand(NOPREFIX, HTTP_GET, "www.google.com");
+	//receiveStatus();
+	//disableReceiveINT(); 
+	//if(errorCheck()){
+		//sendCommand(NOPREFIX, STREAM_CLOSE, NOVAL);
+		//return 0;
+	//}
+//
+	//else{
+		//sendCommand(NOPREFIX, STREAM_CLOSE, NOVAL);
+		//return 1;
+	//}
+	
+	
+	return 1; 
+
+}
+
+int networkTest()
+{
+	enableReceiveINT();
+	sendCommand(NOPREFIX, HTTP_GET, "www.wi-pro.us");
+	receiveStatus(); 
+	if(errorCheck()){
+		sendCommand(NOPREFIX, STREAM_CLOSE, NOVAL);
+		return 0;
+	}
+
+	else{
+		sendCommand(NOPREFIX, STREAM_CLOSE, NOVAL);
+		return 1;
+	}
 }
 
 int serverConnect(char* serverDNS, unsigned char* port)
@@ -168,12 +196,12 @@ char* getFileWifi(char* filepath, int externRAM, uint32_t RAMAddress, int multiR
 	//enableReceiveINT();
 	//setTestPrint(1); 
 	enableReceiveINT();   
-	PORTD &= ~(1<<CTS);
+	//PORTD &= ~(1<<CTS);
 	setReceiveCounter(0);
 	uint16_t i = 0; 
 	char* receiveHeader; 
 	//setCompressFlag(1);
-	PORTD |= (1<<CTS);
+	//PORTD |= (1<<CTS);
 	sendCommand(NOPREFIX, HTTP_GET, filepath);
 	receiveStatus();
 	do 

@@ -4,29 +4,40 @@
  * Created: 4/17/2015 12:55:14 AM
  *  Author: Brandon
  */ 
-
+#define F_CPU 8000000UL 
 
 #include <avr/io.h>
 #include <util/delay.h>
+#include <avr/interrupt.h>
 #include "Program/ProgramDriver.h"
 #include "Drivers/RAM/MemoryMap.h"
+#include "Drivers/Ethernet/Ethernet.h"
 #include "Program/AVR.h"
 
 int main(void)
 {
-	char* SignatureBytes;
+	//char* SignatureBytes;
+	_delay_ms(1000);
 	connectionInit(); 
 	hexInit();
+	//ethernetInit(); 
+	sei(); 
+	//Collecting garbage transmission on wi-fi module bootup 
+	//receiveStatus();
+	//networkConnect("UNOGuest", ""); 
+	//_delay_ms(100);
+	//networkTest();  
+	pollingInit(); 
 	//setMachineMode();
-	_delay_ms(1000);
-	if(serverConnect("www.wi-pro.us", "80"))
-	{
-		printf("Connected!!\n");
-	}  
-	else
-	{
-		printf("Connection Failed\n"); 
-	}
+	//_delay_ms(2000);
+	//if(serverConnect("www.wi-pro.us", "80"))
+	//{
+		//printf("Connected!!\n");
+	//}  
+	//else
+	//{
+		//printf("Connection Failed\n"); 
+	//}
 	//pollingInit(); 
 	//printf("\n\n");
 	//writeHexFileTest();
@@ -57,3 +68,4 @@ int main(void)
         //TODO:: Please write your application code 
     }
 }
+

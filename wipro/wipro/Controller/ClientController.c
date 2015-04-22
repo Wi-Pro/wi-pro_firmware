@@ -31,6 +31,11 @@ void connectionInit()
 	uart2_init();
 	uart_init(); 
 	SPI_Init();
+	flagInit(); 
+	ethernetPlugInit(); 
+	memset(filepath, 0x00, 100);
+	Flags[WIFI] = 1; 
+	//checkWifiStatus(); 
 }
 
 void flagInit()
@@ -39,6 +44,13 @@ void flagInit()
 	for(int i = 0; i < FLAG_ARRAY_LENGTH; i++)
 	{
 		Flags[i] = 0; 
+	}
+	
+	if(!(PINE & (1<<INT5)))
+	{
+		printf("Ethernet Enabled!\n"); 
+		ethernetInit();
+		Flags[ETHERNET] = 1; 
 	}
 }
 
@@ -54,9 +66,17 @@ void pollingInit()
 	TIMSK1 = (1 << TOIE1);
 }
 
-//Checks to see if Ethernet or Wi-Fi is available 
-int checkNetworkStatus()
+void ethernetPlugInit()
 {
+	EIMSK = (1<<INT5);
+	//Double Edge Triggered 
+	EICRB = (1<<ISC50);
+}
+
+//Checks to see if Ethernet or Wi-Fi is available 
+int checkWifiStatus()
+{
+	Flags[WIFI] = networkTest(); 
 	return 1; 
 }
 
@@ -64,7 +84,8 @@ int clearFlags()
 {
 	if(Flags[ETHERNET])
 	{
-		strcpy(filepath, GET);
+		memset(filepath, 0x00, 100);
+		strcpy(filepath, "GET ");
 		strcat(filepath, URL);
 		strcat(filepath, CLEAR_FLAG);
 		strcat(filepath, WIPRO_ID);
@@ -110,14 +131,14 @@ void sendAvailableNetworks()
 
 int getHexFile()
 {
-	Flags[WIFI] = 1; 
+	//Flags[WIFI] = 1; 
 	if(Flags[WIFI])
 	{
 		strcpy(filepath, URL);
 		strcat(filepath, HEX_FILE);
 		//setTestPrint(1);
 		printf("Compress Flag Set!");
-		setCompressFlag(1);
+		//setCompressFlag(1);
 		getFileWifi(filepath, 1, HEX_FILE_ADDRESS, 1);
 		compressFile(getTransmissionLength()); 
 		//setCompressFlag(0); 
@@ -130,12 +151,11 @@ int getHexFile()
 
 int getFlagStatus()
 {
-	//Testing 
 	TIMSK1 &= ~(1 << TOIE1);
-	Flags[ETHERNET] = 0; 
-	Flags[WIFI] = 1; 
-	
-	if(Flags[ETHERNET]){
+	//Flags[ETHERNET] = 0; 
+	//Flags[WIFI] = 0; 
+	//Normally Flags[ETHERNET] == 1 
+	if(0){
 		getFileEthernet(FLAG_FILE, 1, STATUS_FLAG_ADDRESS, 3); 
 		printf("Ram Print: ");
 		RAMPrint(STATUS_FLAG_ADDRESS-10, 20);
@@ -164,10 +184,11 @@ int getFlagStatus()
 	}
 	memset(filepath, 0x00, 100); 
 	//Perform actions based on flags 
-	if(Flags[PROGRAM] == 0x01)
+	//if(Flags[PROGRAM] == 0x01)
+	if(1)
 	{
 		//Program Function 
-		//printf("Program!\n");
+		printf("Program!\n");
 		//PORTD &= ~(1<<CTS);
 		//wifiDriverInit(); 
 		//PORTD |= (1<<CTS); 
@@ -196,10 +217,30 @@ int getFlagStatus()
 //Timer overflow vector for polling 
 ISR(TIMER1_OVF_vect)
 {
-	cli(); 
+	//cli(); 
+	TIMSK1 &= ~(1 << TOIE1);
 	printf("Flag Status\n");
 	getFlagStatus(); 
 	TCNT1L = 0x00;
 	TCNT1H = 0x00;
-	sei();  
+	TIMSK1 |= (1 << TOIE1);
+	//sei();  
+}
+
+ISR(INT5_vect)
+{
+	cli();
+	if(PINE & (1<<INT5))
+	{
+		Flags[ETHERNET] = 0; 
+		//checkWifiStatus(); 
+		printf("Rising Edge!\n");
+	}
+	else
+	{
+		Flags[ETHERNET] = 1; 
+		ethernetInit();
+		printf("Falling Edge!\n");
+	}
+	sei();
 }

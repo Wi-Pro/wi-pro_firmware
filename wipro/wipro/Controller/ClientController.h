@@ -33,6 +33,7 @@
 void connectionInit();
 void sendAvailableNetworks();
 int getFlagStatus();
+int checkWifiStatus();
 void pollingInit();
 int clearFlags(); 
 int getHexFile(); 

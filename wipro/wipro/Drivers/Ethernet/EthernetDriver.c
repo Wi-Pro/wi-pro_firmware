@@ -100,26 +100,26 @@ void NetworkSetup(uint8_t *mac_addr, uint8_t *local_ip_addr, uint8_t *sub_mask, 
 	// Enable SPI, Master Mode 0, set the clock rate fck/2
 	SPCR = (1<<SPE)|(1<<MSTR);
 	// Initial the Wiznet W5100
-	//printf("Wiznet W5100 Init\n");
+	printf("Wiznet W5100 Init\n");
 	// Ethernet Setup
-	//printf("Enterting Ethernet Setup\n");
+	printf("Enterting Ethernet Setup\n");
 	// Setting the Wiznet W5100 Mode Register: 0x0000
 	SPI_EthernetWrite(MR,0x80); 
 	_delay_ms(1);
-	/*printf("Reading MR: %d\n\n",SPI_EthernetRead(MR));
+	printf("Reading MR: %d\n\n",SPI_EthernetRead(MR));
 	// Setting the Wiznet W5100 Gateway Address
-	//printf("Setting Gateway Address %d.%d.%d.%d\n",gtw_addr[0],gtw_addr[1],\
-	gtw_addr[2],gtw_addr[3]);*/
+	printf("Setting Gateway Address %d.%d.%d.%d\n",gtw_addr[0],gtw_addr[1],\
+	gtw_addr[2],gtw_addr[3]);
 	SPI_EthernetWrite(GAR + 0,gtw_addr[0]);
 	SPI_EthernetWrite(GAR + 1,gtw_addr[1]);
 	SPI_EthernetWrite(GAR + 2,gtw_addr[2]);
 	SPI_EthernetWrite(GAR + 3,gtw_addr[3]);
 	_delay_ms(1);
-	//printf("Reading GAR: %d.%d.%d.%d\n\n",SPI_EthernetRead(GAR + 0),SPI_EthernetRead(GAR + 1),\
+	printf("Reading GAR: %d.%d.%d.%d\n\n",SPI_EthernetRead(GAR + 0),SPI_EthernetRead(GAR + 1),\
 	SPI_EthernetRead(GAR + 2),SPI_EthernetRead(GAR + 3));
 	
 	// Setting the Wiznet W5100 Source Address Register
-	//printf("Setting Source Address %.2x:%.2x:%.2x:%.2x:%.2x:%.2x\n",mac_addr[0],mac_addr[1],\
+	printf("Setting Source Address %.2x:%.2x:%.2x:%.2x:%.2x:%.2x\n",mac_addr[0],mac_addr[1],\
 	mac_addr[2],mac_addr[3],mac_addr[4],mac_addr[5]);
 	SPI_EthernetWrite(SAR + 0,mac_addr[0]);
 	SPI_EthernetWrite(SAR + 1,mac_addr[1]);
@@ -128,22 +128,22 @@ void NetworkSetup(uint8_t *mac_addr, uint8_t *local_ip_addr, uint8_t *sub_mask, 
 	SPI_EthernetWrite(SAR + 4,mac_addr[4]);
 	SPI_EthernetWrite(SAR + 5,mac_addr[5]);
 	_delay_ms(1);
-	//printf("Reading SAR: %.2x:%.2x:%.2x:%.2x:%.2x:%.2x\n\n",SPI_EthernetRead(SAR + 0),SPI_EthernetRead(SAR + 1),\
+	printf("Reading SAR: %.2x:%.2x:%.2x:%.2x:%.2x:%.2x\n\n",SPI_EthernetRead(SAR + 0),SPI_EthernetRead(SAR + 1),\
 	SPI_EthernetRead(SAR + 2),SPI_EthernetRead(SAR + 3),SPI_EthernetRead(SAR + 4),SPI_EthernetRead(SAR + 5));
 	
 	// Setting the Wiznet W5100 Sub Mask Address
-	//printf("Setting Sub Mask Address %d.%d.%d.%d\n",sub_mask[0],sub_mask[1],\
+	printf("Setting Sub Mask Address %d.%d.%d.%d\n",sub_mask[0],sub_mask[1],\
 	sub_mask[2],sub_mask[3]);
 	SPI_EthernetWrite(SUBR + 0,sub_mask[0]);
 	SPI_EthernetWrite(SUBR + 1,sub_mask[1]);
 	SPI_EthernetWrite(SUBR + 2,sub_mask[2]);
 	SPI_EthernetWrite(SUBR + 3,sub_mask[3]);
 	_delay_ms(1);
-	//printf("Reading SUBR: %d.%d.%d.%d\n\n",SPI_EthernetRead(SUBR + 0),SPI_EthernetRead(SUBR + 1),\
+	printf("Reading SUBR: %d.%d.%d.%d\n\n",SPI_EthernetRead(SUBR + 0),SPI_EthernetRead(SUBR + 1),\
 	SPI_EthernetRead(SUBR + 2),SPI_EthernetRead(SUBR + 3));
 	
 	// Setting the Wiznet W5100 IP Address (SIPR): 0x000F to 0x0012
-	//printf("Setting IP Address %d.%d.%d.%d\n",local_ip_addr[0],local_ip_addr[1],\
+	printf("Setting IP Address %d.%d.%d.%d\n",local_ip_addr[0],local_ip_addr[1],\
 	local_ip_addr[2],local_ip_addr[3]);
 	SPI_EthernetWrite(SIPR + 0,local_ip_addr[0]);
 	SPI_EthernetWrite(SIPR + 1,local_ip_addr[1]);
@@ -151,9 +151,9 @@ void NetworkSetup(uint8_t *mac_addr, uint8_t *local_ip_addr, uint8_t *sub_mask, 
 	SPI_EthernetWrite(SIPR + 3,local_ip_addr[3]);
 	_delay_ms(1);
 	
-	//printf("Reading SIPR: %d.%d.%d.%d\n\n",SPI_EthernetRead(SIPR + 0),SPI_EthernetRead(SIPR + 1),\
+	printf("Reading SIPR: %d.%d.%d.%d\n\n",SPI_EthernetRead(SIPR + 0),SPI_EthernetRead(SIPR + 1),\
 	SPI_EthernetRead(SIPR + 2),SPI_EthernetRead(SIPR + 3));
-	//printf("Done Wiznet W5100 Initialized!\n");
+	printf("Done Wiznet W5100 Initialized!\n");
 	//Memory_Init(); 
 }
 
@@ -161,7 +161,7 @@ int Server_Connect(uint8_t socketMode, uint8_t *server_ip_addr, uint8_t *server_
 {
 	do 
 	{
-		printf("SPI SR Status: %d\n", SPI_EthernetRead(S0_SR));
+		//printf("SPI SR Status: %d\n", SPI_EthernetRead(S0_SR));
 		SPI_EthernetWrite(S0_CR, CLOSE);
 		//SPI_Write(S0_MR, TCP_MODE);
 		SPI_EthernetWrite(S0_MR, socketMode);

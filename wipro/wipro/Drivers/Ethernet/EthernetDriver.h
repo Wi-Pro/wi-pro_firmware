@@ -14,12 +14,12 @@
 
 #define SPI_PORT PORTB
 #define SPI_DDR  DDRB
-#define CS_DDR DDRA 
-#define CS_PORT PORTA 
-#define ETH_CS   PORTA0  
-#define MOSI PORTB5 
-#define SCK PORTB7 
-#define SS PORTB4 
+#define CS_DDR DDRE 
+#define CS_PORT PORTE 
+#define ETH_CS 4  
+#define MOSI 2
+#define SCK 1
+#define SS 0
 
 #define WIZNET_WRITE_OPCODE 0xF0
 #define WIZNET_READ_OPCODE 0x0F

@@ -43,6 +43,7 @@ void setMachineMode();
 void setHumanMode(); 
 char* networkScan(); 
 int networkConnect(char* SSID, char* password); 
+int networkTest(); 
 int serverConnect(char* serverDNS, unsigned char* port);
 uint16_t networkQueryString(char* filepath);
 char* getFileWifi(char* filepath, int externRAM, uint32_t RAMAddress, int multiReceive);

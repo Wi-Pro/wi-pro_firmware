@@ -21,7 +21,6 @@ void ProgInit(void)
 {
 	SPI_Switching_Circuitry_Init(); 
 	SPI_FPGA_Init();
-	
 	voltageControlInit();
 	setVpp(VPP_12V);
 	setVcc(VCC_5V);

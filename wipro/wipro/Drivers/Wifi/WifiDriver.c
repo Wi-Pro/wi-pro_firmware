@@ -391,7 +391,7 @@ ISR(USART0_RX_vect)
 			transLength = buildTransmissionLength();
 			//i++; 
 			//if(testPrint)
-				printf("Transmission Length: %d\n", transLength);
+				//printf("Transmission Length: %d\n", transLength);
 		}
 		else
 		{
@@ -399,34 +399,34 @@ ISR(USART0_RX_vect)
 			{
 				//printf("Translength: %d", transLength);
 				buff = uart_receiveChar();
-				if(compressFlag == 1)
-				{
-					//printf("Compressing!\n");
-					//PORTD &= ~(1<<CTS);
-					if(buff == ':')
-					{
-						//PORTD &= ~(1<<RTS);
-						RAMWriteByte(buff, RAMAddress + i - endHeader -1);
-					}
-					else if(!secondNibble)
-					{
-						//Mask the ASCII Nibble 
-						compressBuff = (buff & 0x0F);
-						//Shift it into the upper nibble  
-						compressBuff <<= 4; 
-						secondNibble =  1;
-					}
-					else
-					{
-						compressBuff |= buff; 
-						RAMWriteByte(compressBuff, RAMAddress + i - endHeader -1);
-						secondNibble = 0; 
-					}
-				}
-				else
-				{
+				//if(compressFlag == 1)
+				//{
+					////printf("Compressing!\n");
+					////PORTD &= ~(1<<CTS);
+					//if(buff == ':')
+					//{
+						////PORTD &= ~(1<<RTS);
+						//RAMWriteByte(buff, RAMAddress + i - endHeader -1);
+					//}
+					//else if(!secondNibble)
+					//{
+						////Mask the ASCII Nibble 
+						//compressBuff = (buff & 0x0F);
+						////Shift it into the upper nibble  
+						//compressBuff <<= 4; 
+						//secondNibble =  1;
+					//}
+					//else
+					//{
+						//compressBuff |= buff; 
+						//RAMWriteByte(compressBuff, RAMAddress + i - endHeader -1);
+						//secondNibble = 0; 
+					//}
+				//}
+				//else
+				//{
 					RAMWriteByte(buff, RAMAddress + i - endHeader -1);	
-				}
+				//}
 				
 				//printf("Received String: %c @ location %d\n", receiveBuffer[i], i);
 				//i++; 
