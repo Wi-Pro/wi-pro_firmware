@@ -16,23 +16,32 @@
 int Program(uint32_t sigBytes)
 
 {
+	ApplyPullDowns();
 	ProgInit();
-	EnableProgMode(ATtiny2313);
+	EnableProgMode(sigBytes);
 	
-	if(verifySignature())
+	if(verifySignature(sigBytes))
 	{
 		//Continue with Programming operation 
-		printf("Programming!\n");
+		printf("Starting Programming!\n");
+		printf("Erasing...\n");
 		ChipErase();
-		printf("Done Erasing!\n");
-		ReadFlash();
-		printf("\n");
+		printf("\nDone Erasing!\n");
+		printf("Programming...\n");
 		ProgramFlash();
-		printf("Done Programming!\n");
-		ReadFlash();
-		printf("\nDone!\n\n");
-		ExitParallelProgrammingMode();
-		return 1; 
+		printf("Verifying...\n");
+		if (VerifyFlash())
+		{
+			printf("Programming Succeeded!\n");
+			ExitParallelProgrammingMode();
+			return 1;
+		} 
+		else
+		{
+			printf("Programming Failed!\n");
+			ExitParallelProgrammingMode();
+			return 0;
+		}
 	}
 	else
 	{
@@ -43,13 +52,13 @@ int Program(uint32_t sigBytes)
 	
 }
 
-int verifySignature()
+int verifySignature(uint32_t sigBytes)
 {
 	char* SignatureBytes = ReadSignatureBytes();
 	
 	printf("\nSignature Bytes: %02X %02X %02X\n", *SignatureBytes, *(SignatureBytes + 1), *(SignatureBytes + 2));
 	//if ( (*SignatureBytes == 0x1E) && (*(SignatureBytes + 1) == 0x91) && (*(SignatureBytes + 2) == 0x0A) )
-	if ( (*SignatureBytes == ATtiny2313_1) && (*(SignatureBytes + 1) == ATtiny2313_2) && (*(SignatureBytes + 2) == ATtiny2313_3) )
+	if ( (*SignatureBytes == ( (sigBytes & 0xFF0000)>>16 ) ) && (*(SignatureBytes + 1) == ( (sigBytes & 0x00FF00)>>8 ) ) && (*(SignatureBytes + 2) == ( (sigBytes & 0x0000FF) )) )
 	{
 		return 1; 
 	}
@@ -66,7 +75,7 @@ int compressFile(uint16_t length)
 	uint8_t upperNibble; 
 	uint8_t lowerNibble; 
 	uint8_t hexVal; 
-	uint16_t j; 
+	uint16_t j = 0; 
 	
 	for(int i=0; i<length; i++)
 	{

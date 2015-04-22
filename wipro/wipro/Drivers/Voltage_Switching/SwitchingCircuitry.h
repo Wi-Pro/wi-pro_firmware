@@ -33,6 +33,7 @@ void ClearShiftRegData();
 void SetShiftRegData(uint8_t pinType, char data[SOCKET_SIZE/sizeof(char)]);
 void WriteShiftRegData();
 void setAtTiny2313();
+void setAtMega324PA();
 
 
 #endif /* SWITCHINGCIRCUITRY_H_ */

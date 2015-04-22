@@ -32,6 +32,7 @@
 
 
 void SPI_FPGA_Init();
+void FPGA_Write(uint32_t TargetMicrocontroller);
 void SPI_FPGA_Write(unsigned char SPI_Data);
 
 

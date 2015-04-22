@@ -60,6 +60,7 @@ void writeHexFileTest()
 	{
 		printf("0x%02X ", *(buffer + i));
 	}
+	printf("\n");
 				
 	RAMWrite(buffer, HEX_FILE_ADDRESS, 50);
 					

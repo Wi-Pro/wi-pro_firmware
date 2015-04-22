@@ -18,11 +18,13 @@ void SPI_Init()
 	// Set MOSI ,SCK, and SS as output, others as input
 	SPI_DDR |= (1<<MOSI)|(1<<SCK)|(1<<SS)|(1<<HOLD);
 	//Set MISO as Input
-	SPI_DDR &= ~(1<<MISO);
+	//SPI_DDR &= ~(1<<MISO);
+	
 	SPI_PORT |= (1<<HOLD);
 	// CS pin is not active
 	RAM_DDR |= (1<<RAM_CS);
-	// Enable SPI, Master Mode 0, set the clock rate fck/16
+	RAM_PORT |= (1<<RAM_CS);
+	// Enable SPI, Master Mode 0, set the clock rate fck/128
 	SPCR = (1<<SPE)|(1<<MSTR)|(1<<SPR0)|(1<<SPR1);
 	RAMWriteByte(0x32, 0000);
 }

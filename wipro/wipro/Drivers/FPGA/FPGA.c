@@ -7,6 +7,7 @@
 #include <avr/io.h>
 #include <util/delay.h>
 #include "FPGA.h"
+#include "../../Program/AVR.h"
 
 void SPI_FPGA_Init(void)
 {
@@ -16,6 +17,25 @@ void SPI_FPGA_Init(void)
 	WR_DDR |= 1<<FPGAWR;
 	WR_PORT &= ~(1<<FPGAWR);
 	SPI_FPGA_Write(FPGA_Disable);
+}
+
+void FPGA_Write(uint32_t TargetMicrocontroller)
+{
+	switch (TargetMicrocontroller)
+	{
+		case ATtiny2313 :
+			SPI_FPGA_Write(FPGA_ATtiny2313_Mapping);
+		break;
+		case ATmega324PA :
+			SPI_FPGA_Write(FPGA_ATmega324PA_Mapping);
+		break;
+		case 3 :
+		break;
+		case 4 :
+		break;
+		default:
+		break;
+	}
 }
 
 void SPI_FPGA_Write(unsigned char SPI_Data)
