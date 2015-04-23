@@ -37,12 +37,19 @@ int Program(uint32_t sigBytes)
 		{
 			printf("Programming Succeeded!\n");
 			ExitParallelProgrammingMode();
+			LED_PORT &= ~(1<<LED_Yellow);
+			LED_PORT |= (1<<LED_Green);
 			return 1;
 		} 
 		else
 		{
 			printf("Programming Failed!\n");
 			ExitParallelProgrammingMode();
+			LED_PORT &= ~(1<<LED_Yellow);
+			LED_PORT |= (1<<LED_Red);
+			_delay_ms(2000);
+			LED_PORT &= ~(1<<LED_Red);
+			LED_PORT |= (1<<LED_Green);
 			return 0;
 		}
 	}
@@ -50,6 +57,11 @@ int Program(uint32_t sigBytes)
 	{
 		printf("Bad Signature Byte!\n"); 
 		ExitParallelProgrammingMode();
+		LED_PORT |= (1<<LED_Red);
+		_delay_ms(2000);
+		LED_PORT &= ~(1<<LED_Yellow);
+		LED_PORT &= ~(1<<LED_Red);
+		LED_PORT |= (1<<LED_Green);
 		return 0; 
 	}
 	
@@ -107,7 +119,7 @@ int checkSum()
 		//Adding 4 bytes to account for the record type, high and low address, and data type 
 		byteCount += 4; 
 
-		for(i=1; i<byteCount; i++)
+		for(i=1; i<=byteCount; i++)
 		{
 			checkSumVal += hexRow[i];
 			//printf("Total Bytes: %d, i: %d, j: %d\n", totalBytes, i, j);

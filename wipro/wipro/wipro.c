@@ -18,6 +18,8 @@
 int main(void)
 {
 	_delay_ms(1000);
+	LED_DDR |= ((1<<LED_Green) | (1<<LED_Yellow) | (1<<LED_Red));
+	LED_PORT |= (1<<LED_Green);
 	connectionInit(); 
 	hexInit();
 	//ethernetInit(); 

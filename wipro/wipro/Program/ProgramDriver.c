@@ -35,8 +35,9 @@ void ProgInit(void)
 	RDY_BSY_DDR &= ~(1<<RDY_BSY);
 	DATA_DDR = 0xFF;
 	
-	LED_DDR |= ((1<<LED_Green) | (1<<LED_Yellow) | (1<<LED_Red));
-	LED_PORT |= (1<<LED_Green);
+	//LED_DDR |= ((1<<LED_Green) | (1<<LED_Yellow) | (1<<LED_Red));
+	LED_PORT &= ~(1<<LED_Green);
+	LED_PORT |= (1<<LED_Yellow);
 }
 
 void ApplyPullDowns(void)
