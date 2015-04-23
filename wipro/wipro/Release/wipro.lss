@@ -3040,9 +3040,9 @@ Disassembly of section .text:
     183e:	40 e0       	ldi	r20, 0x00	; 0
     1840:	85 2f       	mov	r24, r21
     1842:	90 e0       	ldi	r25, 0x00	; 0
-    1844:	82 17       	cp	r24, r18
-    1846:	93 07       	cpc	r25, r19
-    1848:	38 f4       	brcc	.+14     	; 0x1858 <checkSum+0x68>
+    1844:	28 17       	cp	r18, r24
+    1846:	39 07       	cpc	r19, r25
+    1848:	38 f0       	brcs	.+14     	; 0x1858 <checkSum+0x68>
     184a:	f8 01       	movw	r30, r16
     184c:	e8 0f       	add	r30, r24
     184e:	f9 1f       	adc	r31, r25
