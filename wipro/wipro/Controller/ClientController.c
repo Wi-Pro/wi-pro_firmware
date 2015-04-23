@@ -22,9 +22,11 @@
 #include "../Drivers/Wifi/WifiDriver.h"
 #include "../Drivers/RAM/MemoryMap.h"
 #include "../Program/Program.h"
+#include "../Program/AVR.h"
 
 uint8_t Flags[FLAG_ARRAY_LENGTH]; 
 char filepath[100]; 
+uint32_t signatureBytes; 
 
 void connectionInit()
 {
@@ -134,15 +136,25 @@ int getHexFile()
 	//Flags[WIFI] = 1; 
 	if(Flags[WIFI])
 	{
+		uint16_t transLength; 
 		strcpy(filepath, URL);
 		strcat(filepath, HEX_FILE);
 		//setTestPrint(1);
-		printf("Compress Flag Set!");
+		//printf("Compress Flag Set!");
 		//setCompressFlag(1);
-		getFileWifi(filepath, 1, HEX_FILE_ADDRESS, 1);
-		compressFile(getTransmissionLength()); 
+		transLength = getFileWifi(filepath, 1, HEX_FILE_ADDRESS, 1);
+		printf("Uncompressed Trans Length: %d\n", transLength); 
+		//RAMPrint(HEX_FILE_ADDRESS, 100);
+		compressFile(transLength); 
+		memset(filepath, 0x00, 100);
+		strcpy(filepath, URL);
+		strcat(filepath, DEVICE_FILE);
+		getFileWifi(filepath, 1, STATUS_FLAG_ADDRESS + DEVICE_ID, 1); 
+		//writeHexFileTest(); 
+		printf("Compressed!\n"); 
 		//setCompressFlag(0); 
-		RAMPrint(HEX_FILE_ADDRESS, 1045);
+		//RAMPrint(HEX_FILE_ADDRESS, 500);
+		//Program(ATtiny2313); 
 		//printf("Hex File Downloaded!\n");
 	}
 	
@@ -173,7 +185,7 @@ int getFlagStatus()
 		strcpy(filepath, URL);
 		strcat(filepath, FLAG_FILE); 
 		//setTestPrint(1);
-		getFileWifi(filepath, 1, STATUS_FLAG_ADDRESS, 0); 
+		getFileWifi(filepath, 1, STATUS_FLAG_ADDRESS, 0);
 		printf("Ram Print: ");
 		RAMPrint(STATUS_FLAG_ADDRESS, 3);
 		printf("\n");
@@ -184,8 +196,7 @@ int getFlagStatus()
 	}
 	memset(filepath, 0x00, 100); 
 	//Perform actions based on flags 
-	//if(Flags[PROGRAM] == 0x01)
-	if(1)
+	if(Flags[PROGRAM] == 0x01)
 	{
 		//Program Function 
 		printf("Program!\n");
@@ -194,7 +205,22 @@ int getFlagStatus()
 		//PORTD |= (1<<CTS); 
 		//_delay_ms(2000); 
 		getHexFile();
-		//Program();
+		Flags[DEVICE_ID] = (RAMReadByte(STATUS_FLAG_ADDRESS + DEVICE_ID) & 0x0F);
+		printf("Device ID: %d\n", Flags[DEVICE_ID]); 
+		signatureBytes = selectChip(Flags[DEVICE_ID]); 
+		//printf("Signature Byte: 0x%08X\n", signatureBytes); 
+		switch(Flags[DEVICE_ID])
+		{
+			case ATtiny2313_ID:
+				Program(ATtiny2313);
+				break;
+			case ATmega324PA_ID: 
+				Program(ATmega324PA);
+				break;
+			default:
+				printf("Error, bad device ID!\n");
+				break; 
+		}
 		//printf("Done Downloading!\n");
 	}
 	else if(Flags[NETWORK_SCAN] == 0x01)

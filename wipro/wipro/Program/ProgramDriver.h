@@ -105,6 +105,7 @@ void EndPageProgramming();
 void ExitParallelProgrammingMode();
 char* ReadSignatureBytes();
 void ChipErase();
+void ReadFlash();
 int VerifyFlash();
 void ProgramFlash();
 void EndPageProgramming();

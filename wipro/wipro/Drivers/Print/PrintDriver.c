@@ -97,8 +97,8 @@ void UARTStream_Init()
 {
 	//DDRA = 0xFF;
 	// Set the PORTD as Output:
-	DDRD=0xFF;
-	PORTD=0x00;
+	//DDRD=0xFF;
+	//PORTD=0x00;
 
 	// Define Output/Input Stream
 	stdout = stdin = &uart_stream;

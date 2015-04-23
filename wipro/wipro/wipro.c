@@ -21,13 +21,18 @@ int main(void)
 	connectionInit(); 
 	hexInit();
 	//ethernetInit(); 
-	//sei(); 
+	sei(); 
 	//Collecting garbage transmission on wi-fi module bootup 
 	//receiveStatus();
 	//networkConnect("UNOGuest", ""); 
 	//_delay_ms(100);
 	//networkTest();  
 	//pollingInit(); 
+	getFlagStatus(); 
+	//writeHexFileTest(); 
+	//getHexFile();
+	//cli(); 
+	//Program(ATtiny2313);
 	//setMachineMode();
 	//_delay_ms(2000);
 	//if(serverConnect("www.wi-pro.us", "80"))
@@ -40,13 +45,13 @@ int main(void)
 	//}
 	//pollingInit(); 
 	
-	printf("\n\n");
-	writeHexFileTest();
-	RAMPrint(HEX_FILE_ADDRESS, 50);
+	//printf("\n\n");
+	//writeHexFileTest();
+	//RAMPrint(HEX_FILE_ADDRESS, 50);
 	//Write test file to external RAM
 	//Test switching circuitry code
 	
-	Program(ATmega324PA);
+	//Program(ATmega324PA);
 	
 	printf("Done!\n"); 
     while(1)

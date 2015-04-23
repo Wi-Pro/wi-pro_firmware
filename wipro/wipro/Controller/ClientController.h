@@ -20,6 +20,7 @@
 //Server Files
 #define FLAG_FILE "/uploads/hex/1000000000/flagfile.txt"
 #define HEX_FILE "/uploads/hex/1000000000/default.hex"
+#define DEVICE_FILE "/uploads/hex/1000000000/deviceinfo.txt"
 
 //Flag positions
 #define ETHERNET 0 
@@ -27,9 +28,12 @@
 #define PROGRAM 2 
 #define NETWORK_SCAN 3 
 #define NETWORK_CONNECT 4
-#define FLAG_ARRAY_LENGTH 5 
+#define DEVICE_ID 5 
+#define FLAG_ARRAY_LENGTH 6
 
 
+void flagInit(); 
+void ethernetPlugInit();
 void connectionInit();
 void sendAvailableNetworks();
 int getFlagStatus();

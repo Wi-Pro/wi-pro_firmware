@@ -10,6 +10,7 @@
 #define PROGRAM_H_
 
 int Program(uint32_t sigBytes); 
+unsigned int selectChip(uint16_t id);
 int verifySignature();
 int compressFile(uint16_t length);
 

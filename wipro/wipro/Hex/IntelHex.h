@@ -27,6 +27,7 @@
 char* getHexRow();
 void hexInit();
 void writeHexFileTest();
+void resetRAMOffset();
 
 
 

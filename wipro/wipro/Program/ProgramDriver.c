@@ -296,9 +296,43 @@ char* ReadSignatureBytes(void)
 	return SignatureBytes;
 }
 
+void ReadFlash(void)
+{
+	char DataValueIn = 0;
+	
+	//A: Load Command "Read Flash"
+	LoadCommand(READ_FLASH);
+	
+	for (unsigned int LowAddressByte = 0; LowAddressByte < 16; LowAddressByte++)
+	{
+		//F: Load Address High Byte
+		LoadHighAddress(0x00);
+		
+		//B: Load Address Low Byte
+		LoadLowAddress(LowAddressByte);
+		
+		//Read data
+		DATA_DDR = 0;
+		WR_PORT |= (1<<FPGAWR);
+		CONTROL_PORT &= ~(1<<OE);
+		CONTROL_PORT &= ~(1<<BS1_PAGEL); //Reading flash word low byte
+		_delay_us(500);
+		DataValueIn = DATA_PIN;
+		printf("0x%02X ", DataValueIn);
+		CONTROL_PORT |= 1<<BS1_PAGEL; //Reading flash word high byte
+		_delay_us(500);
+		DataValueIn = DATA_PIN;
+		printf("0x%02X ", DataValueIn);
+		CONTROL_PORT |= 1<<OE;
+		WR_PORT &= ~(1<<FPGAWR);
+		DATA_DDR = 0xFF;
+		_delay_us(25);
+	}
+}
+
 int VerifyFlash(void)
 {
-	hexInit();
+	resetRAMOffset(); 
 	
 	char DataValueIn = 0;
 	
@@ -324,7 +358,8 @@ int VerifyFlash(void)
 		byteCount = (hexRow[BYTE_COUNT]);
 		address = hexRow[ADDRESS_H];
 		address <<= 8;
-		address |= (hexRow[ADDRESS_L]/2);
+		address |= (hexRow[ADDRESS_L]);
+		address /= 2;
 		
 		int j =0;
 		for(int i=0; i<byteCount; i+=2)
@@ -341,19 +376,19 @@ int VerifyFlash(void)
 			CONTROL_PORT &= ~(1<<BS1_PAGEL); //Reading flash word low byte
 			_delay_us(500);
 			DataValueIn = DATA_PIN;
+			printf("0x%02X ", DataValueIn);
 			if (DataValueIn != hexRow[DATA_BEGIN + i])
 			{
 				return 0;
 			}
-			printf("0x%02X ", DataValueIn);
 			CONTROL_PORT |= 1<<BS1_PAGEL; //Reading flash word high byte
 			_delay_us(500);
 			DataValueIn = DATA_PIN;
+			printf("0x%02X ", DataValueIn);
 			if (DataValueIn != hexRow[DATA_BEGIN + i + 1])
 			{
 				return 0;
 			}
-			printf("0x%02X ", DataValueIn);
 			CONTROL_PORT |= 1<<OE;
 			WR_PORT &= ~(1<<FPGAWR);
 			DATA_DDR = 0xFF;
@@ -380,14 +415,27 @@ void ChipErase(void)
 	while(!(RDY_BSY_In & (1<<RDY_BSY)));
 }
 
-void ProgramFlash(char* hexData)
+void ProgramFlash(uint32_t sigBytes)
 {
 	char* hexRow;
 	uint16_t byteCount;
 	uint16_t address;
 	uint16_t data;
 	uint32_t totalBytes = 0; 
+	uint16_t pageSize;
+	int j;
+	int i; 
 	//Keep looping until the hexRow is the end of file or we hit the end of a page 
+	if(sigBytes == ATtiny2313)
+	{
+		printf("Page size is 16\n");
+		pageSize = 16; 
+	}
+	else if(sigBytes == ATmega324PA)
+	{
+		pageSize = 64; 
+		printf("Page size is 64\n");
+	}
 	
 	LoadCommand(WRITE_FLASH);
 	
@@ -398,43 +446,50 @@ void ProgramFlash(char* hexData)
 		//printf("We're here now\n");
 		
 		if(hexRow[RECORD_TYPE] == TYPE_END_OF_FILE)
-			break; 
-			
+		{
+			printf("End of File!\n"); 
+			break;
+		}
+					
 		byteCount = (hexRow[BYTE_COUNT]);
 		address = hexRow[ADDRESS_H];
 		address <<= 8;
-		address |= (hexRow[ADDRESS_L]/2);
-		
-		int j =0;
-		for(int i=0; i<byteCount; i+=2)
+		address |= (hexRow[ADDRESS_L]);
+		address /= 2; 
+		printf("\nByteCount: %d, Address: 0x%04x\n", byteCount, address); 
+		j =0;
+		for(i=0; i<byteCount; i+=2)
 		{
 			LoadLowAddress(address + j);
-			printf("Address: 0x%04X\n",(address + j));
+			//printf("Address: 0x%04X\n",(address + j));
 			data = hexRow[DATA_BEGIN + i + 1];
 			data <<= 8;
 			data |= hexRow[DATA_BEGIN + i];
 			WriteWord(data);
-			printf("Word: 0x%04X\n",(data));
+			//printf("Word: 0x%04X\n",(data));
 			totalBytes+=i; 
 			j++;
+			//printf("Total Bytes: %d, i: %d, j: %d\n", totalBytes, i, j);
 			LatchData();
 		}
 		
 		//Check to see if we hit the end of a page 
-		if(totalBytes%PAGE_SIZE_BYTES == 0)
+		if(totalBytes%pageSize == 0)
 		{
+			printf("Full Page Written\n");
 			LoadHighAddress(address);
 			ProgramPage();
 		}
 	}
 	
 	//After reaching end of file, do a final page write in case we did not fill an entire page
-	if(totalBytes%PAGE_SIZE_BYTES != 0)
+	if(totalBytes%pageSize != 0)
 	{
+		printf("Partial Page Written\n");
 		LoadHighAddress(address);
 		ProgramPage();
 	} 
-	
+	printf("Ending Page Programming!\n");
 	EndPageProgramming();
 }
 

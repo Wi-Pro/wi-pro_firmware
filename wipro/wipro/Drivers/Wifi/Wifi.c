@@ -32,8 +32,9 @@ void wifiInit()
 	//PUll the CTS line up 
 	//PORTD |= (1<<CTS);
 	//setTestPrint(0);
+	
 	wifiDriverInit();
-	setMachineMode(); 
+	//setMachineMode(); 
 } 
 
 void setMachineMode()
@@ -61,7 +62,7 @@ char* networkScan()
 	enableReceiveINT(); 
 	sendCommand(NOPREFIX, SCAN, NOVAL);
 	//_delay_ms(3000);
-	PORTD &= ~(1<<RTS);
+	//PORTD &= ~(1<<RTS);
 	receiveStatus(); 
 	//_delay_ms(6000);
 	//for(int i = 0; i < 100; i++)
@@ -190,7 +191,7 @@ uint16_t networkQueryString(char* filepath)
 	return j; 
 }
 
-char* getFileWifi(char* filepath, int externRAM, uint32_t RAMAddress, int multiReceive)
+uint16_t getFileWifi(char* filepath, int externRAM, uint32_t RAMAddress, int multiReceive)
 { 
 	//printf("Filepath: %s\n", filepath);
 	//enableReceiveINT();
@@ -210,21 +211,25 @@ char* getFileWifi(char* filepath, int externRAM, uint32_t RAMAddress, int multiR
 			updateRAMAddress(RAMAddress + i);
 			printf("RAM Address: %d\n", RAMAddress+i); 
 		}
-		sendCommand(NOPREFIX, STREAM_READ, "0 10000");
+		//if(RAMAddress == HEX_FILE_ADDRESS)
+			//setTestPrint(1);
+			
+		setReceiveCounter(0);
+		sendCommand(NOPREFIX, STREAM_READ, "0 500");
 		receiveStatus();
 		receiveHeader = getMessageHeader(); 
-		printf("Tran Length: %d\n", receiveHeader); 
+		printf("Tran Length: %s\n", receiveHeader); 
 		if(receiveHeader[errorCode] == '1'){
 			break; 
 		}
-		i += getTransmissionLength(); 
+		i += getTransmissionLength() - 2; 
 	} while (multiReceive);
 	
 	disableReceiveINT(); 
 	//_delay_ms(3000);  
 	sendCommand(NOPREFIX, STREAM_CLOSE, NOVAL);
 	//receiveStatus(); 
-	return 1; 
+	return i; 
 }
 
 void updateFileWifi(char* filepath)
