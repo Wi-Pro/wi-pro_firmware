@@ -11,6 +11,7 @@
 #include "AVR.h"
 #include "../Drivers/RAM/RAMDriver.h"
 #include "../Drivers/RAM/MemoryMap.h"
+#include "../Hex/IntelHex.h"
 
 
 int Program(uint32_t sigBytes)
@@ -81,6 +82,49 @@ unsigned int selectChip(uint16_t id)
 	}
 }
 
+int checkSum()
+{
+	char* hexRow;
+	uint16_t byteCount;
+	uint8_t checkSumVal; 
+	uint8_t i = 0; 
+	
+	while(1)
+	{
+		hexRow = getHexRow();
+		checkSumVal = 0; 
+		byteCount = 0; 
+	
+		//printf("We're here now\n");
+	
+		if(hexRow[RECORD_TYPE] == TYPE_END_OF_FILE)
+		{
+			printf("End of File!\n");
+			break;
+		}
+	
+		byteCount = (hexRow[BYTE_COUNT]);
+		//Adding 4 bytes to account for the record type, high and low address, and data type 
+		byteCount += 4; 
+
+		for(i=1; i<byteCount; i++)
+		{
+			checkSumVal += hexRow[i];
+			//printf("Total Bytes: %d, i: %d, j: %d\n", totalBytes, i, j);
+		}
+		
+		//Calculate checksum by performing 2's compliment 
+		
+		checkSumVal = ~checkSumVal + 1;
+		printf("\nCalculated Checksum: 0x%02x\n", checkSumVal);
+		printf("Actual Checksum: 0x%02x\n", hexRow[byteCount + 1]); 
+		if(checkSumVal != hexRow[byteCount + 1])
+			return 0;  	
+	}
+	
+	printf("Checksum Passed!\n"); 
+	return 1; 
+}
 
 //Converts ASCII to Hex in external RAM 
 //Length should be the transmission length given from the Wi-Fi module 

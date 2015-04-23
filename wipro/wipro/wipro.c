@@ -28,9 +28,10 @@ int main(void)
 	//_delay_ms(100);
 	//networkTest();  
 	//pollingInit(); 
-	getFlagStatus(); 
+	//getFlagStatus(); 
 	//writeHexFileTest(); 
-	//getHexFile();
+	getHexFile();
+	checkSum();
 	//cli(); 
 	//Program(ATtiny2313);
 	//setMachineMode();

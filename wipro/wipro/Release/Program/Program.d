@@ -15,7 +15,7 @@ Program/Program.d Program/Program.o: ../Program/Program.c \
  c:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.1056\avr8-gnu-toolchain\lib\gcc\avr\4.8.1\include\stddef.h \
  ../Program/ProgramDriver.h ../Program/AVR.h \
  ../Program/../Drivers/RAM/RAMDriver.h \
- ../Program/../Drivers/RAM/MemoryMap.h
+ ../Program/../Drivers/RAM/MemoryMap.h ../Program/../Hex/IntelHex.h
 
 c:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.1056\avr8-gnu-toolchain\avr\include\avr\io.h:
 
@@ -52,3 +52,5 @@ c:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.1056\avr8-g
 ../Program/../Drivers/RAM/RAMDriver.h:
 
 ../Program/../Drivers/RAM/MemoryMap.h:
+
+../Program/../Hex/IntelHex.h:

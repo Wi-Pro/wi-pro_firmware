@@ -207,7 +207,6 @@ int getFlagStatus()
 		getHexFile();
 		Flags[DEVICE_ID] = (RAMReadByte(STATUS_FLAG_ADDRESS + DEVICE_ID) & 0x0F);
 		printf("Device ID: %d\n", Flags[DEVICE_ID]); 
-		signatureBytes = selectChip(Flags[DEVICE_ID]); 
 		//printf("Signature Byte: 0x%08X\n", signatureBytes); 
 		switch(Flags[DEVICE_ID])
 		{
