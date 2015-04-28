@@ -24,8 +24,9 @@ void SPI_Init()
 	// CS pin is not active
 	RAM_DDR |= (1<<RAM_CS);
 	RAM_PORT |= (1<<RAM_CS);
-	// Enable SPI, Master Mode 0, set the clock rate fck/16
-	SPCR = (1<<SPE)|(1<<MSTR)|(1<<SPR0);
+	// Enable SPI, Master Mode 0, set the clock rate fck/8
+	SPCR = (1<<SPE)|(1<<MSTR);
+	SPSR = (1<<SPI2X); 
 	RAMWriteByte(0x32, 0000);
 }
 

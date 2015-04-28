@@ -6,6 +6,7 @@
  */ 
 
 #include <avr/io.h>
+#include <util/delay.h>
 #include <string.h>
 #include "ProgramDriver.h"
 #include "AVR.h"
@@ -96,6 +97,7 @@ unsigned int selectChip(uint16_t id)
 
 int checkSum()
 {
+	resetRAMOffset(); 
 	char* hexRow;
 	uint16_t byteCount;
 	uint8_t checkSumVal; 

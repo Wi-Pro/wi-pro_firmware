@@ -6,8 +6,8 @@
  */ 
 #define F_CPU 8000000UL 
 
-#include <avr/io.h>
 #include <util/delay.h>
+#include <avr/io.h>
 #include <avr/interrupt.h>
 #include <stdlib.h>
 #include "Program/ProgramDriver.h"
@@ -26,14 +26,14 @@ int main(void)
 	sei(); 
 	//Collecting garbage transmission on wi-fi module bootup 
 	//receiveStatus();
-	//networkConnect("UNOGuest", ""); 
+	//networkConnect("Wi-Pro", "brightshoe902"); 
 	//_delay_ms(100);
 	//networkTest();  
-	//pollingInit(); 
+	pollingInit(); 
 	//getFlagStatus(); 
 	//writeHexFileTest(); 
-	getHexFile();
-	checkSum();
+	//getHexFile();
+	//checkSum();
 	//cli(); 
 	//Program(ATtiny2313);
 	//setMachineMode();

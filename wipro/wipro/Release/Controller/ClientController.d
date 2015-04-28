@@ -28,7 +28,8 @@ Controller/ClientController.d Controller/ClientController.o: \
  ../Controller/../Drivers/Wifi/Wifi.h \
  ../Controller/../Drivers/Wifi/WifiDriver.h \
  ../Controller/../Drivers/RAM/MemoryMap.h \
- ../Controller/../Program/Program.h ../Controller/../Program/AVR.h
+ ../Controller/../Program/Program.h ../Controller/../Program/AVR.h \
+ ../Controller/../Program/ProgramDriver.h
 
 c:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.1056\avr8-gnu-toolchain\avr\include\avr\io.h:
 
@@ -89,3 +90,5 @@ c:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.1056\avr8-g
 ../Controller/../Program/Program.h:
 
 ../Controller/../Program/AVR.h:
+
+../Controller/../Program/ProgramDriver.h:

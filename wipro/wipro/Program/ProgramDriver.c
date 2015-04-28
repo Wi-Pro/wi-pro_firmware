@@ -319,11 +319,11 @@ void ReadFlash(void)
 		CONTROL_PORT &= ~(1<<BS1_PAGEL); //Reading flash word low byte
 		_delay_us(500);
 		DataValueIn = DATA_PIN;
-		printf("0x%02X ", DataValueIn);
+		//printf("0x%02X ", DataValueIn);
 		CONTROL_PORT |= 1<<BS1_PAGEL; //Reading flash word high byte
 		_delay_us(500);
 		DataValueIn = DATA_PIN;
-		printf("0x%02X ", DataValueIn);
+		//printf("0x%02X ", DataValueIn);
 		CONTROL_PORT |= 1<<OE;
 		WR_PORT &= ~(1<<FPGAWR);
 		DATA_DDR = 0xFF;
@@ -367,7 +367,7 @@ int VerifyFlash(void)
 		{
 			LoadHighAddress(address);
 			LoadLowAddress(address + j);
-			printf("\nAddress: 0x%04X\n",(address + j));
+			//printf("\nAddress: 0x%04X\n",(address + j));
 			j++;
 			
 			//Read data
@@ -377,7 +377,7 @@ int VerifyFlash(void)
 			CONTROL_PORT &= ~(1<<BS1_PAGEL); //Reading flash word low byte
 			_delay_us(500);
 			DataValueIn = DATA_PIN;
-			printf("0x%02X ", DataValueIn);
+			//printf("0x%02X ", DataValueIn);
 			if (DataValueIn != hexRow[DATA_BEGIN + i])
 			{
 				return 0;
@@ -385,7 +385,7 @@ int VerifyFlash(void)
 			CONTROL_PORT |= 1<<BS1_PAGEL; //Reading flash word high byte
 			_delay_us(500);
 			DataValueIn = DATA_PIN;
-			printf("0x%02X ", DataValueIn);
+			//printf("0x%02X ", DataValueIn);
 			if (DataValueIn != hexRow[DATA_BEGIN + i + 1])
 			{
 				return 0;
@@ -457,7 +457,7 @@ void ProgramFlash(uint32_t sigBytes)
 		address <<= 8;
 		address |= (hexRow[ADDRESS_L]);
 		address /= 2; 
-		printf("\nByteCount: %d, Address: 0x%04x\n", byteCount, address); 
+		//printf("\nByteCount: %d, Address: 0x%04x\n", byteCount, address); 
 		j =0;
 		for(i=0; i<byteCount; i+=2)
 		{

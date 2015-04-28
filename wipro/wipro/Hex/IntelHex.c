@@ -37,23 +37,23 @@ char* getHexRow()
 {
 	char rowBuff; 
 	int i=0; 
-	printf("Getting Row!\n"); 
+	//printf("Getting Row!\n"); 
 	for(i=0; i<DATA_BEGIN; i++)
 	{
 		//Read the bytes from RAM and throw them into the buffer
 		rowBuff = RAMReadByte(HEX_FILE_ADDRESS + RAMOffset);
-		printf("0x%02X ", rowBuff);
+		//printf("0x%02X ", rowBuff);
 		hexRow[i] = rowBuff; 
 		RAMOffset++; 
 	}
 	
 	uint8_t dataLength = hexRow[BYTE_COUNT];
-	printf("Data Length: %d\n", dataLength); 
+	//printf("Data Length: %d\n", dataLength); 
 	//Add 1 to dataLength to catch the checkSum 
 	for(i=0;i<dataLength+1;i++)
 	{
 		rowBuff = RAMReadByte(HEX_FILE_ADDRESS + RAMOffset);
-		printf("0x%02X ",rowBuff);
+		//printf("0x%02X ",rowBuff);
 		hexRow[DATA_BEGIN + i] = RAMReadByte(HEX_FILE_ADDRESS + RAMOffset);
 		RAMOffset++; 
 	}

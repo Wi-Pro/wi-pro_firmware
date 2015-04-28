@@ -23,6 +23,7 @@
 #include "../Drivers/RAM/MemoryMap.h"
 #include "../Program/Program.h"
 #include "../Program/AVR.h"
+#include "../Program/ProgramDriver.h"
 
 uint8_t Flags[FLAG_ARRAY_LENGTH]; 
 char filepath[100]; 
@@ -133,7 +134,7 @@ void sendAvailableNetworks()
 
 int getHexFile()
 {
-	//Flags[WIFI] = 1; 
+	//Flags[WIFI] = 1;
 	if(Flags[WIFI])
 	{
 		uint16_t transLength; 
@@ -143,7 +144,7 @@ int getHexFile()
 		//printf("Compress Flag Set!");
 		//setCompressFlag(1);
 		transLength = getFileWifi(filepath, 1, HEX_FILE_ADDRESS, 1);
-		printf("Uncompressed Trans Length: %d\n", transLength); 
+		//printf("Uncompressed Trans Length: %d\n", transLength); 
 		//RAMPrint(HEX_FILE_ADDRESS, 100);
 		compressFile(transLength); 
 		memset(filepath, 0x00, 100);
@@ -169,9 +170,9 @@ int getFlagStatus()
 	//Normally Flags[ETHERNET] == 1 
 	if(0){
 		getFileEthernet(FLAG_FILE, 1, STATUS_FLAG_ADDRESS, 3); 
-		printf("Ram Print: ");
-		RAMPrint(STATUS_FLAG_ADDRESS-10, 20);
-		printf("\n");
+		//printf("Ram Print: ");
+		//RAMPrint(STATUS_FLAG_ADDRESS-10, 20);
+		//printf("\n");
 		//RAMRead(STATUS_FLAG_ADDRESS, 1, Flags[PROGRAM]); 
 		//RAMRead(STATUS_FLAG_ADDRESS + 1, 1, Flags[PROGRAM + 1]); 
 		//RAMRead(STATUS_FLAG_ADDRESS + 2, 1, Flags[PROGRAM + 2]); 
@@ -186,9 +187,9 @@ int getFlagStatus()
 		strcat(filepath, FLAG_FILE); 
 		//setTestPrint(1);
 		getFileWifi(filepath, 1, STATUS_FLAG_ADDRESS, 0);
-		printf("Ram Print: ");
-		RAMPrint(STATUS_FLAG_ADDRESS, 3);
-		printf("\n");
+		//printf("Ram Print: ");
+		//RAMPrint(STATUS_FLAG_ADDRESS, 3);
+		//printf("\n");
 		Flags[PROGRAM] = (RAMReadByte(STATUS_FLAG_ADDRESS) & 0x0F);
 		Flags[NETWORK_SCAN] = (RAMReadByte(STATUS_FLAG_ADDRESS + 1) & 0x0F);
 		Flags[NETWORK_CONNECT] = (RAMReadByte(STATUS_FLAG_ADDRESS + 2) & 0x0F);
@@ -203,10 +204,16 @@ int getFlagStatus()
 		//PORTD &= ~(1<<CTS);
 		//wifiDriverInit(); 
 		//PORTD |= (1<<CTS); 
-		//_delay_ms(2000); 
-		getHexFile();
+		//_delay_ms(2000);
+		LED_PORT |= (1<<LED_Yellow);
+		do 
+		{
+			getHexFile();
+		} while (!checkSum());
+		
+		 
 		Flags[DEVICE_ID] = (RAMReadByte(STATUS_FLAG_ADDRESS + DEVICE_ID) & 0x0F);
-		printf("Device ID: %d\n", Flags[DEVICE_ID]); 
+		//printf("Device ID: %d\n", Flags[DEVICE_ID]); 
 		//printf("Signature Byte: 0x%08X\n", signatureBytes); 
 		switch(Flags[DEVICE_ID])
 		{
