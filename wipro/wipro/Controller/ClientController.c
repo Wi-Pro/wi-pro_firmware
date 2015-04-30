@@ -144,7 +144,8 @@ int getHexFile()
 		//printf("Compress Flag Set!");
 		//setCompressFlag(1);
 		transLength = getFileWifi(filepath, 1, HEX_FILE_ADDRESS, 1);
-		//printf("Uncompressed Trans Length: %d\n", transLength); 
+		printf("WTF HELLO4!!!\n");
+		printf("Uncompressed Trans Length: %d\n", transLength); 
 		//RAMPrint(HEX_FILE_ADDRESS, 100);
 		compressFile(transLength); 
 		memset(filepath, 0x00, 100);

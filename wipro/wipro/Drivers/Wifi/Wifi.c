@@ -205,6 +205,7 @@ uint16_t getFileWifi(char* filepath, int externRAM, uint32_t RAMAddress, int mul
 	//PORTD |= (1<<CTS);
 	sendCommand(NOPREFIX, HTTP_GET, filepath);
 	receiveStatus();
+	printf("WTF HELLO1!!!\n");
 	do 
 	{
 		if(externRAM){
@@ -224,7 +225,7 @@ uint16_t getFileWifi(char* filepath, int externRAM, uint32_t RAMAddress, int mul
 		}
 		i += getTransmissionLength() - 2; 
 	} while (multiReceive);
-	
+	printf("WTF HELLO2!!!\n");
 	disableReceiveINT(); 
 	//_delay_ms(3000);  
 	sendCommand(NOPREFIX, STREAM_CLOSE, NOVAL);
