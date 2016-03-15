@@ -1,0 +1,1264 @@
+Archive member included to satisfy reference by file (symbol)
+
+c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_udivmodsi4.o)
+                              Program/ProgramDriver.o (__udivmodsi4)
+c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_exit.o)
+                              C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.98/gcc/dev/atmega1280/avr51/crtatmega1280.o (exit)
+c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_copy_data.o)
+                              Hardware/hwm_ethernet.o (__do_copy_data)
+c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_clear_bss.o)
+                              Hardware/hwm_ethernet.o (__do_clear_bss)
+c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_umulhisi3.o)
+                              Hardware/hwm_ethernet.o (__umulhisi3)
+c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(strcat.o)
+                              Hardware/hwm_wifi.o (strcat)
+c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(strcpy.o)
+                              IOP/iop_communication.o (strcpy)
+c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(fputc.o)
+                              UTL/utl_print.o (fputc)
+c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(iob.o)
+                              UTL/utl_print.o (__iob)
+c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(printf.o)
+                              Hardware/hwm_ethernet.o (printf)
+c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(putchar.o)
+                              Hardware/hwm_wifi.o (putchar)
+c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(puts.o)
+                              Hardware/hwm_ethernet.o (puts)
+c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(vfprintf_std.o)
+                              c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(printf.o) (vfprintf)
+c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(strnlen_P.o)
+                              c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(vfprintf_std.o) (strnlen_P)
+c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(strnlen.o)
+                              c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(vfprintf_std.o) (strnlen)
+c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(ultoa_invert.o)
+                              c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(vfprintf_std.o) (__ultoa_invert)
+
+Allocating common symbols
+Common symbol       size              file
+
+filepath            0x64              IOP/iop_communication.o
+endHeaderFlag       0x1               Hardware/hwm_wifi.o
+hexRow              0x32              IOP/iop_intel_hex.o
+S0_TX_MASK          0x2               Hardware/hwm_ethernet.o
+multiReceiveFlag    0x1               Hardware/hwm_wifi.o
+signatureBytes      0x4               IOP/iop_communication.o
+headerBuffer        0x9               Hardware/hwm_wifi.o
+S0_TX_BASE          0x2               Hardware/hwm_ethernet.o
+buff                0x1               Hardware/hwm_wifi.o
+compressBuff        0x1               Hardware/hwm_wifi.o
+httpBuff            0x96              IOP/iop_ethernet.o
+testPrint           0x2               Hardware/hwm_wifi.o
+i                   0x2               Hardware/hwm_wifi.o
+secondNibble        0x1               Hardware/hwm_wifi.o
+RAMOffset           0x2               IOP/iop_intel_hex.o
+S0_RX_BASE          0x2               Hardware/hwm_ethernet.o
+compressFlag        0x1               Hardware/hwm_wifi.o
+transLength         0x2               Hardware/hwm_wifi.o
+RAMAddress          0x4               Hardware/hwm_wifi.o
+Flags               0x6               IOP/iop_communication.o
+S0_RX_MASK          0x2               Hardware/hwm_ethernet.o
+bufferStart         0x2               Hardware/hwm_wifi.o
+__iob               0x6               c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(iob.o)
+receiveWifiFlag     0x1               Hardware/hwm_wifi.o
+fullCommand         0x64              Hardware/hwm_wifi.o
+ShiftRegData        0x1e              Hardware/hwm_switching_circuitry.o
+
+Discarded input sections
+
+ .data          0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.98/gcc/dev/atmega1280/avr51/crtatmega1280.o
+ .bss           0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.98/gcc/dev/atmega1280/avr51/crtatmega1280.o
+ .text          0x00000000        0x0 Hardware/hwm_ethernet.o
+ .data          0x00000000        0x0 Hardware/hwm_ethernet.o
+ .bss           0x00000000        0x0 Hardware/hwm_ethernet.o
+ .text.ReceiveSize
+                0x00000000       0x28 Hardware/hwm_ethernet.o
+ .text.ReceiveData
+                0x00000000      0x152 Hardware/hwm_ethernet.o
+ .text.SocketDisconnect
+                0x00000000       0x14 Hardware/hwm_ethernet.o
+ .text.EnableEthernetInterrupt
+                0x00000000       0x16 Hardware/hwm_ethernet.o
+ .text.ResolveIP
+                0x00000000        0xe Hardware/hwm_ethernet.o
+ .text.getReceiveFlag
+                0x00000000        0xa Hardware/hwm_ethernet.o
+ .bss.receiveFlag
+                0x00000000        0x2 Hardware/hwm_ethernet.o
+ .text          0x00000000        0x0 Hardware/hwm_led.o
+ .data          0x00000000        0x0 Hardware/hwm_led.o
+ .bss           0x00000000        0x0 Hardware/hwm_led.o
+ .debug_line    0x00000000        0x0 Hardware/hwm_led.o
+ .debug_str     0x00000000       0xea Hardware/hwm_led.o
+ .comment       0x00000000       0x31 Hardware/hwm_led.o
+ .text          0x00000000        0x0 Hardware/hwm_ram.o
+ .data          0x00000000        0x0 Hardware/hwm_ram.o
+ .bss           0x00000000        0x0 Hardware/hwm_ram.o
+ .text.setSPIClockDiv
+                0x00000000        0x6 Hardware/hwm_ram.o
+ .text.getRAMStatus
+                0x00000000       0x1c Hardware/hwm_ram.o
+ .text.setRAMStatus
+                0x00000000       0x18 Hardware/hwm_ram.o
+ .text.RAMWrite
+                0x00000000       0x74 Hardware/hwm_ram.o
+ .text.RAMRead  0x00000000       0x5e Hardware/hwm_ram.o
+ .rodata.str1.1
+                0x00000000       0x24 Hardware/hwm_ram.o
+ .text.RAMPrint
+                0x00000000       0xa6 Hardware/hwm_ram.o
+ .text          0x00000000        0x0 Hardware/hwm_switching_circuitry.o
+ .data          0x00000000        0x0 Hardware/hwm_switching_circuitry.o
+ .bss           0x00000000        0x0 Hardware/hwm_switching_circuitry.o
+ .text.SwitchingCircuitryEnable
+                0x00000000       0x34 Hardware/hwm_switching_circuitry.o
+ .text.ClearShiftRegData
+                0x00000000       0x26 Hardware/hwm_switching_circuitry.o
+ .text          0x00000000        0x0 Hardware/hwm_voltage.o
+ .data          0x00000000        0x0 Hardware/hwm_voltage.o
+ .bss           0x00000000        0x0 Hardware/hwm_voltage.o
+ .text.VppClear
+                0x00000000        0xa Hardware/hwm_voltage.o
+ .text.VccClear
+                0x00000000        0xa Hardware/hwm_voltage.o
+ .text.VLogicClear
+                0x00000000        0xa Hardware/hwm_voltage.o
+ .text          0x00000000        0x0 Hardware/hwm_wifi.o
+ .data          0x00000000        0x0 Hardware/hwm_wifi.o
+ .bss           0x00000000        0x0 Hardware/hwm_wifi.o
+ .text.wifiDriverInit
+                0x00000000       0x54 Hardware/hwm_wifi.o
+ .text.setTestPrint
+                0x00000000        0xa Hardware/hwm_wifi.o
+ .text.setCompressFlag
+                0x00000000        0x6 Hardware/hwm_wifi.o
+ .text.setMultiReceiveFlag
+                0x00000000        0x6 Hardware/hwm_wifi.o
+ .text.getStringLen
+                0x00000000       0x1e Hardware/hwm_wifi.o
+ .text.uart_receive
+                0x00000000       0x98 Hardware/hwm_wifi.o
+ .text.getReceiveBuffer
+                0x00000000       0x1e Hardware/hwm_wifi.o
+ .text.errorCheck
+                0x00000000       0x2a Hardware/hwm_wifi.o
+ .text          0x00000000        0x0 IOP/iop_communication.o
+ .data          0x00000000        0x0 IOP/iop_communication.o
+ .bss           0x00000000        0x0 IOP/iop_communication.o
+ .text.checkWifiStatus
+                0x00000000        0xe IOP/iop_communication.o
+ .text.sendAvailableNetworks
+                0x00000000       0xf4 IOP/iop_communication.o
+ .text          0x00000000        0x0 IOP/iop_ethernet.o
+ .data          0x00000000        0x0 IOP/iop_ethernet.o
+ .bss           0x00000000        0x0 IOP/iop_ethernet.o
+ .text.getFileEthernet
+                0x00000000       0xd8 IOP/iop_ethernet.o
+ .text.sendRequestEthernet
+                0x00000000        0x2 IOP/iop_ethernet.o
+ .text          0x00000000        0x0 IOP/iop_fpga.o
+ .data          0x00000000        0x0 IOP/iop_fpga.o
+ .bss           0x00000000        0x0 IOP/iop_fpga.o
+ .text          0x00000000        0x0 IOP/iop_intel_hex.o
+ .data          0x00000000        0x0 IOP/iop_intel_hex.o
+ .bss           0x00000000        0x0 IOP/iop_intel_hex.o
+ .text          0x00000000        0x0 IOP/iop_wifi.o
+ .data          0x00000000        0x0 IOP/iop_wifi.o
+ .bss           0x00000000        0x0 IOP/iop_wifi.o
+ .text.wifiInit
+                0x00000000        0x6 IOP/iop_wifi.o
+ .text.setMachineMode
+                0x00000000       0x42 IOP/iop_wifi.o
+ .text.setHumanMode
+                0x00000000       0x3e IOP/iop_wifi.o
+ .text.networkScan
+                0x00000000       0x26 IOP/iop_wifi.o
+ .text.networkConnect
+                0x00000000       0x28 IOP/iop_wifi.o
+ .text.networkTest
+                0x00000000       0x46 IOP/iop_wifi.o
+ .text.serverConnect
+                0x00000000       0x52 IOP/iop_wifi.o
+ .text.networkQueryString
+                0x00000000      0x110 IOP/iop_wifi.o
+ .text          0x00000000        0x0 Program/Program.o
+ .data          0x00000000        0x0 Program/Program.o
+ .bss           0x00000000        0x0 Program/Program.o
+ .text.selectChip
+                0x00000000       0x1c Program/Program.o
+ .text          0x00000000        0x0 Program/ProgramDriver.o
+ .data          0x00000000        0x0 Program/ProgramDriver.o
+ .bss           0x00000000        0x0 Program/ProgramDriver.o
+ .text          0x00000000        0x0 main.o
+ .data          0x00000000        0x0 main.o
+ .bss           0x00000000        0x0 main.o
+ .text          0x00000000        0x0 UTL/utl_print.o
+ .data          0x00000000        0x0 UTL/utl_print.o
+ .bss           0x00000000        0x0 UTL/utl_print.o
+ .text.uart_flush
+                0x00000000       0x1a UTL/utl_print.o
+ .text.uart_putch
+                0x00000000       0x24 UTL/utl_print.o
+ .text.uart_getch
+                0x00000000       0x20 UTL/utl_print.o
+ .text.ansi_cl  0x00000000       0x56 UTL/utl_print.o
+ .text.ansi_me  0x00000000       0x3e UTL/utl_print.o
+ .text.UARTStream_Init
+                0x00000000       0x2a UTL/utl_print.o
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_udivmodsi4.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_udivmodsi4.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_udivmodsi4.o)
+ .text.libgcc.mul
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_udivmodsi4.o)
+ .text.libgcc   0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_udivmodsi4.o)
+ .text.libgcc.prologue
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_udivmodsi4.o)
+ .text.libgcc.builtins
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_udivmodsi4.o)
+ .text.libgcc.fmul
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_udivmodsi4.o)
+ .text.libgcc.fixed
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_udivmodsi4.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_exit.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_exit.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_exit.o)
+ .text.libgcc.mul
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_exit.o)
+ .text.libgcc.div
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_exit.o)
+ .text.libgcc   0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_exit.o)
+ .text.libgcc.prologue
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_exit.o)
+ .text.libgcc.builtins
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_exit.o)
+ .text.libgcc.fmul
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_exit.o)
+ .text.libgcc.fixed
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_exit.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_copy_data.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_copy_data.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_copy_data.o)
+ .text.libgcc.mul
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_copy_data.o)
+ .text.libgcc.div
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_copy_data.o)
+ .text.libgcc   0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_copy_data.o)
+ .text.libgcc.prologue
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_copy_data.o)
+ .text.libgcc.builtins
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_copy_data.o)
+ .text.libgcc.fmul
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_copy_data.o)
+ .text.libgcc.fixed
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_copy_data.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_clear_bss.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_clear_bss.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_clear_bss.o)
+ .text.libgcc.mul
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_clear_bss.o)
+ .text.libgcc.div
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_clear_bss.o)
+ .text.libgcc   0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_clear_bss.o)
+ .text.libgcc.prologue
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_clear_bss.o)
+ .text.libgcc.builtins
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_clear_bss.o)
+ .text.libgcc.fmul
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_clear_bss.o)
+ .text.libgcc.fixed
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_clear_bss.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_umulhisi3.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_umulhisi3.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_umulhisi3.o)
+ .text.libgcc.div
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_umulhisi3.o)
+ .text.libgcc   0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_umulhisi3.o)
+ .text.libgcc.prologue
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_umulhisi3.o)
+ .text.libgcc.builtins
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_umulhisi3.o)
+ .text.libgcc.fmul
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_umulhisi3.o)
+ .text.libgcc.fixed
+                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_umulhisi3.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(strcat.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(strcat.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(strcat.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(strcpy.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(strcpy.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(strcpy.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(fputc.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(fputc.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(fputc.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(iob.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(iob.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(iob.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(printf.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(printf.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(printf.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(putchar.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(putchar.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(putchar.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(puts.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(puts.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(puts.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(vfprintf_std.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(vfprintf_std.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(vfprintf_std.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(strnlen_P.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(strnlen_P.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(strnlen_P.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(strnlen.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(strnlen.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(strnlen.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(ultoa_invert.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(ultoa_invert.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(ultoa_invert.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+text             0x00000000         0x00020000         xr
+data             0x00800100         0x0000ff00         rw !x
+eeprom           0x00810000         0x00010000         rw !x
+fuse             0x00820000         0x00000400         rw !x
+lock             0x00830000         0x00000400         rw !x
+signature        0x00840000         0x00000400         rw !x
+user_signatures  0x00850000         0x00000400         rw !x
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+Address of section .data set to 0x800200
+LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.98/gcc/dev/atmega1280/avr51/crtatmega1280.o
+LOAD Hardware/hwm_ethernet.o
+LOAD Hardware/hwm_led.o
+LOAD Hardware/hwm_ram.o
+LOAD Hardware/hwm_switching_circuitry.o
+LOAD Hardware/hwm_voltage.o
+LOAD Hardware/hwm_wifi.o
+LOAD IOP/iop_communication.o
+LOAD IOP/iop_ethernet.o
+LOAD IOP/iop_fpga.o
+LOAD IOP/iop_intel_hex.o
+LOAD IOP/iop_wifi.o
+LOAD Program/Program.o
+LOAD Program/ProgramDriver.o
+LOAD main.o
+LOAD UTL/utl_print.o
+START GROUP
+LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libm.a
+END GROUP
+START GROUP
+LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a
+LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libm.a
+LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a
+LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.98/gcc/dev/atmega1280/avr51\libatmega1280.a
+END GROUP
+
+.hash
+ *(.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.init
+ *(.rel.init)
+
+.rela.init
+ *(.rela.init)
+
+.rel.text
+ *(.rel.text)
+ *(.rel.text.*)
+ *(.rel.gnu.linkonce.t*)
+
+.rela.text
+ *(.rela.text)
+ *(.rela.text.*)
+ *(.rela.gnu.linkonce.t*)
+
+.rel.fini
+ *(.rel.fini)
+
+.rela.fini
+ *(.rela.fini)
+
+.rel.rodata
+ *(.rel.rodata)
+ *(.rel.rodata.*)
+ *(.rel.gnu.linkonce.r*)
+
+.rela.rodata
+ *(.rela.rodata)
+ *(.rela.rodata.*)
+ *(.rela.gnu.linkonce.r*)
+
+.rel.data
+ *(.rel.data)
+ *(.rel.data.*)
+ *(.rel.gnu.linkonce.d*)
+
+.rela.data
+ *(.rela.data)
+ *(.rela.data.*)
+ *(.rela.gnu.linkonce.d*)
+
+.rel.ctors
+ *(.rel.ctors)
+
+.rela.ctors
+ *(.rela.ctors)
+
+.rel.dtors
+ *(.rel.dtors)
+
+.rela.dtors
+ *(.rela.dtors)
+
+.rel.got
+ *(.rel.got)
+
+.rela.got
+ *(.rela.got)
+
+.rel.bss
+ *(.rel.bss)
+
+.rela.bss
+ *(.rela.bss)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.text           0x00000000     0x2982
+ *(.vectors)
+ .vectors       0x00000000       0xe4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.98/gcc/dev/atmega1280/avr51/crtatmega1280.o
+                0x00000000                __vector_default
+                0x00000000                __vectors
+ *(.vectors)
+ *(.progmem.gcc*)
+                0x000000e4                . = ALIGN (0x2)
+                0x000000e4                __trampolines_start = .
+ *(.trampolines)
+ .trampolines   0x000000e4        0x0 linker stubs
+ *(.trampolines*)
+                0x000000e4                __trampolines_end = .
+ *(.progmem*)
+                0x000000e4                . = ALIGN (0x2)
+ *(.jumptables)
+ *(.jumptables*)
+ *(.lowtext)
+ *(.lowtext*)
+                0x000000e4                __ctors_start = .
+ *(.ctors)
+                0x000000e4                __ctors_end = .
+                0x000000e4                __dtors_start = .
+ *(.dtors)
+                0x000000e4                __dtors_end = .
+ SORT(*)(.ctors)
+ SORT(*)(.dtors)
+ *(.init0)
+ .init0         0x000000e4        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.98/gcc/dev/atmega1280/avr51/crtatmega1280.o
+                0x000000e4                __init
+ *(.init0)
+ *(.init1)
+ *(.init1)
+ *(.init2)
+ .init2         0x000000e4        0xc C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.98/gcc/dev/atmega1280/avr51/crtatmega1280.o
+ *(.init2)
+ *(.init3)
+ *(.init3)
+ *(.init4)
+ .init4         0x000000f0       0x1a c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_copy_data.o)
+                0x000000f0                __do_copy_data
+ .init4         0x0000010a       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_clear_bss.o)
+                0x0000010a                __do_clear_bss
+ *(.init4)
+ *(.init5)
+ *(.init5)
+ *(.init6)
+ *(.init6)
+ *(.init7)
+ *(.init7)
+ *(.init8)
+ *(.init8)
+ *(.init9)
+ .init9         0x0000011a        0x8 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.98/gcc/dev/atmega1280/avr51/crtatmega1280.o
+ *(.init9)
+ *(.text)
+ .text          0x00000122        0x2 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.98/gcc/dev/atmega1280/avr51/crtatmega1280.o
+                0x00000122                __vector_38
+                0x00000122                __vector_22
+                0x00000122                __vector_28
+                0x00000122                __vector_1
+                0x00000122                __vector_32
+                0x00000122                __vector_34
+                0x00000122                __vector_24
+                0x00000122                __vector_12
+                0x00000122                __vector_55
+                0x00000122                __vector_46
+                0x00000122                __bad_interrupt
+                0x00000122                __vector_31
+                0x00000122                __vector_35
+                0x00000122                __vector_39
+                0x00000122                __vector_3
+                0x00000122                __vector_23
+                0x00000122                __vector_30
+                0x00000122                __vector_45
+                0x00000122                __vector_11
+                0x00000122                __vector_54
+                0x00000122                __vector_13
+                0x00000122                __vector_17
+                0x00000122                __vector_19
+                0x00000122                __vector_56
+                0x00000122                __vector_7
+                0x00000122                __vector_49
+                0x00000122                __vector_41
+                0x00000122                __vector_43
+                0x00000122                __vector_27
+                0x00000122                __vector_5
+                0x00000122                __vector_33
+                0x00000122                __vector_47
+                0x00000122                __vector_52
+                0x00000122                __vector_37
+                0x00000122                __vector_4
+                0x00000122                __vector_44
+                0x00000122                __vector_51
+                0x00000122                __vector_9
+                0x00000122                __vector_2
+                0x00000122                __vector_21
+                0x00000122                __vector_15
+                0x00000122                __vector_36
+                0x00000122                __vector_29
+                0x00000122                __vector_40
+                0x00000122                __vector_8
+                0x00000122                __vector_26
+                0x00000122                __vector_48
+                0x00000122                __vector_14
+                0x00000122                __vector_53
+                0x00000122                __vector_10
+                0x00000122                __vector_50
+                0x00000122                __vector_16
+                0x00000122                __vector_18
+                0x00000122                __vector_42
+                0x00000124                . = ALIGN (0x2)
+ *(.text.*)
+ .text.SPI_EthernetWrite
+                0x00000124       0x28 Hardware/hwm_ethernet.o
+                0x00000124                SPI_EthernetWrite
+ .text.SPI_EthernetRead
+                0x0000014c       0x2a Hardware/hwm_ethernet.o
+                0x0000014c                SPI_EthernetRead
+ .text.NetworkSetup
+                0x00000176      0x326 Hardware/hwm_ethernet.o
+                0x00000176                NetworkSetup
+ .text.Server_Connect
+                0x0000049c      0x142 Hardware/hwm_ethernet.o
+                0x0000049c                Server_Connect
+ .text.MemoryInit
+                0x000005de       0x3e Hardware/hwm_ethernet.o
+                0x000005de                MemoryInit
+ .text.SocketCommand
+                0x0000061c        0xa Hardware/hwm_ethernet.o
+                0x0000061c                SocketCommand
+ .text.SendData
+                0x00000626      0x208 Hardware/hwm_ethernet.o
+                0x00000626                SendData
+ .text.SPI_WriteAddress
+                0x0000082e       0x24 Hardware/hwm_ram.o
+                0x0000082e                SPI_WriteAddress
+ .text.SPI_WriteData
+                0x00000852        0xa Hardware/hwm_ram.o
+                0x00000852                SPI_WriteData
+ .text.SPI_ReadAddress
+                0x0000085c       0x24 Hardware/hwm_ram.o
+                0x0000085c                SPI_ReadAddress
+ .text.SPI_ReadData
+                0x00000880        0xc Hardware/hwm_ram.o
+                0x00000880                SPI_ReadData
+ .text.RAMWriteByte
+                0x0000088c       0x16 Hardware/hwm_ram.o
+                0x0000088c                RAMWriteByte
+ .text.SPI_Init
+                0x000008a2       0x20 Hardware/hwm_ram.o
+                0x000008a2                SPI_Init
+ .text.RAMReadByte
+                0x000008c2        0xa Hardware/hwm_ram.o
+                0x000008c2                RAMReadByte
+ .text.SPI_Switching_Circuitry_Init
+                0x000008cc       0x1c Hardware/hwm_switching_circuitry.o
+                0x000008cc                SPI_Switching_Circuitry_Init
+ .text.SPI_Switching_Circuitry_Write
+                0x000008e8        0xa Hardware/hwm_switching_circuitry.o
+                0x000008e8                SPI_Switching_Circuitry_Write
+ .text.SetShiftRegData
+                0x000008f2       0x2a Hardware/hwm_switching_circuitry.o
+                0x000008f2                SetShiftRegData
+ .text.WriteShiftRegData
+                0x0000091c       0x84 Hardware/hwm_switching_circuitry.o
+                0x0000091c                WriteShiftRegData
+ .text.setAtTiny2313
+                0x000009a0       0x92 Hardware/hwm_switching_circuitry.o
+                0x000009a0                setAtTiny2313
+ .text.setAtMega324PA
+                0x00000a32       0x96 Hardware/hwm_switching_circuitry.o
+                0x00000a32                setAtMega324PA
+ .text.voltageControlInit
+                0x00000ac8       0x14 Hardware/hwm_voltage.o
+                0x00000ac8                voltageControlInit
+ .text.enableVppRegulator
+                0x00000adc        0x4 Hardware/hwm_voltage.o
+                0x00000adc                enableVppRegulator
+ .text.disableVppRegulator
+                0x00000ae0        0x4 Hardware/hwm_voltage.o
+                0x00000ae0                disableVppRegulator
+ .text.enableVccRegulator
+                0x00000ae4        0x4 Hardware/hwm_voltage.o
+                0x00000ae4                enableVccRegulator
+ .text.disableVccRegulator
+                0x00000ae8        0x4 Hardware/hwm_voltage.o
+                0x00000ae8                disableVccRegulator
+ .text.setVcc   0x00000aec       0x18 Hardware/hwm_voltage.o
+                0x00000aec                setVcc
+ .text.setVpp   0x00000b04       0x18 Hardware/hwm_voltage.o
+                0x00000b04                setVpp
+ .text.enableVLogic
+                0x00000b1c        0x4 Hardware/hwm_voltage.o
+                0x00000b1c                enableVLogic
+ .text.disableVLogic
+                0x00000b20        0x4 Hardware/hwm_voltage.o
+                0x00000b20                disableVLogic
+ .text.setVLogic
+                0x00000b24       0x18 Hardware/hwm_voltage.o
+                0x00000b24                setVLogic
+ .text.setReceiveCounter
+                0x00000b3c        0xa Hardware/hwm_wifi.o
+                0x00000b3c                setReceiveCounter
+ .text.uart_init
+                0x00000b46       0x20 Hardware/hwm_wifi.o
+                0x00000b46                uart_init
+ .text.uart_send
+                0x00000b66       0x64 Hardware/hwm_wifi.o
+                0x00000b66                uart_send
+ .text.uart_receiveChar
+                0x00000bca       0x10 Hardware/hwm_wifi.o
+                0x00000bca                uart_receiveChar
+ .text.enableReceiveINT
+                0x00000bda       0x12 Hardware/hwm_wifi.o
+                0x00000bda                enableReceiveINT
+ .text.disableReceiveINT
+                0x00000bec       0x10 Hardware/hwm_wifi.o
+                0x00000bec                disableReceiveINT
+ .text.receiveStatus
+                0x00000bfc       0x1e Hardware/hwm_wifi.o
+                0x00000bfc                receiveStatus
+ .text.buildTransmissionLength
+                0x00000c1a      0x122 Hardware/hwm_wifi.o
+                0x00000c1a                buildTransmissionLength
+ .text.getTransmissionLength
+                0x00000d3c        0xa Hardware/hwm_wifi.o
+                0x00000d3c                getTransmissionLength
+ .text.getMessageHeader
+                0x00000d46        0x6 Hardware/hwm_wifi.o
+                0x00000d46                getMessageHeader
+ .text.updateRAMAddress
+                0x00000d4c       0x12 Hardware/hwm_wifi.o
+                0x00000d4c                updateRAMAddress
+ .text.sendCommand
+                0x00000d5e       0xfc Hardware/hwm_wifi.o
+                0x00000d5e                sendCommand
+ .text.__vector_25
+                0x00000e5a      0x1b4 Hardware/hwm_wifi.o
+                0x00000e5a                __vector_25
+ .text.flagInit
+                0x0000100e       0x26 IOP/iop_communication.o
+                0x0000100e                flagInit
+ .text.pollingInit
+                0x00001034       0x1a IOP/iop_communication.o
+                0x00001034                pollingInit
+ .text.ethernetPlugInit
+                0x0000104e        0xc IOP/iop_communication.o
+                0x0000104e                ethernetPlugInit
+ .text.connectionInit
+                0x0000105a       0x22 IOP/iop_communication.o
+                0x0000105a                connectionInit
+ .text.clearFlags
+                0x0000107c       0xf8 IOP/iop_communication.o
+                0x0000107c                clearFlags
+ .text.getHexFile
+                0x00001174       0xd6 IOP/iop_communication.o
+                0x00001174                getHexFile
+ .text.getFlagStatus
+                0x0000124a      0x106 IOP/iop_communication.o
+                0x0000124a                getFlagStatus
+ .text.__vector_20
+                0x00001350       0x76 IOP/iop_communication.o
+                0x00001350                __vector_20
+ .text.__vector_6
+                0x000013c6       0x72 IOP/iop_communication.o
+                0x000013c6                __vector_6
+ .text.ethernetInit
+                0x00001438       0x2c IOP/iop_ethernet.o
+                0x00001438                ethernetInit
+ .text.updateFileEthernet
+                0x00001464       0x66 IOP/iop_ethernet.o
+                0x00001464                updateFileEthernet
+ .text.SPI_FPGA_Write
+                0x000014ca        0xe IOP/iop_fpga.o
+                0x000014ca                SPI_FPGA_Write
+ .text.SPI_FPGA_Init
+                0x000014d8       0x1e IOP/iop_fpga.o
+                0x000014d8                SPI_FPGA_Init
+ .text.FPGA_Write
+                0x000014f6       0x26 IOP/iop_fpga.o
+                0x000014f6                FPGA_Write
+ .text.hexInit  0x0000151c       0x18 IOP/iop_intel_hex.o
+                0x0000151c                hexInit
+ .text.resetRAMOffset
+                0x00001534        0xa IOP/iop_intel_hex.o
+                0x00001534                resetRAMOffset
+ .text.getHexRow
+                0x0000153e       0x8a IOP/iop_intel_hex.o
+                0x0000153e                getHexRow
+ .text.getFileWifi
+                0x000015c8      0x10a IOP/iop_wifi.o
+                0x000015c8                getFileWifi
+ .text.updateFileWifi
+                0x000016d2       0x24 IOP/iop_wifi.o
+                0x000016d2                updateFileWifi
+ .text.verifySignature
+                0x000016f6       0xae Program/Program.o
+                0x000016f6                verifySignature
+ .text.Program  0x000017a4       0xc8 Program/Program.o
+                0x000017a4                Program
+ .text.checkSum
+                0x0000186c       0xd8 Program/Program.o
+                0x0000186c                checkSum
+ .text.compressFile
+                0x00001944       0xc0 Program/Program.o
+                0x00001944                compressFile
+ .text.ProgInit
+                0x00001a04       0x3e Program/ProgramDriver.o
+                0x00001a04                ProgInit
+ .text.ApplyPullDowns
+                0x00001a42       0xb4 Program/ProgramDriver.o
+                0x00001a42                ApplyPullDowns
+ .text.LoadCommand
+                0x00001af6       0x28 Program/ProgramDriver.o
+                0x00001af6                LoadCommand
+ .text.WriteWord
+                0x00001b1e       0x4c Program/ProgramDriver.o
+                0x00001b1e                WriteWord
+ .text.LoadLowAddress
+                0x00001b6a       0x2a Program/ProgramDriver.o
+                0x00001b6a                LoadLowAddress
+ .text.LoadHighAddress
+                0x00001b94       0x2a Program/ProgramDriver.o
+                0x00001b94                LoadHighAddress
+ .text.LatchData
+                0x00001bbe       0x20 Program/ProgramDriver.o
+                0x00001bbe                LatchData
+ .text.ProgramPage
+                0x00001bde       0x1e Program/ProgramDriver.o
+                0x00001bde                ProgramPage
+ .text.EndPageProgramming
+                0x00001bfc       0x26 Program/ProgramDriver.o
+                0x00001bfc                EndPageProgramming
+ .text.EnableProgMode
+                0x00001c22       0x8a Program/ProgramDriver.o
+                0x00001c22                EnableProgMode
+ .text.ReadSignatureBytes
+                0x00001cac      0x1da Program/ProgramDriver.o
+                0x00001cac                ReadSignatureBytes
+ .text.ReadFlash
+                0x00001e86       0xa4 Program/ProgramDriver.o
+                0x00001e86                ReadFlash
+ .text.VerifyFlash
+                0x00001f2a      0x126 Program/ProgramDriver.o
+                0x00001f2a                VerifyFlash
+ .text.ChipErase
+                0x00002050       0x42 Program/ProgramDriver.o
+                0x00002050                ChipErase
+ .text.ProgramFlash
+                0x00002092      0x182 Program/ProgramDriver.o
+                0x00002092                ProgramFlash
+ .text.ExitParallelProgrammingMode
+                0x00002214       0x8a Program/ProgramDriver.o
+                0x00002214                ExitParallelProgrammingMode
+ .text.main     0x0000229e       0x2e main.o
+                0x0000229e                main
+ .text.uart_sendStream
+                0x000022cc       0x22 UTL/utl_print.o
+                0x000022cc                uart_sendStream
+ .text.uart_receiveStream
+                0x000022ee       0x1e UTL/utl_print.o
+                0x000022ee                uart_receiveStream
+ .text.uart2_init
+                0x0000230c       0x28 UTL/utl_print.o
+                0x0000230c                uart2_init
+ .text.libgcc.div
+                0x00002334       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_udivmodsi4.o)
+                0x00002334                __udivmodsi4
+ .text.libgcc.mul
+                0x00002378       0x1e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_umulhisi3.o)
+                0x00002378                __umulhisi3
+ .text.avr-libc
+                0x00002396       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(strcat.o)
+                0x00002396                strcat
+ .text.avr-libc
+                0x000023ac        0xe c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(strcpy.o)
+                0x000023ac                strcpy
+ .text.avr-libc
+                0x000023ba       0x70 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(fputc.o)
+                0x000023ba                fputc
+ .text.avr-libc
+                0x0000242a       0x26 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(printf.o)
+                0x0000242a                printf
+ .text.avr-libc
+                0x00002450        0xa c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(putchar.o)
+                0x00002450                putchar
+ .text.avr-libc
+                0x0000245a       0x60 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(puts.o)
+                0x0000245a                puts
+ .text.avr-libc
+                0x000024ba      0x3dc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(vfprintf_std.o)
+                0x000024ba                vfprintf
+ .text.avr-libc
+                0x00002896       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(strnlen_P.o)
+                0x00002896                strnlen_P
+ .text.avr-libc
+                0x000028ac       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(strnlen.o)
+                0x000028ac                strnlen
+ .text.avr-libc
+                0x000028c2       0xbc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(ultoa_invert.o)
+                0x000028c2                __ultoa_invert
+                0x0000297e                . = ALIGN (0x2)
+ *(.fini9)
+ .fini9         0x0000297e        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_exit.o)
+                0x0000297e                _exit
+                0x0000297e                exit
+ *(.fini9)
+ *(.fini8)
+ *(.fini8)
+ *(.fini7)
+ *(.fini7)
+ *(.fini6)
+ *(.fini6)
+ *(.fini5)
+ *(.fini5)
+ *(.fini4)
+ *(.fini4)
+ *(.fini3)
+ *(.fini3)
+ *(.fini2)
+ *(.fini2)
+ *(.fini1)
+ *(.fini1)
+ *(.fini0)
+ .fini0         0x0000297e        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr51\libgcc.a(_exit.o)
+ *(.fini0)
+                0x00002982                _etext = .
+
+.data           0x00800200      0x752 load address 0x00002982
+                0x00800200                PROVIDE (__data_start, .)
+ *(.data)
+ *(.data*)
+ .data.gl_source_port
+                0x00800200        0x2 Hardware/hwm_ethernet.o
+                0x00800200                gl_source_port
+ .data.gl_server_port
+                0x00800202        0x2 Hardware/hwm_ethernet.o
+                0x00800202                gl_server_port
+ .data.gl_server_ip_addr
+                0x00800204        0x4 Hardware/hwm_ethernet.o
+                0x00800204                gl_server_ip_addr
+ .data.source_port
+                0x00800208        0x2 IOP/iop_ethernet.o
+                0x00800208                source_port
+ .data.server_port
+                0x0080020a        0x2 IOP/iop_ethernet.o
+                0x0080020a                server_port
+ .data.server_ip_addr
+                0x0080020c        0x4 IOP/iop_ethernet.o
+                0x0080020c                server_ip_addr
+ .data.gtw_addr
+                0x00800210        0x4 IOP/iop_ethernet.o
+                0x00800210                gtw_addr
+ .data.sub_mask
+                0x00800214        0x4 IOP/iop_ethernet.o
+                0x00800214                sub_mask
+ .data.local_ip_addr
+                0x00800218        0x4 IOP/iop_ethernet.o
+                0x00800218                local_ip_addr
+ .data.mac_addr
+                0x0080021c        0x6 IOP/iop_ethernet.o
+                0x0080021c                mac_addr
+ .data.uart_stream
+                0x00800222        0xe UTL/utl_print.o
+                0x00800222                uart_stream
+ *(.rodata)
+ .rodata        0x00800230        0x5 Hardware/hwm_switching_circuitry.o
+ *(.rodata*)
+ .rodata.str1.1
+                0x00800235      0x241 Hardware/hwm_ethernet.o
+ .rodata.str1.1
+                0x00800476       0xa7 Hardware/hwm_wifi.o
+                                 0xb0 (size before relaxing)
+ .rodata.str1.1
+                0x0080051d      0x182 IOP/iop_communication.o
+                                0x188 (size before relaxing)
+ .rodata.str1.1
+                0x0080069f       0x2c IOP/iop_ethernet.o
+                                 0x44 (size before relaxing)
+ .rodata.str1.1
+                0x008006cb      0x108 IOP/iop_wifi.o
+                                0x123 (size before relaxing)
+ .rodata.str1.1
+                0x008007d3      0x111 Program/Program.o
+                                0x11d (size before relaxing)
+ .rodata.str1.1
+                0x008008e4       0x68 Program/ProgramDriver.o
+                                 0x75 (size before relaxing)
+ .rodata.str1.1
+                0x0080094c        0x6 main.o
+ *(.gnu.linkonce.d*)
+                0x00800952                . = ALIGN (0x2)
+                0x00800952                _edata = .
+                0x00800952                PROVIDE (__data_end, .)
+
+.bss            0x00800952      0x1e7
+                0x00800952                PROVIDE (__bss_start, .)
+ *(.bss)
+ *(.bss*)
+ .bss.SignatureBytes.1886
+                0x00800952        0x3 Program/ProgramDriver.o
+ *(COMMON)
+ COMMON         0x00800955        0x8 Hardware/hwm_ethernet.o
+                0x00800955                S0_TX_MASK
+                0x00800957                S0_TX_BASE
+                0x00800959                S0_RX_BASE
+                0x0080095b                S0_RX_MASK
+ COMMON         0x0080095d       0x1e Hardware/hwm_switching_circuitry.o
+                0x0080095d                ShiftRegData
+ COMMON         0x0080097b       0x80 Hardware/hwm_wifi.o
+                0x0080097b                endHeaderFlag
+                0x0080097c                multiReceiveFlag
+                0x0080097d                headerBuffer
+                0x00800986                buff
+                0x00800987                compressBuff
+                0x00800988                testPrint
+                0x0080098a                i
+                0x0080098c                secondNibble
+                0x0080098d                compressFlag
+                0x0080098e                transLength
+                0x00800990                RAMAddress
+                0x00800994                bufferStart
+                0x00800996                receiveWifiFlag
+                0x00800997                fullCommand
+ COMMON         0x008009fb       0x6e IOP/iop_communication.o
+                0x008009fb                filepath
+                0x00800a5f                signatureBytes
+                0x00800a63                Flags
+ COMMON         0x00800a69       0x96 IOP/iop_ethernet.o
+                0x00800a69                httpBuff
+ COMMON         0x00800aff       0x34 IOP/iop_intel_hex.o
+                0x00800aff                hexRow
+                0x00800b31                RAMOffset
+ COMMON         0x00800b33        0x6 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(iob.o)
+                0x00800b33                __iob
+                0x00800b39                PROVIDE (__bss_end, .)
+                0x00002982                __data_load_start = LOADADDR (.data)
+                0x000030d4                __data_load_end = (__data_load_start + SIZEOF (.data))
+
+.noinit         0x00800b39        0x0
+                0x00800b39                PROVIDE (__noinit_start, .)
+ *(.noinit*)
+                0x00800b39                PROVIDE (__noinit_end, .)
+                0x00800b39                _end = .
+                0x00800b39                PROVIDE (__heap_start, .)
+
+.eeprom         0x00810000        0x0
+ *(.eeprom*)
+                0x00810000                __eeprom_end = .
+
+.fuse
+ *(.fuse)
+ *(.lfuse)
+ *(.hfuse)
+ *(.efuse)
+
+.lock
+ *(.lock*)
+
+.signature
+ *(.signature*)
+
+.user_signatures
+ *(.user_signatures*)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment        0x00000000       0x5c
+ *(.comment)
+ .comment       0x00000000       0x30 Hardware/hwm_ethernet.o
+                                 0x31 (size before relaxing)
+ .comment       0x00000030       0x31 Hardware/hwm_ram.o
+ .comment       0x00000030       0x31 Hardware/hwm_switching_circuitry.o
+ .comment       0x00000030       0x31 Hardware/hwm_voltage.o
+ .comment       0x00000030       0x31 Hardware/hwm_wifi.o
+ .comment       0x00000030       0x31 IOP/iop_communication.o
+ .comment       0x00000030       0x31 IOP/iop_ethernet.o
+ .comment       0x00000030       0x31 IOP/iop_fpga.o
+ .comment       0x00000030       0x31 IOP/iop_intel_hex.o
+ .comment       0x00000030       0x31 IOP/iop_wifi.o
+ .comment       0x00000030       0x31 Program/Program.o
+ .comment       0x00000030       0x31 Program/ProgramDriver.o
+ .comment       0x00000030       0x31 main.o
+ .comment       0x00000030       0x31 UTL/utl_print.o
+ .comment       0x00000030       0x31 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(fputc.o)
+ .comment       0x00000030       0x31 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(iob.o)
+ .comment       0x00000030       0x31 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(printf.o)
+ .comment       0x00000030       0x31 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(putchar.o)
+ .comment       0x00000030       0x31 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(puts.o)
+ .comment       0x00000030       0x2c c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr51\libc.a(vfprintf_std.o)
+                                 0x2d (size before relaxing)
+
+.note.gnu.avr.deviceinfo
+                0x00000000       0x40
+ .note.gnu.avr.deviceinfo
+                0x00000000       0x40 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.98/gcc/dev/atmega1280/avr51/crtatmega1280.o
+
+.note.gnu.build-id
+ *(.note.gnu.build-id)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000      0x560
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x80 Hardware/hwm_ethernet.o
+ .debug_aranges
+                0x00000080       0x80 Hardware/hwm_ram.o
+ .debug_aranges
+                0x00000100       0x58 Hardware/hwm_switching_circuitry.o
+ .debug_aranges
+                0x00000158       0x80 Hardware/hwm_voltage.o
+ .debug_aranges
+                0x000001d8       0xc0 Hardware/hwm_wifi.o
+ .debug_aranges
+                0x00000298       0x70 IOP/iop_communication.o
+ .debug_aranges
+                0x00000308       0x38 IOP/iop_ethernet.o
+ .debug_aranges
+                0x00000340       0x30 IOP/iop_fpga.o
+ .debug_aranges
+                0x00000370       0x30 IOP/iop_intel_hex.o
+ .debug_aranges
+                0x000003a0       0x68 IOP/iop_wifi.o
+ .debug_aranges
+                0x00000408       0x40 Program/Program.o
+ .debug_aranges
+                0x00000448       0x98 Program/ProgramDriver.o
+ .debug_aranges
+                0x000004e0       0x20 main.o
+ .debug_aranges
+                0x00000500       0x60 UTL/utl_print.o
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x00000000     0x63f9
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x00000000     0x12c7 Hardware/hwm_ethernet.o
+ .debug_info    0x000012c7      0x4c8 Hardware/hwm_ram.o
+ .debug_info    0x0000178f      0x479 Hardware/hwm_switching_circuitry.o
+ .debug_info    0x00001c08      0x1cc Hardware/hwm_voltage.o
+ .debug_info    0x00001dd4      0x76e Hardware/hwm_wifi.o
+ .debug_info    0x00002542      0x809 IOP/iop_communication.o
+ .debug_info    0x00002d4b      0x4ef IOP/iop_ethernet.o
+ .debug_info    0x0000323a      0x112 IOP/iop_fpga.o
+ .debug_info    0x0000334c      0x16d IOP/iop_intel_hex.o
+ .debug_info    0x000034b9      0xa03 IOP/iop_wifi.o
+ .debug_info    0x00003ebc      0x6e1 Program/Program.o
+ .debug_info    0x0000459d     0x17cb Program/ProgramDriver.o
+ .debug_info    0x00005d68      0x1fa main.o
+ .debug_info    0x00005f62      0x497 UTL/utl_print.o
+
+.debug_abbrev   0x00000000     0x18dc
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000      0x306 Hardware/hwm_ethernet.o
+ .debug_abbrev  0x00000306      0x17c Hardware/hwm_ram.o
+ .debug_abbrev  0x00000482      0x1b0 Hardware/hwm_switching_circuitry.o
+ .debug_abbrev  0x00000632       0x94 Hardware/hwm_voltage.o
+ .debug_abbrev  0x000006c6      0x2d5 Hardware/hwm_wifi.o
+ .debug_abbrev  0x0000099b      0x224 IOP/iop_communication.o
+ .debug_abbrev  0x00000bbf      0x19f IOP/iop_ethernet.o
+ .debug_abbrev  0x00000d5e       0xad IOP/iop_fpga.o
+ .debug_abbrev  0x00000e0b       0xd8 IOP/iop_intel_hex.o
+ .debug_abbrev  0x00000ee3      0x1b2 IOP/iop_wifi.o
+ .debug_abbrev  0x00001095      0x232 Program/Program.o
+ .debug_abbrev  0x000012c7      0x2f0 Program/ProgramDriver.o
+ .debug_abbrev  0x000015b7      0x142 main.o
+ .debug_abbrev  0x000016f9      0x1e3 UTL/utl_print.o
+
+.debug_line     0x00000000     0x35c2
+ *(.debug_line .debug_line.* .debug_line_end)
+ .debug_line    0x00000000      0x716 Hardware/hwm_ethernet.o
+ .debug_line    0x00000716      0x3eb Hardware/hwm_ram.o
+ .debug_line    0x00000b01      0x3bd Hardware/hwm_switching_circuitry.o
+ .debug_line    0x00000ebe      0x1f2 Hardware/hwm_voltage.o
+ .debug_line    0x000010b0      0x5de Hardware/hwm_wifi.o
+ .debug_line    0x0000168e      0x480 IOP/iop_communication.o
+ .debug_line    0x00001b0e      0x184 IOP/iop_ethernet.o
+ .debug_line    0x00001c92      0x113 IOP/iop_fpga.o
+ .debug_line    0x00001da5      0x150 IOP/iop_intel_hex.o
+ .debug_line    0x00001ef5      0x370 IOP/iop_wifi.o
+ .debug_line    0x00002265      0x3e0 Program/Program.o
+ .debug_line    0x00002645      0xbd1 Program/ProgramDriver.o
+ .debug_line    0x00003216      0x14f main.o
+ .debug_line    0x00003365      0x25d UTL/utl_print.o
+
+.debug_frame    0x00000000     0x12d8
+ *(.debug_frame)
+ .debug_frame   0x00000000      0x33c Hardware/hwm_ethernet.o
+ .debug_frame   0x0000033c      0x1a8 Hardware/hwm_ram.o
+ .debug_frame   0x000004e4       0xe8 Hardware/hwm_switching_circuitry.o
+ .debug_frame   0x000005cc       0xe4 Hardware/hwm_voltage.o
+ .debug_frame   0x000006b0      0x294 Hardware/hwm_wifi.o
+ .debug_frame   0x00000944      0x1d8 IOP/iop_communication.o
+ .debug_frame   0x00000b1c       0xbc IOP/iop_ethernet.o
+ .debug_frame   0x00000bd8       0x44 IOP/iop_fpga.o
+ .debug_frame   0x00000c1c       0x58 IOP/iop_intel_hex.o
+ .debug_frame   0x00000c74      0x194 IOP/iop_wifi.o
+ .debug_frame   0x00000e08      0x150 Program/Program.o
+ .debug_frame   0x00000f58      0x280 Program/ProgramDriver.o
+ .debug_frame   0x000011d8       0x24 main.o
+ .debug_frame   0x000011fc       0xdc UTL/utl_print.o
+
+.debug_str      0x00000000      0xdb3
+ *(.debug_str)
+ .debug_str     0x00000000      0x3b1 Hardware/hwm_ethernet.o
+                                0x42b (size before relaxing)
+ .debug_str     0x000003b1       0xc8 Hardware/hwm_ram.o
+                                0x24e (size before relaxing)
+ .debug_str     0x00000479       0xea Hardware/hwm_switching_circuitry.o
+                                0x298 (size before relaxing)
+ .debug_str     0x00000563       0xd9 Hardware/hwm_voltage.o
+                                0x221 (size before relaxing)
+ .debug_str     0x0000063c      0x227 Hardware/hwm_wifi.o
+                                0x442 (size before relaxing)
+ .debug_str     0x00000863      0x172 IOP/iop_communication.o
+                                0x349 (size before relaxing)
+ .debug_str     0x000009d5       0x64 IOP/iop_ethernet.o
+                                0x2a7 (size before relaxing)
+ .debug_str     0x00000a39       0x45 IOP/iop_fpga.o
+                                0x1a5 (size before relaxing)
+ .debug_str     0x00000a7e       0x47 IOP/iop_intel_hex.o
+                                0x1cb (size before relaxing)
+ .debug_str     0x00000ac5       0x96 IOP/iop_wifi.o
+                                0x34a (size before relaxing)
+ .debug_str     0x00000b5b       0xf1 Program/Program.o
+                                0x310 (size before relaxing)
+ .debug_str     0x00000c4c       0xa8 Program/ProgramDriver.o
+                                0x47b (size before relaxing)
+ .debug_str     0x00000cf4       0x11 main.o
+                                0x1e2 (size before relaxing)
+ .debug_str     0x00000d05       0xae UTL/utl_print.o
+                                0x217 (size before relaxing)
+
+.debug_loc      0x00000000     0x3f94
+ *(.debug_loc)
+ .debug_loc     0x00000000     0x109d Hardware/hwm_ethernet.o
+ .debug_loc     0x0000109d      0x58e Hardware/hwm_ram.o
+ .debug_loc     0x0000162b      0x239 Hardware/hwm_switching_circuitry.o
+ .debug_loc     0x00001864       0x63 Hardware/hwm_voltage.o
+ .debug_loc     0x000018c7      0x657 Hardware/hwm_wifi.o
+ .debug_loc     0x00001f1e      0x43f IOP/iop_communication.o
+ .debug_loc     0x0000235d      0x28c IOP/iop_ethernet.o
+ .debug_loc     0x000025e9       0x50 IOP/iop_fpga.o
+ .debug_loc     0x00002639      0x10e IOP/iop_intel_hex.o
+ .debug_loc     0x00002747      0x669 IOP/iop_wifi.o
+ .debug_loc     0x00002db0      0x5fc Program/Program.o
+ .debug_loc     0x000033ac      0x9ba Program/ProgramDriver.o
+ .debug_loc     0x00003d66      0x22e UTL/utl_print.o
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges   0x00000000      0x4d0
+ *(.debug_ranges)
+ .debug_ranges  0x00000000       0x88 Hardware/hwm_ethernet.o
+ .debug_ranges  0x00000088       0x70 Hardware/hwm_ram.o
+ .debug_ranges  0x000000f8       0x48 Hardware/hwm_switching_circuitry.o
+ .debug_ranges  0x00000140       0x70 Hardware/hwm_voltage.o
+ .debug_ranges  0x000001b0       0xb0 Hardware/hwm_wifi.o
+ .debug_ranges  0x00000260       0x60 IOP/iop_communication.o
+ .debug_ranges  0x000002c0       0x28 IOP/iop_ethernet.o
+ .debug_ranges  0x000002e8       0x20 IOP/iop_fpga.o
+ .debug_ranges  0x00000308       0x20 IOP/iop_intel_hex.o
+ .debug_ranges  0x00000328       0x58 IOP/iop_wifi.o
+ .debug_ranges  0x00000380       0x48 Program/Program.o
+ .debug_ranges  0x000003c8       0xa8 Program/ProgramDriver.o
+ .debug_ranges  0x00000470       0x10 main.o
+ .debug_ranges  0x00000480       0x50 UTL/utl_print.o
+
+.debug_macro
+ *(.debug_macro)
+OUTPUT(wipro.elf elf32-avr)
+LOAD linker stubs

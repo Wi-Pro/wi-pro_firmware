@@ -1,0 +1,20 @@
+
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "wipro", "wipro\wipro_6_2.cproj", "{A71535B5-E49D-46F6-A658-88E3A0E8C28A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A71535B5-E49D-46F6-A658-88E3A0E8C28A}.Debug|AVR.ActiveCfg = Debug|AVR
+		{A71535B5-E49D-46F6-A658-88E3A0E8C28A}.Debug|AVR.Build.0 = Debug|AVR
+		{A71535B5-E49D-46F6-A658-88E3A0E8C28A}.Release|AVR.ActiveCfg = Release|AVR
+		{A71535B5-E49D-46F6-A658-88E3A0E8C28A}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
