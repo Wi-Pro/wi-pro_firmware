@@ -34,7 +34,7 @@ void connectionInit()
 {
 	uart2_init();
 	uart_init(); 
-	SPI_Init();
+	HWM_spi_init();
 	flagInit(); 
 	ethernetPlugInit(); 
 	memset(filepath, 0x00, 100);

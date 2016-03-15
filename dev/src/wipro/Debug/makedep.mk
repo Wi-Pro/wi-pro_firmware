@@ -8,6 +8,8 @@ Hardware\hwm_led.c
 
 Hardware\hwm_ram.c
 
+Hardware\hwm_spi.c
+
 Hardware\hwm_switching_circuitry.c
 
 Hardware\hwm_voltage.c

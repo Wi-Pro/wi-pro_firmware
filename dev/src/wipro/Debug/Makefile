@@ -45,6 +45,7 @@ C_SRCS +=  \
 ../Hardware/hwm_ethernet.c \
 ../Hardware/hwm_led.c \
 ../Hardware/hwm_ram.c \
+../Hardware/hwm_spi.c \
 ../Hardware/hwm_switching_circuitry.c \
 ../Hardware/hwm_voltage.c \
 ../Hardware/hwm_wifi.c \
@@ -69,6 +70,7 @@ OBJS +=  \
 Hardware/hwm_ethernet.o \
 Hardware/hwm_led.o \
 Hardware/hwm_ram.o \
+Hardware/hwm_spi.o \
 Hardware/hwm_switching_circuitry.o \
 Hardware/hwm_voltage.o \
 Hardware/hwm_wifi.o \
@@ -86,6 +88,7 @@ OBJS_AS_ARGS +=  \
 Hardware/hwm_ethernet.o \
 Hardware/hwm_led.o \
 Hardware/hwm_ram.o \
+Hardware/hwm_spi.o \
 Hardware/hwm_switching_circuitry.o \
 Hardware/hwm_voltage.o \
 Hardware/hwm_wifi.o \
@@ -103,6 +106,7 @@ C_DEPS +=  \
 Hardware/hwm_ethernet.d \
 Hardware/hwm_led.d \
 Hardware/hwm_ram.d \
+Hardware/hwm_spi.d \
 Hardware/hwm_switching_circuitry.d \
 Hardware/hwm_voltage.d \
 Hardware/hwm_wifi.d \
@@ -120,6 +124,7 @@ C_DEPS_AS_ARGS +=  \
 Hardware/hwm_ethernet.d \
 Hardware/hwm_led.d \
 Hardware/hwm_ram.d \
+Hardware/hwm_spi.d \
 Hardware/hwm_switching_circuitry.d \
 Hardware/hwm_voltage.d \
 Hardware/hwm_wifi.d \
@@ -147,6 +152,8 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+
+
 
 
 

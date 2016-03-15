@@ -31,13 +31,9 @@
 #define PAGE 0x80
 #define SEQ 0x40
 
-void SPI_Init();
-int setSPIClockDiv(uint8_t division);
+
 int getRAMStatus(); 
 void setRAMStatus(char mode);
-void SPI_WriteAddress(uint32_t address);
-void SPI_ReadAddress(uint32_t address);
-void SPI_WriteData(char data);
 uint16_t RAMWrite(char* data, uint32_t startAddress, uint16_t length);
 void RAMWriteByte(char data, uint32_t address);
 char RAMReadByte(uint32_t address);

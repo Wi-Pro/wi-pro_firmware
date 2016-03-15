@@ -135,6 +135,9 @@
     <Compile Include="Hardware\hwm_ram.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="Hardware\hwm_spi.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Hardware\hwm_switching_circuitry.c">
       <SubType>compile</SubType>
     </Compile>
@@ -154,6 +157,9 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Headers\hwm_pub_ram.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Headers\hwm_pub_spi.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Headers\hwm_pub_switching_circuitry.h">
