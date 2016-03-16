@@ -1,8 +1,10 @@
-/*
- * AVR.h
- *
+/* prg_pub_sig_bytes.h 
+ * 
+ *	
  * Created: 4/19/2015 7:17:17 PM
- *  Author: Brandon
+ * Author: Brandon Pfeifer
+ *
+ * Description: Contains the signature bytes for the supported programmable chips 
  */ 
 
 

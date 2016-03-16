@@ -3,11 +3,14 @@
  *
  * Created: 3/1/2015 4:26:06 PM
  * Author: Brandon
+ * 
  * Description: Allows control of the Vpp and Vcc voltage regulators for programming the targeted microcontroller. 
  * A typical use for this library would simply involve calling the setVcc() or setVpp() functions and passing the correct
  * voltage level, as defined in the header file 
+ *
  * Example: Set Vcc Regulator to 3.3V		setVcc(VCC_3_3V); 
  */ 
+
 #include <avr/io.h>
 #include <stdio.h>
 #include "hwm_pub_voltage.h"

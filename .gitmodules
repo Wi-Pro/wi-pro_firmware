@@ -1,0 +1,3 @@
+[submodule "dev/clib"]
+	path = dev/clib
+	url = https://github.com/Cocijo/common_lib.git
